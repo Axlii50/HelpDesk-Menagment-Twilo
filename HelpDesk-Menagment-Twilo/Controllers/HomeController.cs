@@ -13,12 +13,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult LoginPage()
         {
             return View();
         }

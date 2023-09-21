@@ -28,7 +28,7 @@ namespace HelpDesk_Menagment_Twilo
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=LoginPage}/{id?}");
 
             app.Run();
         }
