@@ -1,18 +1,158 @@
-html {
-  font-size: 14px;
+/*///////////////////////////////////////////////////////////////////
+//////////Variables */
+:root {
+    --color-primary: #e95a11;
+    --color-primary-light-1: #eb6b29;
+    --color-primary-light-2: #ed7b41;
+    --color-primary-dark-1: #d2510f;
+    --color-primary-dark-2: #ba480e;
+    --color--btns--hover: #f97316;
+    --color-secondary: #8a5337;
+    --color-secondary-light-1: #96644b;
+    --color-secondary-light-2: #a1755f;
+    --color-secondary-dark-1: #7c4b32;
+    --color-secondary-dark-2: #6e422c;
+    --color-tertiary-light: #fff;
+    --color-tertiary-dark: #fff;
+    --color-grey-light-1: #f1f3f5;
+    --color-grey-light-2: #858585;
+    --color-grey-light-3: #f5f5f5;
+    --color-grey-light-4: #f7f7f7;
+    --color-grey-light-5: #f4f4f4;
+    --color-grey-dark-1: #756e6b;
+    --color-grey-dark-2: #fff;
+    --color-grey-dark-3: #fff;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-black-2: #212529;
+    --color-orange-active: #fb923c;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/*///////////////////////////////////////////////////////////////////
+//////////BASE */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-black-2);
+    background-color: #393939;
+    position: relative;
+    min-height: 100vh;
+}
+
+.container-1 {
+    max-width: 200rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-2 {
+    max-width: 155rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-3 {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-4 {
+    max-width: 170rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-5 {
+    max-width: 170rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container__header {
+    padding: 1.5rem 2rem;
+}
+
+.header {
+
+}
+
+.navigation {
+
+}
+
+.navigation__items {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation__item {
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+}
+
+.navigation__link {
+    text-decoration: none;
+    width: 15rem;
+    display: inline-block;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+}
+
+    .navigation__link:link, .navigation__link:visited {
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2rem;
+        background-color: #FF5A09;
+        transition: all 0.4s;
+    }
+
+    .navigation__link:hover, .navigation__link:active {
+        color: white;
+        background-color: #ec7f37;
+    }
+
+/*HelpDesk.cshtml*/
+.HelpDesk__section {
+}
+
+.container__HelpDesk {
+}
+
+.HelpDesk__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HelpDesk__box {
+    background-color: white;
+    width: 140rem;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+    min-height: 50rem;
 }

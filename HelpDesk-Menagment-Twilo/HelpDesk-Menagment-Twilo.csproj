@@ -7,4 +7,9 @@
     <RootNamespace>HelpDesk_Menagment_Twilo</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\HelpDesk\.css" />
+    <None Remove="Views\Home\htmlpage.html" />
+  </ItemGroup>
+
 </Project>
