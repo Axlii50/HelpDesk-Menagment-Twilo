@@ -88,6 +88,8 @@ body {
     padding: 0;
 }
 
+
+/*LayOut*/
 .container__header {
     padding: 1.5rem 2rem;
 }
@@ -156,3 +158,109 @@ body {
     box-shadow: 0 0 1rem rgba(0,0,0,0.15);
     min-height: 50rem;
 }
+
+
+/*LayOut LoginPage*/
+
+
+/*--------------------------------------------------------*/
+
+/*LoginPage*/
+.loginPage__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: url(/img/bg3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.loginPage {
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    border-radius: 6px;
+    width: 40rem;
+    height: 40rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+    color: white;
+    border: 2px solid white;
+    backdrop-filter: blur(4px);
+}
+
+.loginPage__row {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.loginPage__row:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.loginPage__input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 1.6rem;
+    width: 100%;
+    display: inline-block;
+    padding: 0 0.5rem;
+    height: 3.5rem;
+    background: transparent;
+    color: white;
+}
+
+    .loginPage__input::placeholder {
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-align: center;
+        color: white;
+    }
+
+.loginPage__Btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.loginPage__loginInBtn {
+    text-decoration: none;
+    padding: 1rem 1rem;
+    color: white;
+    background-color: orangered;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    box-shadow: 0 0.75rem 1rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.loginPage__loginInBtn:link, .loginPage__loginInBtn:visited {
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    color: black;
+    background-color: white;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+}
+
+    .loginPage__loginInBtn:hover, .loginPage__loginInBtn:active {
+        background-color: #075985;
+        color: white;
+    }
