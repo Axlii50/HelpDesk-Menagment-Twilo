@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HelpDesk_Menagment_Twilo.Data;
 namespace HelpDesk_Menagment_Twilo
 {
     public class Program
@@ -5,6 +8,8 @@ namespace HelpDesk_Menagment_Twilo
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<HelpDesk_Menagment_TwiloContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("HelpDesk_Menagment_TwiloContext") ?? throw new InvalidOperationException("Connection string 'HelpDesk_Menagment_TwiloContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
