@@ -1,21 +1,27 @@
-﻿@{
-    Layout = "_Layout";
+﻿
+@{
+    Layout = "_Layout_LoginPage";
 }
 
-<section class="HelpDesk__section">
-    <div class="container-fluid container__HelpDesk">
-        <div class="HelpDesk__content">
-            <div class="HelpDesk__box">
-                <div class="HelpDesk__addBtnBox">
-                    <a class="HelpDesk__addBtn">Dodaj</a>
-                </div>
-                <div oncancel="HelpDesk__table">
-                    fsdfsd
-                </div>
-            </div>
+<section class="loginPage__section">
+    <div class="loginPage">
+        <div class="loginPage__row">
+            <input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">
+            <label class="loginPage__label" for="loginPageLogin">Login:</label>
+        </div>
+
+        <div class="loginPage__row">
+            <input class="loginPage__input" id="loginPagePassword" type="password" placeholder="Wpisz hasło...">
+            <label class="loginPage__label" for="loginPagePassword">Hasło:</label>
+        </div>
+
+        <div class="loginPage__Btns">
+            <a class="loginPage__loginInBtn" href="">Zaloguj się</a>
         </div>
     </div>
 </section>
 
+
 @{
 }
+

@@ -90,6 +90,10 @@ body {
 
 
 /*LayOut*/
+.Page {
+    min-height: 100vh;
+}
+
 .container__header {
     padding: 1.5rem 2rem;
 }
@@ -142,6 +146,7 @@ body {
 }
 
 .container__HelpDesk {
+    padding: 0;
 }
 
 .HelpDesk__content {
@@ -151,20 +156,163 @@ body {
 }
 
 .HelpDesk__box {
-    background-color: white;
-    width: 140rem;
+    background-color: lightblue;
+    width: 100%;
     padding: 2rem;
-    border-radius: 6px;
     box-shadow: 0 0 1rem rgba(0,0,0,0.15);
-    min-height: 50rem;
+    max-height: 85.9rem;
+    min-height: 85.9rem;
+}
+
+.HelpDesk__addBtnBox {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.HelpDesk__addBtn {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    padding: 0.75rem 1rem;
+    width: 15rem;
+    background-color: white;
+    transition: all 0.4s;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.HelpDesk__addBtn:hover {
+    color: white;
+    background-color: #1d4e6c;
+}
+
+.HelpDesk__table {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+    .HelpDesk__table::-webkit-scrollbar {
+        height: 1rem;
+    }
+
+.HelpDesk__table::-webkit-scrollbar-track {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.HelpDesk__table::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+}
+
+.HelpDesk__table::-webkit-scrollbar-thumb:hover {
+    background: orange;
 }
 
 
+.tableDiv {
+    display: flex;
+    gap: 1rem;
+}
+
+.table__column {
+    display: flex;
+    flex-direction: column;
+    min-width: 45rem;
+    max-height: 73rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.table__column::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.table__column::-webkit-scrollbar-track {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.table__column::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 3px;
+}
+
+.table__column::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
+
+    .table__column:not(:last-child) {
+        border-right: none;
+        border-left: 1px solid black;
+    }
+
+.table__column:first-child {
+    border-left: 1px solid black;
+}
+
+    .table__column:last-child {
+        border-right: none;
+        border-left: 1px solid black;
+    }
+
+.table__head {
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.table__headText {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.table__body {
+}
+
+.table__row {
+    border-bottom: 1px solid black;
+    padding: 1rem;
+}
+
+.table__bodyRowNote {
+    margin-bottom: 1rem;
+}
+
+.table__note {
+}
+
+.table__bodyRowTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.table__bodyTitle {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.table__note {
+    font-size: 1.4rem;
+}
+
+.table__dateBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase
+}
 /*LayOut LoginPage*/
-
-
-/*--------------------------------------------------------*/
-
+/*---------------------*/
 /*LoginPage*/
 .loginPage__section {
     display: flex;
@@ -176,7 +324,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
 }
 
 .loginPage {
@@ -261,6 +408,6 @@ body {
 }
 
     .loginPage__loginInBtn:hover, .loginPage__loginInBtn:active {
-        background-color: #075985;
+        background-color: #1d4e6c;
         color: white;
     }
