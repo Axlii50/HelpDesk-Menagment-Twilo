@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@{
+    Layout = "_Layout_LoginPage";
+}
+
+<section class="loginPage__section">
+    <div class="loginPage">
+        <div class="loginPage__row">
+            <input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">
+            <label class="loginPage__label" for="loginPageLogin">Login:</label>
+        </div>
+
+        <div class="loginPage__row">
+            <input class="loginPage__input" id="loginPagePassword" type="password" placeholder="Wpisz hasło...">
+            <label class="loginPage__label" for="loginPagePassword">Hasło:</label>
+        </div>
+
+        <div class="loginPage__Btns">
+            <a class="loginPage__loginInBtn" href="">Zaloguj się</a>
+        </div>
+    </div>
+</section>
+
+
 @{
 }
+

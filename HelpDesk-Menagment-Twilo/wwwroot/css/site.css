@@ -1,18 +1,413 @@
-html {
-  font-size: 14px;
+/*///////////////////////////////////////////////////////////////////
+//////////Variables */
+:root {
+    --color-primary: #e95a11;
+    --color-primary-light-1: #eb6b29;
+    --color-primary-light-2: #ed7b41;
+    --color-primary-dark-1: #d2510f;
+    --color-primary-dark-2: #ba480e;
+    --color--btns--hover: #f97316;
+    --color-secondary: #8a5337;
+    --color-secondary-light-1: #96644b;
+    --color-secondary-light-2: #a1755f;
+    --color-secondary-dark-1: #7c4b32;
+    --color-secondary-dark-2: #6e422c;
+    --color-tertiary-light: #fff;
+    --color-tertiary-dark: #fff;
+    --color-grey-light-1: #f1f3f5;
+    --color-grey-light-2: #858585;
+    --color-grey-light-3: #f5f5f5;
+    --color-grey-light-4: #f7f7f7;
+    --color-grey-light-5: #f4f4f4;
+    --color-grey-dark-1: #756e6b;
+    --color-grey-dark-2: #fff;
+    --color-grey-dark-3: #fff;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-black-2: #212529;
+    --color-orange-active: #fb923c;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/*///////////////////////////////////////////////////////////////////
+//////////BASE */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-black-2);
+    background-color: #393939;
+    position: relative;
+    min-height: 100vh;
 }
+
+.container-1 {
+    max-width: 200rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-2 {
+    max-width: 155rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-3 {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-4 {
+    max-width: 170rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-5 {
+    max-width: 170rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+/*LayOut*/
+.Page {
+    min-height: 100vh;
+}
+
+.container__header {
+    padding: 1.5rem 2rem;
+}
+
+.header {
+
+}
+
+.navigation {
+
+}
+
+.navigation__items {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation__item {
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+}
+
+.navigation__link {
+    text-decoration: none;
+    width: 15rem;
+    display: inline-block;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+}
+
+    .navigation__link:link, .navigation__link:visited {
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2rem;
+        background-color: #FF5A09;
+        transition: all 0.4s;
+    }
+
+    .navigation__link:hover, .navigation__link:active {
+        color: white;
+        background-color: #ec7f37;
+    }
+
+/*HelpDesk.cshtml*/
+.HelpDesk__section {
+}
+
+.container__HelpDesk {
+    padding: 0;
+}
+
+.HelpDesk__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HelpDesk__box {
+    background-color: lightblue;
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+    max-height: 85.9rem;
+    min-height: 85.9rem;
+}
+
+.HelpDesk__addBtnBox {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.HelpDesk__addBtn {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    padding: 0.75rem 1rem;
+    width: 15rem;
+    background-color: white;
+    transition: all 0.4s;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.HelpDesk__addBtn:hover {
+    color: white;
+    background-color: #1d4e6c;
+}
+
+.HelpDesk__table {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+    .HelpDesk__table::-webkit-scrollbar {
+        height: 1rem;
+    }
+
+.HelpDesk__table::-webkit-scrollbar-track {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.HelpDesk__table::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+}
+
+.HelpDesk__table::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
+
+
+.tableDiv {
+    display: flex;
+    gap: 1rem;
+}
+
+.table__column {
+    display: flex;
+    flex-direction: column;
+    min-width: 45rem;
+    max-height: 73rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.table__column::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.table__column::-webkit-scrollbar-track {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.table__column::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 3px;
+}
+
+.table__column::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
+
+    .table__column:not(:last-child) {
+        border-right: none;
+        border-left: 1px solid black;
+    }
+
+.table__column:first-child {
+    border-left: 1px solid black;
+}
+
+    .table__column:last-child {
+        border-right: none;
+        border-left: 1px solid black;
+    }
+
+.table__head {
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.table__headText {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.table__body {
+}
+
+.table__row {
+    border-bottom: 1px solid black;
+    padding: 1rem;
+}
+
+.table__bodyRowNote {
+    margin-bottom: 1rem;
+}
+
+.table__note {
+}
+
+.table__bodyRowTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.table__bodyTitle {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.table__note {
+    font-size: 1.4rem;
+}
+
+.table__dateBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase
+}
+/*LayOut LoginPage*/
+/*---------------------*/
+/*LoginPage*/
+.loginPage__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: url(/img/bg3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.loginPage {
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    border-radius: 6px;
+    width: 40rem;
+    height: 40rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+    color: white;
+    border: 2px solid white;
+    backdrop-filter: blur(4px);
+}
+
+.loginPage__row {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.loginPage__row:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.loginPage__input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 1.6rem;
+    width: 100%;
+    display: inline-block;
+    padding: 0 0.5rem;
+    height: 3.5rem;
+    background: transparent;
+    color: white;
+}
+
+    .loginPage__input::placeholder {
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-align: center;
+        color: white;
+    }
+
+.loginPage__Btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.loginPage__loginInBtn {
+    text-decoration: none;
+    padding: 1rem 1rem;
+    color: white;
+    background-color: orangered;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    box-shadow: 0 0.75rem 1rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.loginPage__loginInBtn:link, .loginPage__loginInBtn:visited {
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    color: black;
+    background-color: white;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+}
+
+    .loginPage__loginInBtn:hover, .loginPage__loginInBtn:active {
+        background-color: #1d4e6c;
+        color: white;
+    }
