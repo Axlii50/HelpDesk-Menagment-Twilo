@@ -14,26 +14,25 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 ticket__header" id="exampleModalLabel">Dodaj ticket</h1>
+                                <h1 class="modal-title ticket__header">Dodaj ticket</h1>
                                 <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form class="ticket__form">
                                     <div class="ticket__row">
                                         <div class="ticket__titleBox">
-                                            <label class="ticket__label">Tytuł:</label>
-                                            <input type="text" class="ticket__input ticket__input--title" placeholder="Wpisz tytuł..."/>
+                                            <input type="text" id="ticketTitle" class="ticket__input ticket__input--title" placeholder="Wpisz tytuł..."/>
                                         </div>
                                     </div>
 
                                     <div class="ticket__row">
-                                        <textarea class="ticket__textarea" placeholder="Opis oraz informacje"></textarea>
+                                        <textarea id="ticketOpis" class="ticket__textarea" placeholder="Opis oraz informacje"></textarea>
                                     </div>
 
                                     <div class="ticket__row">
                                         <label class="ticket__lable">Kategoria:</label>
                                         <select class="ticket__select">
-                                            <option value="Zamówienie" class="ticket__selectOption">Zamówienie</option>
+                                            <option value="Zamówienie" class="ticket__selectOption">Zamówienia</option>
                                             <option value="Dyskusja" class="ticket__selectOption">Dyskusja</option>
                                             <option value="Zwrot" class="ticket__selectOption">Zwrot</option>
                                             <option value="Faktura" class="ticket__selectOption">Faktura</option>
@@ -65,7 +64,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
-                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--close">Dodaj</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--add">Dodaj</button>
                             </div>
                         </div>
                     </div>
@@ -78,9 +77,13 @@
                             <div class="table__head">
                                 <span class="table__headText">Zamówienia</span>
                             </div>
-                            <div class="table__row">
-                                
-                            </div>
+                            
+
+                            <!--Tutaj trzeba buttony na priorytety zrobić
+                                A w samych buttonach tickety
+                            -->
+
+
                         </div>
 
                         <div class="table__column">
