@@ -227,8 +227,10 @@ body {
     flex-direction: column;
     min-width: 45rem;
     max-height: 73rem;
+    min-height: 73rem;
     overflow-x: hidden;
     overflow-y: scroll;
+    border-bottom: 1px solid black;
 }
 
 .table__column::-webkit-scrollbar {
@@ -411,3 +413,77 @@ body {
         background-color: #1d4e6c;
         color: white;
     }
+
+
+
+
+/*MODAL TICKET*/
+.ticket__header {
+    font-size: 2rem;
+}
+
+.ticket__close {
+    font-size: 1.6rem;
+}
+
+.ticket__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    color: black;
+}
+
+.ticket__row {
+    display: inline-block;
+    width: 100%;
+}
+
+.ticket__lable {
+    width: 12rem;
+}
+
+.ticket__input {
+    width: 100%;
+    border: none;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.ticket__select {
+    width: 73.8%;
+    text-align: center;
+}
+
+.ticket__select:hover {
+    border: 1px solid black;
+}
+
+
+.ticket__textarea {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    min-height: 20rem;
+    max-height: 20rem;
+}
+
+.ticket__btn {
+    font-size: 1.8rem;
+    width: 10rem;
+    border: none;
+}
+
+.ticket__btn--add {
+    background-color: black;
+    color: white;
+}
+
+.ticket__btn--add:hover {
+    background-color: white;
+    color: black;
+}
