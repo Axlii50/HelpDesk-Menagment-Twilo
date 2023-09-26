@@ -227,8 +227,10 @@ body {
     flex-direction: column;
     min-width: 45rem;
     max-height: 73rem;
+    min-height: 73rem;
     overflow-x: hidden;
     overflow-y: scroll;
+    border-bottom: 1px solid black;
 }
 
 .table__column::-webkit-scrollbar {

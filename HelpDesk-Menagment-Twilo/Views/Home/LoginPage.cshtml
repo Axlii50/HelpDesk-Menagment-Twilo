@@ -1,26 +1,191 @@
 ﻿@{
-    Layout = "_Layout_LoginPage";
+    Layout = "_Layout";
 }
 
-<section class="loginPage__section">
-    <div class="loginPage">
-        <div class="loginPage__row">
-            <input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">
-            <label class="loginPage__label" for="loginPageLogin">Login:</label>
-        </div>
+<section class="HelpDesk__section">
+    <div class="container-fluid container__HelpDesk">
+        <div class="HelpDesk__content">
+            <div class="HelpDesk__box">
+                <div class="HelpDesk__addBtnBox">
+                    <a class="HelpDesk__addBtn" data-bs-toggle="modal" data-bs-target="#Dodawanie">Dodaj</a>
+                </div>
 
-        <div class="loginPage__row">
-            <input class="loginPage__input" id="loginPagePassword" type="password" placeholder="Wpisz hasło...">
-            <label class="loginPage__label" for="loginPagePassword">Hasło:</label>
-        </div>
+                <div class="modal fade" id="Dodawanie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 ticket__header" id="exampleModalLabel">Dodaj ticket</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="ticket__form">
+                                    <div class="ticket__row">
+                                        <div class="ticket__titleBox">
+                                            <label class="ticket__label">Tytuł:</label>
+                                            <input type="text" class="ticket__input ticket__input--title" placeholder="Wpisz tytuł..."/>
+                                        </div>
+                                    </div>
 
-        <div class="loginPage__Btns">
-            <a class="loginPage__loginInBtn" href="">Zaloguj się</a>
+                                    <div class="ticket__row">
+                                        <textarea class="ticket__textarea" placeholder="Opis oraz informacje"></textarea>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Kategoria:</label>
+                                        <select class="ticket__select">
+                                            <option value="Zamówienie" class="ticket__selectOption">Zamówienie</option>
+                                            <option value="Dyskusja" class="ticket__selectOption">Dyskusja</option>
+                                            <option value="Zwrot" class="ticket__selectOption">Zwrot</option>
+                                            <option value="Faktura" class="ticket__selectOption">Faktura</option>
+                                            <option value="Hurtownia" class="ticket__selectOption">Hurtownia</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Status:</label>
+                                        <select class="ticket__select">
+                                            <option value="Nowe" class="ticket__selectOption">Nowe</option>
+                                            <option value="Rozpatrywane" class="ticket__selectOption">Rozpatrywane</option>
+                                            <option value="Wstrzymane" class="ticket__selectOption">Wstrzymane</option>
+                                            <option value="Zakończone" class="ticket__selectOption">Zakończone</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Priorytet:</label>
+                                        <select class="ticket__select">
+                                            <option value="Natychmiast" class="ticket__selectOption">Natychmiast</option>
+                                            <option value="Pilny" class="ticket__selectOption">Pilny</option>
+                                            <option value="Ważny" class="ticket__selectOption">Ważny</option>
+                                            <option value="Normalny" class="ticket__selectOption">Normalny</option>
+                                            <option value="Niski" class="ticket__selectOption">Niski</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--close">Dodaj</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="HelpDesk__table">
+                    <div class="tableDiv">
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+                            <div class="table__row">
+                                
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+                            <div class="table__row">
+                                <div class="table__body">
+                                    <div class="table__bodyRow table__bodyRowTitle">
+                                        <span class="table__bodyTitle">Jakiś tytuł</span>
+                                    </div>
+                                    <div class="table__bodyRow table__bodyRowNote">
+                                        <span class="table__note">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </span>
+                                    </div>
+                                    <div class="table__bodyRow">
+                                        <div class="table__dateBox">
+                                            <span class="table__date">24-05-2024</span>
+                                            <span class="table__check">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+                            <div class="table__row">
+                                <div class="table__body">
+                                    <div class="table__bodyRow table__bodyRowTitle">
+                                        <span class="table__bodyTitle">Jakiś tytuł</span>
+                                    </div>
+                                    <div class="table__bodyRow table__bodyRowNote">
+                                        <span class="table__note">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </span>
+                                    </div>
+                                    <div class="table__bodyRow">
+                                        <div class="table__dateBox">
+                                            <span class="table__date">24-05-2024</span>
+                                            <span class="table__check">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+                            <div class="table__row">
+                                <div class="table__body">
+                                    <div class="table__bodyRow table__bodyRowTitle">
+                                        <span class="table__bodyTitle">Jakiś tytuł</span>
+                                    </div>
+                                    <div class="table__bodyRow table__bodyRowNote">
+                                        <span class="table__note">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </span>
+                                    </div>
+                                    <div class="table__bodyRow">
+                                        <div class="table__dateBox">
+                                            <span class="table__date">24-05-2024</span>
+                                            <span class="table__check">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+                            <div class="table__row">
+                                <div class="table__body">
+                                    <div class="table__bodyRow table__bodyRowTitle">
+                                        <span class="table__bodyTitle">Jakiś tytuł</span>
+                                    </div>
+                                    <div class="table__bodyRow table__bodyRowNote">
+                                        <span class="table__note">
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </span>
+                                    </div>
+                                    <div class="table__bodyRow">
+                                        <div class="table__dateBox">
+                                            <span class="table__date">24-05-2024</span>
+                                            <span class="table__check">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-
 @{
 }
-
