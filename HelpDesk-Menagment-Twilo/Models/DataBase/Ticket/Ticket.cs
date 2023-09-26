@@ -1,4 +1,4 @@
-﻿namespace HelpDesk_Menagment_Twilo.Models.DataBase
+﻿namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 {
     public class Ticket
     {
