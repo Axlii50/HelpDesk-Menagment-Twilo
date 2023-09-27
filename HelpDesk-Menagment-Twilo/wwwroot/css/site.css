@@ -226,6 +226,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 45rem;
+    max-width: 45rem;
     max-height: 73rem;
     min-height: 73rem;
     overflow-x: hidden;
@@ -281,6 +282,7 @@ body {
 
 .table__row {
     border-bottom: 1px solid black;
+    border-top: 1px solid black;
     padding: 1rem;
 }
 
@@ -312,6 +314,48 @@ body {
     font-size: 1.6rem;
     font-weight: 500;
     text-transform: uppercase
+}
+
+.table__prioBtn {
+    display: flex;
+    background-color: red;
+}
+
+.prioBtn__numbers {
+    display: flex;
+}
+
+.btnAccordion {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1.5rem;
+}
+
+.accordion-item:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.accordion-header {
+    display: flex;
+    position: relative;
+}
+
+.numbers {
+    display: flex;
+    position: absolute;
+    left: 46%;
+    gap: 0.5rem
+}
+.number {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
 }
 /*LayOut LoginPage*/
 /*---------------------*/
