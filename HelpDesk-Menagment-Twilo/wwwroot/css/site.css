@@ -1,38 +1,29 @@
 /*///////////////////////////////////////////////////////////////////
 //////////Variables */
 :root {
-    --color-primary: #e95a11;
-    --color-primary-light-1: #eb6b29;
-    --color-primary-light-2: #ed7b41;
-    --color-primary-dark-1: #d2510f;
-    --color-primary-dark-2: #ba480e;
-    --color--btns--hover: #f97316;
-    --color-secondary: #8a5337;
-    --color-secondary-light-1: #96644b;
-    --color-secondary-light-2: #a1755f;
-    --color-secondary-dark-1: #7c4b32;
-    --color-secondary-dark-2: #6e422c;
-    --color-tertiary-light: #fff;
-    --color-tertiary-dark: #fff;
-    --color-grey-light-1: #f1f3f5;
-    --color-grey-light-2: #858585;
-    --color-grey-light-3: #f5f5f5;
-    --color-grey-light-4: #f7f7f7;
-    --color-grey-light-5: #f4f4f4;
-    --color-grey-dark-1: #756e6b;
-    --color-grey-dark-2: #fff;
-    --color-grey-dark-3: #fff;
+    /*Colors*/
     --color-white: #fff;
     --color-black: #000;
-    --color-black-2: #212529;
-    --color-orange-active: #fb923c;
+    --color-bg-main: #2e2e2e;
+    --color-bg-nav: #171717;
+    --color--primary-dark: #b28451;
+    --color--primary-light: #c69963;
+    --color--grey-light-1: #faf9f9;
+    --color--grey-light-2: #f4f2f2;
+    --color--grey-light-3: #f0eeee;
+    --color--grey-light-4: #ccc;
+    --color--grey-light-5: #f9f7f6;
+    --color--grey-light-6: #aaa;
+    --color--grey-dark-1: #333;
+    --color--grey-dark-2: #777;
+    --color--grey-dark-3: #999;
+    --color--grey-dark-4: #54483a;
+    --color--grey-dark-5: #6d5d4b;
+    --color--background-nav: #101d2c;
 }
-
-/*///////////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////////
 //////////BASE */
-*,
-*::after,
-*::before {
+    *, *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -52,8 +43,8 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     line-height: 1.6;
-    color: var(--color-black-2);
-    background-color: #393939;
+    color: black;
+    background-color: var(--color-bg-main);
     position: relative;
     min-height: 100vh;
 }
@@ -96,6 +87,7 @@ body {
 
 .container__header {
     padding: 1.5rem 2rem;
+    background-color: var(--color-bg-nav);
 }
 
 .header {
@@ -132,13 +124,13 @@ body {
         text-decoration: none;
         display: inline-block;
         font-size: 2rem;
-        background-color: #FF5A09;
+        background-color: var(--color--primary-light);
         transition: all 0.4s;
     }
 
     .navigation__link:hover, .navigation__link:active {
         color: white;
-        background-color: #ec7f37;
+        background-color: var(--color--primary-dark);
     }
 
 /*HelpDesk.cshtml*/
@@ -156,12 +148,12 @@ body {
 }
 
 .HelpDesk__box {
-    background-color: lightblue;
     width: 100%;
     padding: 2rem;
     box-shadow: 0 0 1rem rgba(0,0,0,0.15);
     max-height: 85.9rem;
     min-height: 85.9rem;
+    color: var(--color-white);
 }
 
 .HelpDesk__addBtnBox {
@@ -174,10 +166,10 @@ body {
     font-size: 1.8rem;
     font-weight: 500;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 0.75rem 1rem;
     width: 15rem;
-    background-color: white;
+    background-color: var(--color--primary-light);
     transition: all 0.4s;
     border-radius: 4px;
     display: inline-block;
@@ -187,7 +179,7 @@ body {
 
 .HelpDesk__addBtn:hover {
     color: white;
-    background-color: #1d4e6c;
+    background-color: var(--color--primary-dark);
 }
 
 .HelpDesk__table {
@@ -203,17 +195,17 @@ body {
     }
 
 .HelpDesk__table::-webkit-scrollbar-track {
-    border: 1px solid black;
+    border: 1px solid var(--color--primary-light);
     border-radius: 10px;
 }
 
 .HelpDesk__table::-webkit-scrollbar-thumb {
-    background: red;
+    background: var(--color--primary-light);
     border-radius: 10px;
 }
 
 .HelpDesk__table::-webkit-scrollbar-thumb:hover {
-    background: orange;
+    background: var(--color--primary-dark);
 }
 
 
@@ -231,45 +223,45 @@ body {
     min-height: 73rem;
     overflow-x: hidden;
     overflow-y: scroll;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color--primary-light);
 }
 
 .table__column::-webkit-scrollbar {
     width: 1rem;
 }
 
-.table__column::-webkit-scrollbar-track {
-    border: 1px solid black;
-    border-radius: 3px;
-}
+    .table__column::-webkit-scrollbar-track {
+        border: 1px solid var(--color--primary-light);
+        border-radius: 3px;
+    }
 
-.table__column::-webkit-scrollbar-thumb {
-    background: red;
-    border-radius: 3px;
-}
+    .table__column::-webkit-scrollbar-thumb {
+        background: var(--color--primary-light);
+        border-radius: 3px;
+    }
 
 .table__column::-webkit-scrollbar-thumb:hover {
-    background: orange;
+    background: var(--color--primary-dark);
 }
 
     .table__column:not(:last-child) {
         border-right: none;
-        border-left: 1px solid black;
+        border-left: 1px solid var(--color--primary-light);
     }
 
-.table__column:first-child {
-    border-left: 1px solid black;
-}
+    .table__column:first-child {
+        border-left: 1px solid var(--color--primary-light);
+    }
 
     .table__column:last-child {
         border-right: none;
-        border-left: 1px solid black;
+        border-left: 1px solid var(--color--primary-light);
     }
 
 .table__head {
     text-align: center;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-bottom: 1px solid var(--color--primary-light);
+    border-top: 1px solid var(--color--primary-light);
 }
 
 .table__headText {
@@ -281,8 +273,8 @@ body {
 }
 
 .table__row {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-bottom: 1px solid var(--color--primary-light);
+    border-top: 1px solid var(--color--primary-light);
     padding: 1rem;
 }
 
@@ -290,8 +282,6 @@ body {
     margin-bottom: 1rem;
 }
 
-.table__note {
-}
 
 .table__bodyRowTitle {
     text-align: center;
@@ -305,6 +295,10 @@ body {
 
 .table__note {
     font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .table__dateBox {
@@ -318,7 +312,7 @@ body {
 
 .table__prioBtn {
     display: flex;
-    background-color: red;
+    background-color: var(--color--primary-light);
 }
 
 .prioBtn__numbers {
@@ -339,6 +333,10 @@ body {
 .accordion-header {
     display: flex;
     position: relative;
+}
+
+.accordion-body {
+    background-color: var(--color-bg-main);
 }
 
 .numbers {
@@ -464,6 +462,7 @@ body {
 /*MODAL TICKET*/
 .ticket__header {
     font-size: 2rem;
+    color: white;
 }
 
 .ticket__close {
@@ -523,11 +522,11 @@ body {
 }
 
 .ticket__btn--add {
-    background-color: black;
+    background-color: var(--color--primary-light);
     color: white;
+    transition: all 0.4s;
 }
 
 .ticket__btn--add:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--color--primary-dark);
 }
