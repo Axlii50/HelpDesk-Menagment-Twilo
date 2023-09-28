@@ -71,6 +71,52 @@
                 </div>
 
 
+                <div class="modal fade" id="ticketInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title ticket__header">Pełne informacje o ticketcie</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="ticket__edit">
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__title">
+                                            <span action="ticketModal__titleText">Tutaj będzie tytuł ticketa</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__opis">
+                                            <span action="ticketModal__opisText">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__date">
+                                            <span class="ticketModal__dateText">24-05-2004</span>
+                                            <span class="ticketModal__status">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--edit">Edytuj</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--add">Zapisz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
                 <div class="HelpDesk__table">
                     <div class="tableDiv">
                         <div class="table__column">
@@ -97,7 +143,7 @@
                                                 <div class="table__row">
                                                     <div class="table__body">
                                                         <div class="table__bodyRow table__bodyRowTitle">
-                                                            <span class="table__bodyTitle">Jakiś tytuł gfdgdfg gdfgdfgdf gfdgdf gfdgdfgdf gfdgdf</span>
+                                                            <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">Jakiś tytuł gfdgdfg gdfgdfgdf gfdgdf gfdgdfgdf gfdgdf</a>
                                                         </div>
                                                         <div class="table__bodyRow table__bodyRowNote">
                                                             <span class="table__note">
