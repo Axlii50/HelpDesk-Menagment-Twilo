@@ -554,13 +554,13 @@ body {
     border: none;
 }
 
-.ticket__btn--add {
+.ticket__btn--delete {
     background-color: var(--color--primary-light);
     color: white;
     transition: all 0.4s;
 }
 
-.ticket__btn--add:hover {
+.ticket__btn--delete:hover {
     background-color: var(--color--primary-dark);
 }
 
