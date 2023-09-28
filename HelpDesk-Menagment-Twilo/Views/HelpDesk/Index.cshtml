@@ -76,12 +76,12 @@
                                         @*<button type="submit" class="btn btn-primary ticket__btn ticket__btn--add">Dodaj</button>*@
                                         <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Dodaj" />
                                     </div>
+                                </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            
 
             <div class="modal fade" id="ticketInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -94,13 +94,13 @@
                             <form class="ticket__edit">
                                 <div class="ticketModal__row">
                                     <div class="ticketModal__title">
-                                        <span action="ticketModal__titleText">Tutaj będzie tytuł ticketa</span>
+                                        <span class="ticketModal__titleText">Tutaj będzie tytuł ticketa</span>
                                     </div>
                                 </div>
 
                                 <div class="ticketModal__row">
                                     <div class="ticketModal__opis">
-                                        <span action="ticketModal__opisText">
+                                        <span class="ticketModal__opisText">
                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                         </span>
@@ -134,68 +134,109 @@
                             int typeCounter = Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)).Length - 1;
                             int Counter = ColumnIndex * Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)).Length;
 
-                            <div class="table__column">
-                                <div class="table__head">
-                                    <span class="table__headText">@pair.Key.ToString()</span>
-                                </div>
+                                                                <div class="table__column">
+                                                                    <div class="table__head">
+                                                                        <span class="table__headText">@pair.Key.ToString()</span>
+                                                                    </div>
 
-                                <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
+                                                                    <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
 
-                                    @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
+                                                                        @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
                                     {
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
-                                                    @type.ToString()
-                                                    <div class="numbers">
-                                                        <div class="number number--nowe">1</div>
-                                                        <div class="number number--rozpatrywane">1</div>
-                                                        <div class="number number--wstrzymane">11</div>
-                                                        <div class="number number--zakonczone">111</div>
-                                                    </div>
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapse@(Counter - typeCounter)--@ColumnIndex" class="accordion-collapse collapse" data-bs-parent="#accordionParent--@ColumnIndex">
-                                                <div class="accordion-body">
-                                                    <div class="tickets">
-                                                        @foreach (var ticket in pair.Value)
+                                                                            <div class="accordion-item">
+                                                                                <h2 class="accordion-header">
+                                                                                    <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
+                                                                                        @type.ToString()
+                                                                                        <div class="numbers">
+                                                                                            <div class="number number--nowe">1</div>
+                                                                                            <div class="number number--rozpatrywane">1</div>
+                                                                                            <div class="number number--wstrzymane">11</div>
+                                                                                            <div class="number number--zakonczone">111</div>
+                                                                                        </div>
+                                                                                    </button>
+                                                                                </h2>
+                                                                                <div id="flush-collapse@(Counter - typeCounter)--@ColumnIndex" class="accordion-collapse collapse" data-bs-parent="#accordionParent--@ColumnIndex">
+                                                                                    <div class="accordion-body">
+                                                                                        <div class="tickets">
+                                                                                            @foreach (var ticket in pair.Value)
                                                         {
                                                             if (ticket.Priority != type) continue;
-                                                            <div class="table__row">
-                                                                @Html.Hidden("TicketID",ticket.TicketID)
-                                                                <div class="table__body">
-                                                                    <div class="table__bodyRow table__bodyRowTitle">
-                                                                        <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
-                                                                    </div>
-                                                                    <div class="table__bodyRow table__bodyRowNote">
-                                                                        <span class="table__note">
+                                                                                                <div class="table__row">
+                                                                                                    @Html.Hidden("TicketID",ticket.TicketID)
+                                                                                                    <div class="table__body">
+                                                                                                        <div class="table__bodyRow table__bodyRowTitle">
+                                                                                                            <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
+                                                                                                        </div>
+                                                                                                        <div class="table__bodyRow table__bodyRowNote">
+                                                                                                            <span class="table__note">
 
-                                                                            @Html.Raw(ticket.Description.Replace("\n","<br>"))
-                                                                        </span>
-                                                                    </div>
-                                                                    <div class="table__bodyRow">
-                                                                        <div class="table__dateBox">
-                                                                            <span class="table__date">@ticket.DateofCreation</span>
-                                                                            <span class="table__check">@ticket.Status.ToString()</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                                                                @Html.Raw(ticket.Description.Replace("\n","<br>"))
+                                                                                                            </span>
+                                                                                                        </div>
+                                                                                                        <div class="table__bodyRow">
+                                                                                                            <div class="table__dateBox">
+                                                                                                                <span class="table__date">@ticket.DateofCreation</span>
+                                                                                                                <span class="table__check">@ticket.Status.ToString()</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
                                                         }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                         typeCounter--;
                                     }
-                                </div>
-                            </div>
+                                                                    </div>
+                                                                </div>
 
                             ColumnIndex++;
                         }
                     }
 
-                    @* <div class="table__column">
+ 
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        'use strict';
+
+        const tickets = document.querySelectorAll('.table__bodyTitle');
+        let modalTitle = document.querySelector('.ticketModal__titleText');
+        let modalText = document.querySelector('.ticketModal__opisText');
+        let modalDate = document.querySelector('.ticketModal__dateText');
+        let modalStatus = document.querySelector('.ticketModal__status');
+
+
+        tickets.forEach(function (ticket) {
+            ticket.addEventListener('click', function(e) {
+                const ticketInfo = ticket.parentNode.parentNode;
+
+                const title = ticketInfo.querySelector('.table__bodyTitle').textContent;
+                const text = ticketInfo.querySelector('.table__note').textContent;
+                const date = ticketInfo.querySelector('.table__date').textContent;
+                const status = ticketInfo.querySelector('.table__check').textContent;
+
+                modalTitle.textContent = title;
+                modalText.textContent = text;
+                modalDate.textContent = date;
+                modalStatus.textContent = status;
+            })
+        })
+
+    </script>
+}
+
+
+
+@* <div class="table__column">
                     <div class="table__head">
                     <span class="table__headText">Dyskusja</span>
                     </div>
@@ -619,16 +660,4 @@
                     </div>
                     </div>
                     </div>*@
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-</section>
-
-@{
-}
 
