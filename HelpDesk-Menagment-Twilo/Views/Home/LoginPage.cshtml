@@ -6,7 +6,7 @@
     <div class="loginPage">
         <form asp-action="Login" asp-controller="Home">
             <div class="loginPage__row">
-                @Html.Password("login",null, new {@placeholder = "Wpisz login...", @class = "loginPage__input"})
+                @Html.TextBox("login",null, new {@placeholder = "Wpisz login...", @class = "loginPage__input"})
                 @*<input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">*@
                 <label class="loginPage__label" for="loginPageLogin">Login:</label>
             </div>
