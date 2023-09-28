@@ -3,6 +3,7 @@ using HelpDesk_Menagment_Twilo.Data;
 
 namespace HelpDesk_Menagment_Twilo.Controllers
 {
+    [NoDirectAccess]
     public class AccountsController : Controller
     {
         private readonly HelpDesk_Menagment_TwiloContext _context;

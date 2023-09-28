@@ -28,7 +28,6 @@ namespace HelpDesk_Menagment_Twilo.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
         public IActionResult Login([Bind("login,password")]string login, string password)
         {
             var account = helpDeskContext.Account.Where(acc => acc.Login == login && acc.Password == password).FirstOrDefault();
