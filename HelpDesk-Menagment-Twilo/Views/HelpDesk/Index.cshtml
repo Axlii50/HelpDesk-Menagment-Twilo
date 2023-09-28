@@ -1,87 +1,701 @@
-﻿
-@{
-    Layout = "_Layout_LoginPage";
+﻿@{
+    Layout = "_Layout";
 }
 
-<section class="loginPage__section">
-    <div class="loginPage">
-        <div class="loginPage__row">
-            <input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">
-            <label class="loginPage__label" for="loginPageLogin">Login:</label>
-        </div>
+<section class="HelpDesk__section">
+    <div class="container-fluid container__HelpDesk">
+        <div class="HelpDesk__content">
+            <div class="HelpDesk__box">
+                <div class="HelpDesk__addBtnBox">
+                    <a class="HelpDesk__addBtn" data-bs-toggle="modal" data-bs-target="#Dodawanie">Dodaj</a>
+                </div>
 
-        <div class="loginPage__row">
-            <input class="loginPage__input" id="loginPagePassword" type="password" placeholder="Wpisz hasło...">
-            <label class="loginPage__label" for="loginPagePassword">Hasło:</label>
-        </div>
+                <div class="modal fade" id="Dodawanie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title ticket__header">Dodaj ticket</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="ticket__form">
+                                    <div class="ticket__row">
+                                        <div class="ticket__titleBox">
+                                            <input type="text" id="ticketTitle" class="ticket__input ticket__input--title" placeholder="Wpisz tytuł..." />
+                                        </div>
+                                    </div>
 
-        <div class="loginPage__Btns">
-            <a class="loginPage__loginInBtn" href="">Zaloguj się</a>
+                                    <div class="ticket__row">
+                                        <textarea id="ticketOpis" class="ticket__textarea" placeholder="Opis oraz informacje"></textarea>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Kategoria:</label>
+                                        <select class="ticket__select">
+                                            <option value="Zamówienie" class="ticket__selectOption">Zamówienia</option>
+                                            <option value="Dyskusja" class="ticket__selectOption">Dyskusja</option>
+                                            <option value="Zwrot" class="ticket__selectOption">Zwrot</option>
+                                            <option value="Faktura" class="ticket__selectOption">Faktura</option>
+                                            <option value="Hurtownia" class="ticket__selectOption">Hurtownia</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Status:</label>
+                                        <select class="ticket__select">
+                                            <option value="Nowe" class="ticket__selectOption">Nowe</option>
+                                            <option value="Rozpatrywane" class="ticket__selectOption">Rozpatrywane</option>
+                                            <option value="Wstrzymane" class="ticket__selectOption">Wstrzymane</option>
+                                            <option value="Zakończone" class="ticket__selectOption">Zakończone</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        <label class="ticket__lable">Priorytet:</label>
+                                        <select class="ticket__select">
+                                            <option value="Natychmiast" class="ticket__selectOption">Natychmiast</option>
+                                            <option value="Pilny" class="ticket__selectOption">Pilny</option>
+                                            <option value="Ważny" class="ticket__selectOption">Ważny</option>
+                                            <option value="Normalny" class="ticket__selectOption">Normalny</option>
+                                            <option value="Niski" class="ticket__selectOption">Niski</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--add">Dodaj</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="ticketInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title ticket__header">Pełne informacje o ticketcie</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="ticket__edit">
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__title">
+                                            <span action="ticketModal__titleText">Tutaj będzie tytuł ticketa</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__opis">
+                                            <span action="ticketModal__opisText">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ticketModal__row">
+                                        <div class="ticketModal__date">
+                                            <span class="ticketModal__dateText">24-05-2004</span>
+                                            <span class="ticketModal__status">Zrobione</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--edit">Edytuj</button>
+                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--add">Zapisz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="HelpDesk__table">
+                    <div class="tableDiv">
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zamówienia</span>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="accordionParent--1">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Natychmiast
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionParent--1">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                                <div class="table__row">
+                                                    <div class="table__body">
+                                                        <div class="table__bodyRow table__bodyRowTitle">
+                                                            <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">Jakiś tytuł gfdgdfg gdfgdfgdf gfdgdf gfdgdfgdf gfdgdf</a>
+                                                        </div>
+                                                        <div class="table__bodyRow table__bodyRowNote">
+                                                            <span class="table__note">
+                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                            </span>
+                                                        </div>
+                                                        <div class="table__bodyRow">
+                                                            <div class="table__dateBox">
+                                                                <span class="table__date">24-05-2024</span>
+                                                                <span class="table__check">Zrobione</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table__row">
+                                                    <div class="table__body">
+                                                        <div class="table__bodyRow table__bodyRowTitle">
+                                                            <span class="table__bodyTitle">Jakiś tytuł</span>
+                                                        </div>
+                                                        <div class="table__bodyRow table__bodyRowNote">
+                                                            <span class="table__note">
+                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                            </span>
+                                                        </div>
+                                                        <div class="table__bodyRow">
+                                                            <div class="table__dateBox">
+                                                                <span class="table__date">24-05-2024</span>
+                                                                <span class="table__check">Zrobione</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            Pilny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionParent--1">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            Ważny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionParent--1">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            Normalny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionParent--1">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            Niski
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionParent--1">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Dyskusja</span>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="accordionParent--2">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne--2" aria-expanded="false" aria-controls="flush-collapseOne--2">
+                                            Natychmiast
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne--2" class="accordion-collapse collapse" data-bs-parent="#accordionParent--2">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo--2" aria-expanded="false" aria-controls="flush-collapseTwo--2">
+                                            Pilny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo--2" class="accordion-collapse collapse" data-bs-parent="#accordionParent--2">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree--2" aria-expanded="false" aria-controls="flush-collapseThree--2">
+                                            Ważny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree--2" class="accordion-collapse collapse" data-bs-parent="#accordionParent--2">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour--2" aria-expanded="false" aria-controls="flush-collapseFour--2">
+                                            Normalny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour--2" class="accordion-collapse collapse" data-bs-parent="#accordionParent--2">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive--2" aria-expanded="false" aria-controls="flush-collapseFive--2">
+                                            Niski
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFive--2" class="accordion-collapse collapse" data-bs-parent="#accordionParent--2">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Zwrot</span>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="accordionParent--3">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne--3" aria-expanded="false" aria-controls="flush-collapseOne--3">
+                                            Natychmiast
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne--3" class="accordion-collapse collapse" data-bs-parent="#accordionParent--3">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo--3" aria-expanded="false" aria-controls="flush-collapseTwo--3">
+                                            Pilny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo--3" class="accordion-collapse collapse" data-bs-parent="#accordionParent--3">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree--3" aria-expanded="false" aria-controls="flush-collapseThree--3">
+                                            Ważny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree--3" class="accordion-collapse collapse" data-bs-parent="#accordionParent--3">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour--3" aria-expanded="false" aria-controls="flush-collapseFour--3">
+                                            Normalny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour--3" class="accordion-collapse collapse" data-bs-parent="#accordionParent--3">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive--3" aria-expanded="false" aria-controls="flush-collapseFive--3">
+                                            Niski
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFive--3" class="accordion-collapse collapse" data-bs-parent="#accordionParent--3">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Faktura</span>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="accordionParent--4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne--4" aria-expanded="false" aria-controls="flush-collapseOne--4">
+                                            Natychmiast
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne--4" class="accordion-collapse collapse" data-bs-parent="#accordionParent--4">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo--4" aria-expanded="false" aria-controls="flush-collapseTwo--4">
+                                            Pilny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo--4" class="accordion-collapse collapse" data-bs-parent="#accordionParent--4">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree--4" aria-expanded="false" aria-controls="flush-collapseThree--4">
+                                            Ważny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree--4" class="accordion-collapse collapse" data-bs-parent="#accordionParent--4">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour--4" aria-expanded="false" aria-controls="flush-collapseFour--4">
+                                            Normalny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour--4" class="accordion-collapse collapse" data-bs-parent="#accordionParent--4">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive--4" aria-expanded="false" aria-controls="flush-collapseFive--4">
+                                            Niski
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFive--4" class="accordion-collapse collapse" data-bs-parent="#accordionParent--4">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="table__column">
+                            <div class="table__head">
+                                <span class="table__headText">Hurtownia</span>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="accordionParent--5">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne--5" aria-expanded="false" aria-controls="flush-collapseOne--5">
+                                            Natychmiast
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne--5" class="accordion-collapse collapse" data-bs-parent="#accordionParent--5">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo--5" aria-expanded="false" aria-controls="flush-collapseTwo--5">
+                                            Pilny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo--5" class="accordion-collapse collapse" data-bs-parent="#accordionParent--5">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree--5" aria-expanded="false" aria-controls="flush-collapseThree--5">
+                                            Ważny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree--5" class="accordion-collapse collapse" data-bs-parent="#accordionParent--5">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour--5" aria-expanded="false" aria-controls="flush-collapseFour--5">
+                                            Normalny
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFour--5" class="accordion-collapse collapse" data-bs-parent="#accordionParent--5">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive--5" aria-expanded="false" aria-controls="flush-collapseFive--5">
+                                            Niski
+                                            <div class="numbers">
+                                                <div class="number number--nowe">1</div>
+                                                <div class="number number--rozpatrywane">1</div>
+                                                <div class="number number--wstrzymane">11</div>
+                                                <div class="number number--zakonczone">111</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseFive--5" class="accordion-collapse collapse" data-bs-parent="#accordionParent--5">
+                                        <div class="accordion-body">
+                                            <div class="tickets">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </section>
 
-
 @{
 }
 
-
-
-<div class="table__content table__content--1">
-    <a class="table__prioBtn">
-        <span class="prioBtn__text">Natychmiast</span>
-        <div action="prioBtn__numbers">
-            <div class="prioBtn__number">
-                <span class="prioBtn__numberText">11</span>
-            </div>
-            <div class="prioBtn__number">
-                <span class="prioBtn__numberText">5</span>
-            </div>
-            <div class="prioBtn__number">
-                <span class="prioBtn__numberText">100</span>
-            </div>
-            <div class="prioBtn__number">
-                <span class="prioBtn__numberText">40</span>
-            </div>
-        </div>
-    </a>
-
-    <div class="tickets">
-        <div class="table__row">
-            <div class="table__body">
-                <div class="table__bodyRow table__bodyRowTitle">
-                    <span class="table__bodyTitle">Jakiś tytuł</span>
-                </div>
-                <div class="table__bodyRow table__bodyRowNote">
-                    <span class="table__note">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </span>
-                </div>
-                <div class="table__bodyRow">
-                    <div class="table__dateBox">
-                        <span class="table__date">24-05-2024</span>
-                        <span class="table__check">Zrobione</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="table__row">
-            <div class="table__body">
-                <div class="table__bodyRow table__bodyRowTitle">
-                    <span class="table__bodyTitle">Jakiś tytuł</span>
-                </div>
-                <div class="table__bodyRow table__bodyRowNote">
-                    <span class="table__note">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </span>
-                </div>
-                <div class="table__bodyRow">
-                    <div class="table__dateBox">
-                        <span class="table__date">24-05-2024</span>
-                        <span class="table__check">Zrobione</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
