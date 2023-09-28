@@ -1,6 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using HelpDesk_Menagment_Twilo.Data;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+
 namespace HelpDesk_Menagment_Twilo
 {
     public class Program
@@ -36,6 +41,37 @@ namespace HelpDesk_Menagment_Twilo
                 pattern: "{controller=Home}/{action=LoginPage}/{id?}");
 
             app.Run();
+        }
+    }
+
+    public static class HtmlHelper
+    {
+        public static List<SelectListItem> TicketCategoryGetList()
+        {
+            var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+            return list;
+        }
+        public static List<SelectListItem> TicketStatusGetList()
+        {
+            var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+            return list;
+        }
+        public static List<SelectListItem> TicketPriorityGetList()
+        {
+            var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+            return list;
         }
     }
 }

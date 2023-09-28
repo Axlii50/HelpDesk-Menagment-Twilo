@@ -1,5 +1,6 @@
 ﻿using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Models;
+using HelpDesk_Menagment_Twilo.Models.DataBase;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.Design;
 using System.Diagnostics;
@@ -32,10 +33,10 @@ namespace HelpDesk_Menagment_Twilo.Controllers
         {
             var account = helpDeskContext.Account.Where(acc => acc.Login == login && acc.Password == password).FirstOrDefault();
 
-            if(account == null)
+            if (account == null)
                 return View("~/Views/Home/LoginPage.cshtml");
             else
-                return View("~/Views/HelpDesk/Index.cshtml");
+                return RedirectToAction("Index", "HelpDesk", new { AccountID = account.AccountID });
         }
     }
 }

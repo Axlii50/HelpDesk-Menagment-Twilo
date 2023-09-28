@@ -1,4 +1,5 @@
 ﻿
+using HelpDesk_Menagment_Twilo.Models.AddingTicket;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,6 +28,18 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
         {
             this.TicketID = Guid.NewGuid().ToString();
             this.DateofCreation = DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd") + " " + DateTime.Now.ToString("H:mm");
+        }
+
+        public static Ticket operator +(Ticket ticket, AddTicketModel addTicket)
+        {
+            ticket.Title = addTicket.TicketTitle;
+            ticket.Description = addTicket.TicketDescription;
+            ticket.Status = addTicket.TicketStatus;
+            ticket.Category = addTicket.TicketCategory;
+            ticket.Priority = addTicket.TicketPriority;
+            ticket.AccountID = addTicket.AccountID;
+
+            return ticket;
         }
     }
 }
