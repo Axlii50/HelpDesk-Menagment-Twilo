@@ -43,7 +43,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
 
         #region Tickets
-        public IActionResult AddTicket([Bind("TicketTitle,TicketDescription,TicketCategory,TicketStatus,TicketPriority,AccountID")] AddTicketModel ticket)
+        public async Task<IActionResult> AddTicket([Bind("TicketTitle,TicketDescription,TicketCategory,TicketStatus,TicketPriority,AccountID")] AddTicketModel ticket)
         {
             var account = _context.Account.Find(ticket.AccountID);
 
@@ -53,7 +53,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             ticketModel.Account = account;
 
             _context.Ticket.Add(ticketModel);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Index(account.AccountID);
         } 
