@@ -443,6 +443,11 @@ body {
     color: white;
 }
 
+loginPage__input:-webkit-autofill {
+    border: none;
+    background: transparent;
+}
+
     .loginPage__input::placeholder {
         font-size: 1.4rem;
         font-weight: 400;
@@ -459,18 +464,18 @@ body {
 
 .loginPage__loginInBtn {
     text-decoration: none;
-    padding: 1rem 1rem;
-    color: white;
-    background-color: orangered;
+    padding: 0.75rem 1rem;
+    color: black;
+    background-color: white;
     font-size: 1.8rem;
     font-weight: 500;
     border-radius: 3px;
-    box-shadow: 0 0.75rem 1rem rgba(0,0,0,0.15);
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
     transition: all 0.4s;
     width: 100%;
-    text-align: center;
-    display: inline-block;
+    border: none;
 }
+
 
 .loginPage__loginInBtn:link, .loginPage__loginInBtn:visited {
     text-decoration: none;
@@ -493,6 +498,13 @@ body {
 
 
 /*MODAL TICKET*/
+.btn-primary:disabled {
+    color: white;
+    background-color: var(--color--primary-dark) !important;
+    border: none;
+    border-color: var(--color--primary-dark);
+}
+
 .ticket__header {
     font-size: 2rem;
     color: black;
@@ -509,6 +521,12 @@ body {
     gap: 0.5rem;
     font-size: 1.8rem;
     color: black;
+}
+
+.modal-body--addTicket {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .ticket__row {
@@ -554,26 +572,64 @@ body {
     border: none;
 }
 
-.ticket__btn--delete {
+.ticket__btn--close {
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+}
+
+.ticket__btn--close:focus {
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+}
+
+.ticket__btn--add {
     background-color: var(--color--primary-light);
     color: white;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
     transition: all 0.4s;
 }
 
-.ticket__btn--delete:hover {
+.ticket__btn--add:hover, .ticket__btn--add:active, .ticket__btn--add:focus {
     background-color: var(--color--primary-dark);
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+}
+
+.ticket__btn--delete {
+    background-color: var(--color--primary-light);
+    color: white;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+}
+
+.ticket__btn--delete:hover, .ticket__btn--delete:active, .ticket__btn--delete:focus {
+    background-color: var(--color--primary-dark);
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
 }
 
 .ticket__btn--edit {
     background-color: var(--color--primary-light);
     color: white;
     transition: all 0.4s;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.15);
 }
 
-.ticket__btn--edit:hover {
+.ticket__btn--edit:hover, .ticket__btn--edit:active, .ticket__btn--edit:focus  {
     background-color: var(--color--primary-dark);
+    box-shadow: none;
 }
 
+.modal-footer__ticket {
+    justify-content: space-between;
+}
+
+.modal-footer__ticketBtns {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-body__ticketInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
 .ticketModal__row {
     color: black;
@@ -605,6 +661,11 @@ body {
 .ticketModal__status {
     text-transform: uppercase;
 }
+
+
+
+
+
 
 .number--nowe {
     background-color: #22c55e;

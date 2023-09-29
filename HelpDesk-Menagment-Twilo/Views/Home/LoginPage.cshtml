@@ -6,13 +6,13 @@
     <div class="loginPage">
         <form asp-action="Login" asp-controller="Home">
             <div class="loginPage__row">
-                @Html.TextBox("login",null, new {@placeholder = "Wpisz login...", @class = "loginPage__input"})
+                @Html.TextBox("login",null, new {@placeholder = "Wpisz login...", @class = "loginPage__input", @autocomplete="off"})
                 @*<input class="loginPage__input" id="loginPageLogin" type="text" placeholder="Wpisz login...">*@
                 <label class="loginPage__label" for="loginPageLogin">Login:</label>
             </div>
 
             <div class="loginPage__row">
-                @Html.Password("password",null, new {@placeholder = "Wpisz hasło...", @class = "loginPage__input"})
+                @Html.Password("password",null, new {@placeholder = "Wpisz hasło...", @class = "loginPage__input", @autocomplete="off"})
                 @*<input class="loginPage__input" id="loginPagePassword" type="password" placeholder="Wpisz hasło...">*@
                 <label class="loginPage__label" for="loginPagePassword">Hasło:</label>
             </div>
