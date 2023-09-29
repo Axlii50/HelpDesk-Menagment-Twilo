@@ -10,7 +10,6 @@
                 <div class="HelpDesk__addBtnBox">
                     <a class="HelpDesk__addBtn" data-bs-toggle="modal" data-bs-target="#Dodawanie">Dodaj</a>
                 </div>
-
                 <div class="modal fade" id="Dodawanie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -81,8 +80,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="modal fade" id="ticketInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -90,8 +87,11 @@
                                 <h1 class="modal-title ticket__header">Pełne informacje o ticketcie</h1>
                                 <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <form class="ticket__edit">
+                            <form class="ticket__edit">
+                                <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="">
+                                @Html.Hidden("AccountID",Model.AccountID)
+                                <div class="modal-body">
+
                                     <div class="ticketModal__row">
                                         <div class="ticketModal__title">
                                             <span class="ticketModal__titleText">Tutaj będzie tytuł ticketa</span>
@@ -101,8 +101,7 @@
                                     <div class="ticketModal__row">
                                         <div class="ticketModal__opis">
                                             <span class="ticketModal__opisText">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
                                             </span>
                                         </div>
                                     </div>
@@ -113,13 +112,14 @@
                                             <span class="ticketModal__status">Zrobione</span>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
-                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--delete">Usuń</button>
-                                <button type="button" class="btn btn-primary ticket__btn ticket__btn--edit">Edytuj</button>
-                            </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                    <button type="submit" class="btn btn-primary ticket__btn ticket__btn--delete" asp-action="DeleteTicket" asp-controller="HelpDesk">Usuń</button>
+                                    <button type="button" class="btn btn-primary ticket__btn ticket__btn--edit">Edytuj</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -162,19 +162,22 @@
                                                             {
                                                                 if (ticket.Priority != type) continue;
                                                                 <div class="table__row">
-                                                                    @Html.Hidden("TicketID",ticket.TicketID)
+                                                                    
                                                                     <div class="table__body">
                                                                         <div class="table__bodyRow table__bodyRowTitle">
                                                                             <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
                                                                         </div>
                                                                         <div class="table__bodyRow table__bodyRowNote">
                                                                             <span class="table__note">
-
                                                                                 @Html.Raw(ticket.Description.Replace("\n","<br>"))
                                                                             </span>
                                                                         </div>
                                                                         <div class="table__bodyRow">
                                                                             <div class="table__dateBox">
+                                                                                @{System.Diagnostics.Debug.WriteLine(ticket.TicketID);}
+                                                                                <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
+                                                                                @Html.Hidden("TicketID",ticket.TicketID)
+                                                                                @ticket.TicketID
                                                                                 <span class="table__date">@ticket.DateofCreation</span>
                                                                                 <span class="table__check">@ticket.Status.ToString()</span>
                                                                             </div>
@@ -194,9 +197,6 @@
                                 ColumnIndex++;
                             }
                         }
-
-
-
                     </div>
                 </div>
             </div>
@@ -213,7 +213,9 @@
         let modalText = document.querySelector('.ticketModal__opisText');
         let modalDate = document.querySelector('.ticketModal__dateText');
         let modalStatus = document.querySelector('.ticketModal__status');
+        let modalTicketId = document.querySelector('#TicketID');
 
+        //console.log(modalTicketId.nodeValue);
 
         tickets.forEach(function (ticket) {
             ticket.addEventListener('click', function (e) {
@@ -222,12 +224,16 @@
                 const title = ticketInfo.querySelector('.table__bodyTitle').textContent;
                 const text = ticketInfo.querySelector('.table__note').textContent;
                 const date = ticketInfo.querySelector('.table__date').textContent;
-                const status = ticketInfo.querySelector('.table__check').textContent;
+                const status = ticketInfo.querySelector('.table__check').textContent
+                const ticketID = ticketInfo.querySelector('#TicketID').value;
 
                 modalTitle.textContent = title;
                 modalText.textContent = text;
                 modalDate.textContent = date;
                 modalStatus.textContent = status;
+                modalTicketId.value = ticketID;
+                console.log(ticketID);
+                console.log("ttt");
             })
         })
 
