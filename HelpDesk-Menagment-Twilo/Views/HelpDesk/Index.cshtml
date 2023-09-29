@@ -138,9 +138,7 @@
                                     <div class="table__head">
                                         <span class="table__headText">@pair.Key.ToString()</span>
                                     </div>
-
                                     <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
-
                                         @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
                                         {
                                             <div class="accordion-item">
@@ -162,7 +160,6 @@
                                                             {
                                                                 if (ticket.Priority != type) continue;
                                                                 <div class="table__row">
-                                                                    
                                                                     <div class="table__body">
                                                                         <div class="table__bodyRow table__bodyRowTitle">
                                                                             <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
@@ -174,11 +171,8 @@
                                                                         </div>
                                                                         <div class="table__bodyRow">
                                                                             <div class="table__dateBox">
-                                                                                @{System.Diagnostics.Debug.WriteLine(ticket.TicketID);}
                                                                                 <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
-                                                                                @Html.Hidden("TicketID",ticket.TicketID)
-                                                                                @ticket.TicketID
-                                                                                <span class="table__date">@ticket.DateofCreation</span>
+                                                                                <span class="table__date">@ticket.DateofCreation</span>s
                                                                                 <span class="table__check">@ticket.Status.ToString()</span>
                                                                             </div>
                                                                         </div>
