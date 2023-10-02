@@ -1,8 +1,8 @@
 ﻿@model HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing.EditModel
 
-<form class="ticket__form" asp-action="EditTicket" asp-controller="HelpDesk" method="post">
+<form class="ticket__formEdit" asp-action="EditTicket" asp-controller="HelpDesk" method="post">
     @Html.Hidden("AccountID",Model.AccountID)
-    <div class="modal-body modal-body--addTicket">
+    <div class="modal-body--editTicket">
         <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@Model.TicketID">
 
         <div class="ticket__row">
@@ -17,19 +17,19 @@
 
         <div class="ticket__row">
             <label class="ticket__lable">Kategoria:</label>
-            @Html.DropDownList("TicketCategory",HelpDesk_Menagment_Twilo.HtmlHelper.TicketCategoryGetList(Model.Ticket.Category), string.Empty, new {@class = "ticket__select"})
+            @Html.DropDownList("TicketCategory",HelpDesk_Menagment_Twilo.HtmlHelper.TicketCategoryGetList(Model.Ticket.Category), string.Empty, new {@class = "ticket__selectEdit"})
         </div>
 
         <div class="ticket__row">
             <label class="ticket__lable">Status:</label>
-            @Html.DropDownList("TicketStatus",HelpDesk_Menagment_Twilo.HtmlHelper.TicketStatusGetList(Model.Ticket.Status), string.Empty, new {@class = "ticket__select"})
+            @Html.DropDownList("TicketStatus",HelpDesk_Menagment_Twilo.HtmlHelper.TicketStatusGetList(Model.Ticket.Status), string.Empty, new {@class = "ticket__selectEdit"})
         </div>
 
         <div class="ticket__row">
             <label class="ticket__lable">Priorytet:</label>
-            @Html.DropDownList("TicketPriority",HelpDesk_Menagment_Twilo.HtmlHelper.TicketPriorityGetList(Model.Ticket.Priority), string.Empty, new {@class = "ticket__select"})
+            @Html.DropDownList("TicketPriority",HelpDesk_Menagment_Twilo.HtmlHelper.TicketPriorityGetList(Model.Ticket.Priority), string.Empty, new {@class = "ticket__selectEdit"})
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer modal-footer--edit">
             <button type="submit" class="btn btn-secondary ticket__btn ticket__btn--close" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">Zamknij</button>
             <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Zapisz" />
         </div>
