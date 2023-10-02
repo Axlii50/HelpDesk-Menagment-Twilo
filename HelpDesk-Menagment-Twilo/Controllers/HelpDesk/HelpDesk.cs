@@ -1,8 +1,9 @@
 ﻿using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Models;
-using HelpDesk_Menagment_Twilo.Models.AddingTicket;
 using HelpDesk_Menagment_Twilo.Models.DataBase;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+using HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket;
+using HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using NuGet.Protocol.Plugins;
@@ -25,10 +26,10 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
         {
             var account = _context.Account.Find(AccountID);
 
-            if(account == null) return View("~/Views/Home/LoginPage.cshtml");
+            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
-            var viewModel = new HelpDeskViewModel() 
-            { 
+            var viewModel = new HelpDeskViewModel()
+            {
                 AccountID = AccountID,
                 Tickets = new Dictionary<TicketCategory, List<Ticket>>()
             };
@@ -39,7 +40,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
                 viewModel.Tickets.Add(type, Tickets);
             }
 
-            return View("~/Views/HelpDesk/Index.cshtml",viewModel);
+            return View("~/Views/HelpDesk/Index.cshtml", viewModel);
         }
 
 
@@ -57,19 +58,41 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             await _context.SaveChangesAsync();
 
             return Index(account.AccountID);
-        } 
+        }
 
         public async Task<IActionResult> DeleteTicket(string AccountID, string TicketID)
         {
             var ticket = _context.Ticket.Find(TicketID);
 
-            if(ticket == null) return Index(AccountID);
+            if (ticket == null) return Index(AccountID);
 
             _context.Ticket.Remove(ticket);
             await _context.SaveChangesAsync();
 
             return Index(AccountID);
         }
+
+      
+        public IActionResult EditTicket(string AccountID, string TicketID)
+        {
+            var account = _context.Account.Find(AccountID);
+
+            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
+
+            var ticket = _context.Ticket.Find(TicketID);
+
+            if (ticket == null) return Index(AccountID);
+
+            EditModel editModel = new EditModel()
+            {
+                AccountID = account.AccountID,
+                TicketID = ticket.TicketID,
+                Ticket = ticket
+            };
+
+            return View("~/Views/HelpDesk/Edit.cshtml", editModel);
+        }
+
         #endregion
     }
 }

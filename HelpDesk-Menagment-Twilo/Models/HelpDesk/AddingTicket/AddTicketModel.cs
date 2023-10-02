@@ -1,6 +1,6 @@
 ﻿using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
 
-namespace HelpDesk_Menagment_Twilo.Models.AddingTicket
+namespace HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket
 {
     public class AddTicketModel
     {

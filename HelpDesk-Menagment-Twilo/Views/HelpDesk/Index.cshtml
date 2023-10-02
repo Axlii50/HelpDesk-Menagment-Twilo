@@ -116,10 +116,10 @@
                                 </div>
                                 <div class="modal-footer modal-footer__ticket">
                                     <div class="modal-footer__ticketBtns">
-                                    <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
-                                    <button type="submit" class="btn btn-primary ticket__btn ticket__btn--delete" asp-action="DeleteTicket" asp-controller="HelpDesk">Usuń</button>
+                                        <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                        <button type="submit" class="btn btn-primary ticket__btn ticket__btn--delete" asp-action="DeleteTicket" asp-controller="HelpDesk">Usuń</button>
                                     </div>
-                                    <button type="button" class="btn btn-primary ticket__btn ticket__btn--edit">Edytuj</button>
+                                    <button type="submit" class="btn btn-primary ticket__btn ticket__btn--edit" asp-action="EditTicket" asp-controller="HelpDesk">Edytuj</button>
                                 </div>
                             </form>
                         </div>
@@ -130,71 +130,64 @@
                     <div class="tableDiv">
                         @{
                             int ColumnIndex = 0;
-
                             foreach (var pair in Model.Tickets)
                             {
                                 int typeCounter = Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)).Length - 1;
                                 int Counter = ColumnIndex * Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)).Length;
 
-                                            <div class="table__column">
-                                                <div class="table__head">
-                                                    <span class="table__headText">@pair.Key.ToString()</span>
-                                                </div>
-
-                                                <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
-
-                                                    @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
+                                <div class="table__column">
+                                    <div class="table__head">
+                                        <span class="table__headText">@pair.Key.ToString()</span>
+                                    </div>
+                                    <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
+                                        @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
                                         {
-                                                        <div class="accordion-item">
-                                                            <h2 class="accordion-header">
-                                                                <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
-                                                                    @type.ToString()
-                                                                    <div class="numbers">
-                                                                        <div class="number number--nowe">1</div>
-                                                                        <div class="number number--rozpatrywane">1</div>
-                                                                        <div class="number number--wstrzymane">11</div>
-                                                                        <div class="number number--zakonczone">111</div>
-                                                                    </div>
-                                                                </button>
-                                                            </h2>
-                                                            <div id="flush-collapse@(Counter - typeCounter)--@ColumnIndex" class="accordion-collapse collapse" data-bs-parent="#accordionParent--@ColumnIndex">
-                                                                <div class="accordion-body">
-                                                                    <div class="tickets">
-                                                                        @foreach (var ticket in pair.Value)
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
+                                                        @type.ToString()
+                                                        <div class="numbers">
+                                                            <div class="number number--nowe">1</div>
+                                                            <div class="number number--rozpatrywane">1</div>
+                                                            <div class="number number--wstrzymane">11</div>
+                                                            <div class="number number--zakonczone">111</div>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapse@(Counter - typeCounter)--@ColumnIndex" class="accordion-collapse collapse" data-bs-parent="#accordionParent--@ColumnIndex">
+                                                    <div class="accordion-body">
+                                                        <div class="tickets">
+                                                            @foreach (var ticket in pair.Value)
                                                             {
                                                                 if (ticket.Priority != type) continue;
-                                                                            <div class="table__row">
-                                                                                
-                                                                                <div class="table__body">
-                                                                                    <div class="table__bodyRow table__bodyRowTitle">
-                                                                                        <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
-                                                                                    </div>
-                                                                                    <div class="table__bodyRow table__bodyRowNote">
-                                                                                        <span class="table__note">
-                                                                                            @Html.Raw(ticket.Description.Replace("\n","<br>"))
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <div class="table__bodyRow">
-                                                                                        <div class="table__dateBox">
-                                                                                            @{System.Diagnostics.Debug.WriteLine(ticket.TicketID);}
-                                                                                            <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
-                                                                                            @Html.Hidden("TicketID",ticket.TicketID)
-                                                                                            @ticket.TicketID
-                                                                                            <span class="table__date">@ticket.DateofCreation</span>
-                                                                                            <span class="table__check">@ticket.Status.ToString()</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                <div class="table__row">
+                                                                    <div class="table__body">
+                                                                        <div class="table__bodyRow table__bodyRowTitle">
+                                                                            <a class="table__bodyTitle" data-bs-toggle="modal" data-bs-target="#ticketInfo">@ticket.Title</a>
+                                                                        </div>
+                                                                        <div class="table__bodyRow table__bodyRowNote">
+                                                                            <span class="table__note">
+                                                                                @Html.Raw(ticket.Description.Replace("\n","<br>"))
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="table__bodyRow">
+                                                                            <div class="table__dateBox">
+                                                                                <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
+                                                                                <span class="table__date">@ticket.DateofCreation</span>
+                                                                                <span class="table__check">@ticket.Status.ToString()</span>
                                                                             </div>
-                                                            }
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            }
                                                         </div>
-                                            typeCounter--;
-                                        }
+                                                    </div>
                                                 </div>
                                             </div>
+                                            typeCounter--;
+                                        }
+                                    </div>
+                                </div>
 
                                 ColumnIndex++;
                             }
@@ -250,11 +243,11 @@
         })
 
         modalDeleteBtn.addEventListener("click", function () {
-            modalDeleteBtn.disabled = true;
+            //modalDeleteBtn.disabled = true;
         })
 
         modalAddBtn.addEventListener("click", function () {
-            modalAddBtn.disabled = true;
+            //modalAddBtn.disabled = true;
         })
 
     </script>

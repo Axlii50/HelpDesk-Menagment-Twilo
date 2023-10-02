@@ -1,5 +1,4 @@
-﻿
-using HelpDesk_Menagment_Twilo.Models.AddingTicket;
+﻿using HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
