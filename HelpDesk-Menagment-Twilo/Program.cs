@@ -60,7 +60,7 @@ namespace HelpDesk_Menagment_Twilo
             var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
             {
                 Text = v.ToString(),
-                Value = ((int)v).ToString()
+                Value = ((int)v).ToString(),
             }).ToList();
             return list;
         }
@@ -71,6 +71,50 @@ namespace HelpDesk_Menagment_Twilo
                 Text = v.ToString(),
                 Value = ((int)v).ToString()
             }).ToList();
+            return list;
+        }
+
+
+        public static List<SelectListItem> TicketCategoryGetList(TicketCategory category)
+        {
+            var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+
+            foreach (var item in list)
+                if(item.Value == ((int)category).ToString())
+                    item.Selected = true;
+
+            return list;
+        }
+        public static List<SelectListItem> TicketStatusGetList(TicketStatus ticketStatus)
+        {
+            var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString(),
+            }).ToList();
+
+            foreach (var item in list)
+                if (item.Value == ((int)ticketStatus).ToString())
+                    item.Selected = true;
+
+            return list;
+        }
+        public static List<SelectListItem> TicketPriorityGetList(TicketPriority ticketPriority)
+        {
+            var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+
+            foreach (var item in list)
+                if (item.Value == ((int)ticketPriority).ToString())
+                    item.Selected = true;
+
             return list;
         }
     }

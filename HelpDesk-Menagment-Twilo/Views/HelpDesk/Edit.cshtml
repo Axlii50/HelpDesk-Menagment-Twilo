@@ -1,2 +1,37 @@
 ﻿@model HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing.EditModel
 
+<form class="ticket__form" asp-action="EditTicket" asp-controller="HelpDesk" method="post">
+    @Html.Hidden("AccountID",Model.AccountID)
+    <div class="modal-body modal-body--addTicket">
+        <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@Model.TicketID">
+
+        <div class="ticket__row">
+            <div class="ticket__titleBox">
+                @Html.TextBox("TicketTitle",Model.Ticket.Title ,null,new  {@class = "ticket__input ticket__input--title", @placeholder = "Wpisz tytuł...", @autocomplete="off"})
+            </div>
+        </div>
+
+        <div class="ticket__row">
+            @Html.TextArea("TicketDescription", Model.Ticket.Description, new {@class = "ticket__textarea", @placeholder = "Opis oraz informacje"})
+        </div>
+
+        <div class="ticket__row">
+            <label class="ticket__lable">Kategoria:</label>
+            @Html.DropDownList("TicketCategory",HelpDesk_Menagment_Twilo.HtmlHelper.TicketCategoryGetList(Model.Ticket.Category), string.Empty, new {@class = "ticket__select"})
+        </div>
+
+        <div class="ticket__row">
+            <label class="ticket__lable">Status:</label>
+            @Html.DropDownList("TicketStatus",HelpDesk_Menagment_Twilo.HtmlHelper.TicketStatusGetList(Model.Ticket.Status), string.Empty, new {@class = "ticket__select"})
+        </div>
+
+        <div class="ticket__row">
+            <label class="ticket__lable">Priorytet:</label>
+            @Html.DropDownList("TicketPriority",HelpDesk_Menagment_Twilo.HtmlHelper.TicketPriorityGetList(Model.Ticket.Priority), string.Empty, new {@class = "ticket__select"})
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary ticket__btn ticket__btn--close" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">Zamknij</button>
+            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Zapisz" />
+        </div>
+    </div>
+</form>

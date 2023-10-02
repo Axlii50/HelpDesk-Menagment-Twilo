@@ -36,39 +36,16 @@
                                     <div class="ticket__row">
                                         <label class="ticket__lable">Kategoria:</label>
                                         @Html.DropDownList("TicketCategory",HelpDesk_Menagment_Twilo.HtmlHelper.TicketCategoryGetList(), string.Empty, new {@class = "ticket__select"})
-
-                                        @*  <select class="ticket__select">
-                                        <option value="Zamówienie" class="ticket__selectOption">Zamówienia</option>
-                                        <option value="Dyskusja" class="ticket__selectOption">Dyskusja</option>
-                                        <option value="Zwrot" class="ticket__selectOption">Zwrot</option>
-                                        <option value="Faktura" class="ticket__selectOption">Faktura</option>
-                                        <option value="Hurtownia" class="ticket__selectOption">Hurtownia</option>
-                                        </select>*@
                                     </div>
 
                                     <div class="ticket__row">
                                         <label class="ticket__lable">Status:</label>
                                         @Html.DropDownList("TicketStatus",HelpDesk_Menagment_Twilo.HtmlHelper.TicketStatusGetList(), string.Empty, new {@class = "ticket__select"})
-
-                                        @* <select class="ticket__select">
-                                        <option value="Nowe" class="ticket__selectOption">Nowe</option>
-                                        <option value="Rozpatrywane" class="ticket__selectOption">Rozpatrywane</option>
-                                        <option value="Wstrzymane" class="ticket__selectOption">Wstrzymane</option>
-                                        <option value="Zakończone" class="ticket__selectOption">Zakończone</option>
-                                        </select>*@
                                     </div>
 
                                     <div class="ticket__row">
                                         <label class="ticket__lable">Priorytet:</label>
                                         @Html.DropDownList("TicketPriority",HelpDesk_Menagment_Twilo.HtmlHelper.TicketPriorityGetList(), string.Empty, new {@class = "ticket__select"})
-
-                                        @* <select class="ticket__select">
-                                        <option value="Natychmiast" class="ticket__selectOption">Natychmiast</option>
-                                        <option value="Pilny" class="ticket__selectOption">Pilny</option>
-                                        <option value="Ważny" class="ticket__selectOption">Ważny</option>
-                                        <option value="Normalny" class="ticket__selectOption">Normalny</option>
-                                        <option value="Niski" class="ticket__selectOption">Niski</option>
-                                        </select>*@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>

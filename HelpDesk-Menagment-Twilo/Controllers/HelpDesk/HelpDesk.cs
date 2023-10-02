@@ -93,6 +93,29 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             return View("~/Views/HelpDesk/Edit.cshtml", editModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> EditTicket([Bind("TicketTitle,TicketDescription,TicketCategory,TicketStatus,TicketPriority,AccountID,TicketID")] Models.HelpDesk.Editing.EditTicketModel ticket)
+        {
+            var account = _context.Account.Find(ticket.AccountID);
+
+            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
+
+            var ticketEntity = _context.Ticket.Find(ticket.TicketID);
+
+            if (ticketEntity == null) return Index(ticket.AccountID);
+
+            ticketEntity.Status = ticket.TicketStatus;
+            ticket.TicketCategory = ticket.TicketCategory;
+            ticket.TicketPriority = ticket.TicketPriority;
+            ticketEntity.Description = ticket.TicketDescription;
+            ticketEntity.Title = ticket.TicketTitle;
+          
+            await _context.SaveChangesAsync();
+
+
+            return Index(account.AccountID);
+        }
+
         #endregion
     }
 }
