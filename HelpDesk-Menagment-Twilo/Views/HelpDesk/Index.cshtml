@@ -124,10 +124,10 @@
                                                     <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
                                                         @type.ToString()
                                                         <div class="numbers">
-                                                            <div class="number number--nowe">1</div>
-                                                            <div class="number number--rozpatrywane">1</div>
-                                                            <div class="number number--wstrzymane">11</div>
-                                                            <div class="number number--zakonczone">111</div>
+                                                            <div class="number number--nowe">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.New && tic.Priority == type)</div>
+                                                            <div class="number number--rozpatrywane">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.InProgress && tic.Priority == type)</div>
+                                                            <div class="number number--wstrzymane">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.Halted && tic.Priority == type)</div>
+                                                            <div class="number number--zakonczone">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.Completed && tic.Priority == type)</div>
                                                         </div>
                                                     </button>
                                                 </h2>
