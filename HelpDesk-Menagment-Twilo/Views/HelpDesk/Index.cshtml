@@ -10,7 +10,7 @@
                 <div class="HelpDesk__addBtnBox">
                     <a class="HelpDesk__addBtn" data-bs-toggle="modal" data-bs-target="#Dodawanie">Dodaj</a>
                 </div>
-                <div class="modal fade" id="Dodawanie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="Dodawanie" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -59,7 +59,9 @@
                 </div>
                 <div class="modal fade" id="ticketInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+
+
+                        <div class="modal-content modal-content--fullinfo">
                             <div class="modal-header">
                                 <h1 class="modal-title ticket__header">Pełne informacje o ticketcie</h1>
                                 <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -95,10 +97,37 @@
                                     <div class="modal-footer__ticketBtns">
                                         <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
                                         <button type="submit" class="btn btn-primary ticket__btn ticket__btn--delete" asp-action="DeleteTicket" asp-controller="HelpDesk">Usuń</button>
+                                        <button type="submit" class="btn btn-primary ticket__btn ticket__btn--edit">Komentarz</button>
+                                        <button type="submit" class="btn btn-primary ticket__btn ticket__btn--edit" asp-action="EditTicket" asp-controller="HelpDesk">Edytuj</button>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ticket__btn ticket__btn--edit" asp-action="EditTicket" asp-controller="HelpDesk">Edytuj</button>
                                 </div>
                             </form>
+                        </div>
+
+
+                        <div class="modal-content">
+                            <div class="comms">
+                                <div class="comms__box">
+
+                                    <div class="comment">
+                                        <div class="comment__row comment__row--title">
+                                            <span class="comment__title">Tutuł komentarza</span>
+                                        </div>
+                                        <div class="comment__row">
+                                            <span class="comment__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+                                        </div>
+                                        <div class="comment__row comment__row--info">
+                                            <span class="comment__date">24-04-2004</span>
+                                            <span class="comment__author">Jakub Stegienko</span>
+                                        </div>
+                                        <div class="comment__row comment__row--btns">
+                                            <button class="comment__btn" type="submit">Usuń</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
