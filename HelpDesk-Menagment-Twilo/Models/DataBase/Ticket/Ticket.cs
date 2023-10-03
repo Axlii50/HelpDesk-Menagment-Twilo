@@ -20,6 +20,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
         [ForeignKey("Account")]
         public string AccountID { get; set; }
         public Account Account { get; set; }
+        
+        public List<TicketComment> Comments { get; set; } = new List<TicketComment>();
 
         public string DateofCreation { get; set; }
 
