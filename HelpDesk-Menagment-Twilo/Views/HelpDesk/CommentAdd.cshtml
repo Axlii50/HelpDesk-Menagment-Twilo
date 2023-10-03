@@ -1,0 +1,24 @@
+﻿@model HelpDesk_Menagment_Twilo.Models.HelpDesk.BaseAccountTicketModel
+
+<form class="ticket__formEdit" asp-action="AddComment" asp-controller="HelpDesk" method="post">
+    @Html.Hidden("AccountID",Model.AccountID)
+    @Html.Hidden("TicketID",Model.TicketID)
+    <div class="modal-body--editTicket">
+        <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@Model.TicketID">
+
+        <div class="ticket__row">
+            <div class="ticket__titleBox">
+                @Html.TextBox("CommentTitle", string.Empty, null, new  {@class = "ticket__input ticket__input--title", @placeholder = "Wpisz tytuł...", @autocomplete="off"})
+            </div>
+        </div>
+
+        <div class="ticket__row">
+            @Html.TextArea("CommentDescription", string.Empty, new {@class = "ticket__textarea", @placeholder = "Opis oraz informacje"})
+        </div>
+
+        <div class="modal-footer modal-footer--edit">
+            <button type="submit" class="btn btn-secondary ticket__btn ticket__btn--close" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">Zamknij</button>
+            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Dodaj Komentarz" />
+        </div>
+    </div>
+</form>

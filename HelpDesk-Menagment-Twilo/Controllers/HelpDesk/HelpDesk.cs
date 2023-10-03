@@ -2,7 +2,9 @@
 using HelpDesk_Menagment_Twilo.Models;
 using HelpDesk_Menagment_Twilo.Models.DataBase;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+using HelpDesk_Menagment_Twilo.Models.HelpDesk;
 using HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket;
+using HelpDesk_Menagment_Twilo.Models.HelpDesk.Comment;
 using HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -72,7 +74,6 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             return Index(AccountID);
         }
 
-      
         public IActionResult EditTicket(string AccountID, string TicketID)
         {
             var account = _context.Account.Find(AccountID);
@@ -113,6 +114,36 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             await _context.SaveChangesAsync();
 
             return Index(account.AccountID);
+        }
+
+        //TODO make from this global model for sending AccountID and TicketID and maybe even interface for global function for checking if ids are valid
+        public IActionResult AddComment([Bind("AccountID,TicketID")] string AccountID, string TicketID)
+        {
+            return View("~/Views/HelpDesk/CommentAdd.cshtml", new BaseAccountTicketModel { AccountID = AccountID, TicketID = TicketID });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment([Bind("AccountID,TicketID,Title,Description")] AddComment addComment)
+        {
+            var account = _context.Account.Find(addComment.AccountID);
+
+            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
+
+            var ticketEntity = _context.Ticket.Find(addComment.TicketID);
+
+            if (ticketEntity == null) return Index(addComment.AccountID);
+
+            TicketComment ticketComment = new TicketComment()
+            {
+                Description = addComment.CommentDescription,
+                Title = addComment.CommentTitle,
+            };
+
+            ticketEntity.Comments.Add(ticketComment);
+
+            await _context.SaveChangesAsync();
+
+            return Index(addComment.AccountID);
         }
 
         #endregion
