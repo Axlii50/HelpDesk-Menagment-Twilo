@@ -8,17 +8,17 @@
 
         <div class="ticket__row">
             <div class="ticket__titleBox">
-                @Html.TextBox("CommentTitle", string.Empty, null, new  {@class = "ticket__input ticket__input--title", @placeholder = "Wpisz tytuł...", @autocomplete="off"})
+                @Html.TextBox("CommentTitle", string.Empty, null, new  {@class = "ticket__input ticket__input--title", @placeholder = "Wpisz tytuł komentarza...", @autocomplete="off"})
             </div>
         </div>
 
         <div class="ticket__row">
-            @Html.TextArea("CommentDescription", string.Empty, new {@class = "ticket__textarea", @placeholder = "Opis oraz informacje"})
+            @Html.TextArea("CommentDescription", string.Empty, new {@class = "ticket__textarea", @placeholder = "Opis oraz informacje komentarza..."})
         </div>
 
-        <div class="modal-footer modal-footer--edit">
+        <div class="modal-footer">
             <button type="submit" class="btn btn-secondary ticket__btn ticket__btn--close" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">Zamknij</button>
-            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Dodaj Komentarz" />
+            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Dodaj" />
         </div>
     </div>
 </form>
