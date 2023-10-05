@@ -110,7 +110,8 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             ticket.TicketPriority = ticket.TicketPriority;
             ticketEntity.Description = ticket.TicketDescription;
             ticketEntity.Title = ticket.TicketTitle;
-          
+
+            _context.Update(ticketEntity);
             await _context.SaveChangesAsync();
 
             return Index(account.AccountID);
