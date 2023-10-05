@@ -124,7 +124,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddComment([Bind("AccountID,TicketID,Title,Description")] AddComment addComment)
+        public async Task<IActionResult> AddComment([Bind("AccountID,TicketID,CommentTitle,CommentDescription")] AddComment addComment)
         {
             var account = _context.Account.Find(addComment.AccountID);
 
@@ -134,7 +134,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
             if (ticketEntity == null) return Index(addComment.AccountID);
 
-            TicketComment ticketComment = new TicketComment()
+            TicketComment ticketComment = new TicketComment(account.Login)
             {
                 Description = addComment.CommentDescription,
                 Title = addComment.CommentTitle,

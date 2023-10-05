@@ -18,7 +18,7 @@
 
         <div class="modal-footer">
             <button type="submit" class="btn btn-secondary ticket__btn ticket__btn--close" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">Zamknij</button>
-            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" value="Dodaj" />
+            <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" asp-action="AddComment" asp-controller="HelpDesk" value="Dodaj" />
         </div>
     </div>
 </form>

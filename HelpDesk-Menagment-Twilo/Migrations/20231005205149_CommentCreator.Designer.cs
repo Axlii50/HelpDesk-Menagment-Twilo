@@ -3,6 +3,7 @@ using HelpDesk_Menagment_Twilo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk_Menagment_Twilo.Migrations
 {
     [DbContext(typeof(HelpDesk_Menagment_TwiloContext))]
-    partial class HelpDesk_Menagment_TwiloContextModelSnapshot : ModelSnapshot
+    [Migration("20231005205149_CommentCreator")]
+    partial class CommentCreator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +106,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("TicketID");
 
-                    b.ToTable("TicketComments");
+                    b.ToTable("TicketComment");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>

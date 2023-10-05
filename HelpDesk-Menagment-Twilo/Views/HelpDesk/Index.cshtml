@@ -186,6 +186,29 @@
                                                                                 <span class="table__check">@ticket.Status.ToString()</span>
                                                                             </div>
                                                                         </div>
+                                                                        <div style="display: none" id="Comments">
+                                                                            @foreach (var comment in ticket.Comments)
+                                                                            {
+                                                                                @*template do komentarza*@
+                                                                                <div class="comment">
+                                                                                    @*tytuł komentarza*@
+                                                                                    <div class="comment__row comment__row--title">
+                                                                                        <span class="comment__title">@comment.Title</span>
+                                                                                    </div>
+                                                                                    @*opis/zawartosc komentarza*@
+                                                                                    <div class="comment__row">
+                                                                                        <span class="comment__text">@comment.Description</span>
+                                                                                    </div>
+                                                                                    @*przez kogo został dodany komentarz*@
+                                                                                    <div class="comment__row comment__row--info">
+                                                                                        <span class="comment__date">@comment.DateofCreation</span>
+                                                                                        <span class="comment__author">@comment.CommentCreatorName</span>
+                                                                                    </div>
+                                                                                    @*przycisk do usuniecia komentarza*@
+
+                                                                                </div>
+                                                                            }
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             }
@@ -218,6 +241,7 @@
         let modalDate = document.querySelector('.ticketModal__dateText');
         let modalStatus = document.querySelector('.ticketModal__status');
         let modalTicketId = document.querySelector('#TicketID');
+        let modalTicketComments = document.querySelector('.comms__box');
 
         const modalDeleteBtn = document.querySelector('.ticket__btn--delete');
         const modalAddBtn = document.querySelector('.ticket__btn--add');
@@ -244,8 +268,10 @@
                 modalDate.textContent = date;
                 modalStatus.textContent = status;
                 modalTicketId.value = ticketID;
-                console.log(ticketID);
-                console.log("ttt");
+
+                const ticketComments = ticketInfo.querySelector('#Comments').innerHTML
+                console.log(ticketComments);
+                modalTicketComments.innerHTML = ticketComments;
 
                 modalDeleteBtn.disabled = false;
             })
