@@ -120,4 +120,50 @@ namespace HelpDesk_Menagment_Twilo
             return list;
         }
     }
+
+    public static class TicketStatusExstention
+    {
+        public static string TranslatePL(this TicketStatus ticketStatus)
+        {
+            switch (ticketStatus)
+            {
+                case TicketStatus.New: return "Nowe";
+                case TicketStatus.InProgress: return "W trakcie";
+                case TicketStatus.Completed: return "Zakończone";
+                default: return string.Empty;
+            }
+        }
+    }
+
+    public static class TicketPriorityExstention
+    {
+        public static string TranslatePL(this TicketPriority ticketStatus)
+        {
+            switch (ticketStatus)
+            {
+                case TicketPriority.Yesterday: return "Na wczoraj";
+                case TicketPriority.Instant: return "Natychmiast";
+                case TicketPriority.Fast: return "Szybko";
+                case TicketPriority.Normal: return "Normalne";
+                case TicketPriority.NotImportant: return "Mało ważne";
+                default: return string.Empty;
+            }
+        }
+    }
+
+    public static class TicketCategoryExstention
+    {
+        public static string TranslatePL(this TicketCategory ticketStatus)
+        {
+            switch (ticketStatus)
+            {
+                case TicketCategory.Order: return "Zamówienie";
+                case TicketCategory.Discussion: return "Dyskusja";
+                case TicketCategory.Return: return "Zwrot";
+                case TicketCategory.Invoice: return "Faktura";
+                case TicketCategory.WholeSeller: return "Hurtownia";
+                default: return string.Empty;
+            }
+        }
+    }
 }

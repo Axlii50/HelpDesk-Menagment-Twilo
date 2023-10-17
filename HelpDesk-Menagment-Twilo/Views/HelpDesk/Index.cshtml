@@ -148,7 +148,7 @@
 
                                 <div class="table__column">
                                     <div class="table__head">
-                                        <span class="table__headText">@pair.Key.ToString()</span>
+                                        <span class="table__headText">@pair.Key.TranslatePL()</span>
                                     </div>
                                     <div class="accordion accordion-flush" id="accordionParent--@ColumnIndex">
                                         @foreach (HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority type in Enum.GetValues(typeof(HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketPriority)))
@@ -156,7 +156,7 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
                                                     <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse@(Counter - typeCounter)--@ColumnIndex" aria-expanded="false" aria-controls="flush-collapse@(Counter - typeCounter)--@ColumnIndex">
-                                                        @type.ToString()
+                                                        @type.TranslatePL()
                                                         <div class="numbers">
                                                             <div class="number number--nowe">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.New && tic.Priority == type)</div>
                                                             <div class="number number--rozpatrywane">@Model.Tickets[pair.Key].Count(tic => tic.Status == HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketStatus.InProgress && tic.Priority == type)</div>
@@ -185,7 +185,7 @@
                                                                             <div class="table__dateBox">
                                                                                 <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
                                                                                 <span class="table__date">@ticket.DateofCreation</span>
-                                                                                <span class="table__check">@ticket.Status.ToString()</span>
+                                                                                <span class="table__check">@ticket.Status.TranslatePL()</span>
                                                                             </div>
                                                                         </div>
                                                                         <div style="display: none" id="Comments">
