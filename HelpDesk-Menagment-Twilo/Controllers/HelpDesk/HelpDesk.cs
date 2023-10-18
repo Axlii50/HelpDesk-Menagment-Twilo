@@ -8,6 +8,7 @@ using HelpDesk_Menagment_Twilo.Models.HelpDesk.Comment;
 using HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 using System.Net.Sockets;
 using System.Security.Principal;
@@ -64,11 +65,12 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
         public async Task<IActionResult> DeleteTicket(string AccountID, string TicketID)
         {
-            var ticket = _context.Ticket.Find(TicketID);
+            var ticket = _context.Ticket.Include(tick => tick.Comments).Where(tick => tick.TicketID == TicketID).FirstOrDefault();
 
             if (ticket == null) return Index(AccountID);
 
             _context.Ticket.Remove(ticket);
+
             await _context.SaveChangesAsync();
 
             return Index(AccountID);
