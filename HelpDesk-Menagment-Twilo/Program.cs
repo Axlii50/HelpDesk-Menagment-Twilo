@@ -52,7 +52,7 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString()
             }).ToList();
             return list;
@@ -61,7 +61,7 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString(),
             }).ToList();
             return list;
@@ -70,12 +70,11 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString()
             }).ToList();
             return list;
         }
-
 
         public static List<SelectListItem> TicketCategoryGetList(TicketCategory category)
         {
@@ -130,6 +129,7 @@ namespace HelpDesk_Menagment_Twilo
                 case TicketStatus.New: return "Nowe";
                 case TicketStatus.InProgress: return "W trakcie";
                 case TicketStatus.Completed: return "Zakończone";
+                case TicketStatus.Halted: return "Wstrzymane";
                 default: return string.Empty;
             }
         }

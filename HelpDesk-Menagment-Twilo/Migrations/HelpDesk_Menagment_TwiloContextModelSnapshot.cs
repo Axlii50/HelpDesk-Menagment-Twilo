@@ -36,7 +36,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasKey("AccountID");
 
-                    b.ToTable("Account");
+                    b.ToTable("Account", (string)null);
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
@@ -73,7 +73,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("AccountID");
 
-                    b.ToTable("Ticket");
+                    b.ToTable("Ticket", (string)null);
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment", b =>
@@ -104,7 +104,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("TicketID");
 
-                    b.ToTable("TicketComments");
+                    b.ToTable("TicketComments", (string)null);
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
