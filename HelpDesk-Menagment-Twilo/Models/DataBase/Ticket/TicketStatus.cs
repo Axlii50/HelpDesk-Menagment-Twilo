@@ -1,4 +1,6 @@
-﻿namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
+﻿using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+
+namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 {
     public enum TicketStatus
     {
@@ -8,4 +10,19 @@
         Completed = 20
     }
     
+}
+
+public static class TicketStatusExstention
+{
+    public static string TranslatePL(this TicketStatus ticketStatus)
+    {
+        switch (ticketStatus)
+        {
+            case TicketStatus.New: return "Nowe";
+            case TicketStatus.InProgress: return "W trakcie";
+            case TicketStatus.Completed: return "Zakończone";
+            case TicketStatus.Halted: return "Wstrzymane";
+            default: return string.Empty;
+        }
+    }
 }
