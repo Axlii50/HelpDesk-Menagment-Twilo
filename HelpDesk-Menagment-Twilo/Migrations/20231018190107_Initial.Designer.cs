@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk_Menagment_Twilo.Migrations
 {
     [DbContext(typeof(HelpDesk_Menagment_TwiloContext))]
-    [Migration("20230926220146_TicketTable")]
-    partial class TicketTable
+    [Migration("20231018190107_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,6 +78,37 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.ToTable("Ticket");
                 });
 
+            modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment", b =>
+                {
+                    b.Property<string>("TicketCommentID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentCreatorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateofCreation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TicketID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TicketCommentID");
+
+                    b.HasIndex("TicketID");
+
+                    b.ToTable("TicketComments");
+                });
+
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
                 {
                     b.HasOne("HelpDesk_Menagment_Twilo.Models.DataBase.Account", "Account")
@@ -87,6 +118,18 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                         .IsRequired();
 
                     b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment", b =>
+                {
+                    b.HasOne("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("TicketID");
+                });
+
+            modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
