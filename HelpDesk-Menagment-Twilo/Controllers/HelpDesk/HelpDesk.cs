@@ -39,7 +39,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
             foreach (TicketCategory type in Enum.GetValues<TicketCategory>())
             {
-                var Tickets = _context.Ticket.Where(tick => tick.Status != TicketStatus.Completed && tick.Category == type).ToList();
+                var Tickets = _context.Ticket.Include(tick => tick.Comments).Where(tick => tick.Status != TicketStatus.Completed && tick.Category == type).ToList();
                 viewModel.Tickets.Add(type, Tickets);
             }
 

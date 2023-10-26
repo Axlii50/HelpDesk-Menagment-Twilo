@@ -80,7 +80,7 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString()
             }).ToList();
 
@@ -94,7 +94,7 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString(),
             }).ToList();
 
@@ -108,7 +108,7 @@ namespace HelpDesk_Menagment_Twilo
         {
             var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
             {
-                Text = v.ToString(),
+                Text = v.TranslatePL(),
                 Value = ((int)v).ToString()
             }).ToList();
 
