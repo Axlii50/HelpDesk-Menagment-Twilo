@@ -275,7 +275,7 @@ body {
 .table__row {
     border-bottom: 1px solid var(--color--primary-light);
     border-top: 1px solid var(--color--primary-light);
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .table__bodyRowNote {
@@ -290,13 +290,12 @@ body {
 }
 
 .table__bodyTitleSpan {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    text-transform: uppercase;
 
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -17px;
+    right: -15px;
 }
 
 .table__bodyTitle {
