@@ -102,6 +102,25 @@
                                     </div>
                                 </div>
                             </form>
+
+                            <!--Dodawnie komentarzy w modalu od ticketa-->
+                            <form class="ticket__addTicketForm" asp-action="AddComment" asp-controller="HelpDesk" method="post">
+                                <div class="modal-body--addTicketMain">
+                                    <div class="ticket__row">
+                                        <div class="ticket__titleBox">
+                                            @Html.TextBox("CommentTitle", string.Empty, null, new  {@class = "ticket__input ticket__input--titleAddMain", @placeholder = "Wpisz tytuł komentarza...", @autocomplete="off"})
+                                        </div>
+                                    </div>
+
+                                    <div class="ticket__row">
+                                        @Html.TextArea("CommentDescription", string.Empty, new {@class = "ticket__textarea", @placeholder = "Opis oraz informacje komentarza..."})
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary ticket__btn ticket__btn--add" asp-action="AddComment" asp-controller="HelpDesk" value="Dodaj" />
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
                         @*Komentarze*@

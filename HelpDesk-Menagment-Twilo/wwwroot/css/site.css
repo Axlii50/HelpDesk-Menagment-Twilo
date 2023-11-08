@@ -844,3 +844,27 @@ loginPage__input:-webkit-autofill {
     padding: 0;
     margin-top: 0.5rem;
 }
+
+/*Dodanie ticketa na main stronie*/
+
+.ticket__addTicketForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-top: 1rem
+}
+
+.modal-body--addTicketMain {
+    width: 60rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
