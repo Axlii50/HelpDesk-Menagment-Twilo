@@ -1,5 +1,9 @@
 ﻿@model HelpDesk_Menagment_Twilo.Models.HelpDesk.Editing.EditModel
 
+@{
+    Layout = "HelpDesk/_Layout-NoModel";
+}
+
 <form class="ticket__formEdit" asp-action="EditTicket" asp-controller="HelpDesk" method="post">
     @Html.Hidden("AccountID",Model.AccountID)
     <div class="modal-body--editTicket">

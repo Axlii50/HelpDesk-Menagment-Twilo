@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model HelpDeskViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,11 +18,27 @@
     <link rel="stylesheet" href="~/HelpDesk_Menagment_Twilo.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <section class="Page">
+    <header class="header">
+        <div class="container-fluid container__header">
+            <nav class="navigation">
+                <ul class="navigation__items">
+                    <li class="navigation__item">
+                        <!--Tutaj zrob przejscia-->
+                            <a class="navigation__link" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">HelpDesk</a>
+                            <a class="navigation__link" asp-action="Index" asp-controller="Menagment" asp-route-AccountID="@Model.AccountID">Zarządzanie</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     @RenderBody()
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    </section>
 </body>
 </html>

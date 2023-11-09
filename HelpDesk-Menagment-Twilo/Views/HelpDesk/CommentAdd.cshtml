@@ -1,5 +1,9 @@
 ﻿@model HelpDesk_Menagment_Twilo.Models.HelpDesk.BaseAccountTicketModel
 
+@{
+    Layout = "HelpDesk/_Layout-NoModel";
+}
+
 <form class="ticket__formEdit" asp-action="AddComment" asp-controller="HelpDesk" method="post">
     @Html.Hidden("AccountID",Model.AccountID)
     @Html.Hidden("TicketID",Model.TicketID)
