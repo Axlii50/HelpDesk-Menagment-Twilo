@@ -868,3 +868,134 @@ loginPage__input:-webkit-autofill {
     flex-direction: column;
     gap: 0.75rem;
 }
+
+
+
+
+/*Zarz¹dzanie*/
+/*Zarz¹dzanie*/
+
+.HelpDesk__section {
+}
+
+.container__menag {
+    padding: 0;
+}
+
+.Menag__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Menag__box {
+    width: 100%;
+    padding: 2rem 0;
+    color: var(--color-white);
+}
+
+.Menag__addBtnBox {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+.Menag__addBtn {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    padding: 0.75rem 1rem;
+    width: 15rem;
+    background-color: var(--color--primary-light);
+    transition: all 0.4s;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .Menag__addBtn:hover {
+        color: white;
+        background-color: var(--color--primary-dark);
+    }
+
+.Menag__accountsBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-height: 73rem;
+    min-height: 73rem;
+}
+
+.Menag__accounts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Menag__headers {
+    width: 100%;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color--primary-light);
+}
+
+.Menag__header {
+    display: inline-block;
+}
+
+.Menag__header--accBox {
+    max-width: 30rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+}
+
+.Menag__header--iloscBox {
+    max-width: 20rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+}
+
+.Menag__detail--apli {
+    max-width: 20rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+}
+
+.Menag__accountRow {
+    display: flex;
+    padding: 0.75rem 1rem;
+}
+
+    .Menag__accountRow:not(:last-child) {
+        border-bottom: 2px solid var(--color--primary-light);
+    }
+
+.Menag__detail {
+    display: inline-block;
+}
+
+.Menag__details--infoText {
+    display: inline-block;
+}
+
+.Menag__detail--userName {
+    min-width: 10rem;
+    max-width: 30rem;
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.Menag__detail--btns {
+    margin-left: auto;
+}
+
+.Menag__rows {
+    display: flex;
+    flex-direction: column;
+}
