@@ -24,17 +24,15 @@
             <nav class="navigation">
                 <ul class="navigation__items">
                     <li class="navigation__item">
-                        <!--Tutaj zrob przejscia-->
-                            <a class="navigation__link" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">HelpDesk</a>
+                        <a class="navigation__link" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">HelpDesk</a>
                     </li>
-                        <li class="navigation__item">
-                            <!--Tutaj zrob przejscia-->
-                            <a class="navigation__link" asp-action="Index" asp-controller="Menagment" asp-route-AccountID="@Model.AccountID">Zarządzanie</a>
-                        </li>
+                    <li class="navigation__item">
+                        <a class="navigation__link" asp-action="Index" asp-controller="Menagment" asp-route-AccountID="@Model.AccountID">Zarządzanie</a>
+                    </li>
                 </ul>
             </nav>
         </div>
-    </header>
+        </header>
 
     @RenderBody()
 
