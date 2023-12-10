@@ -1001,3 +1001,38 @@ loginPage__input:-webkit-autofill {
     display: flex;
     flex-direction: column;
 }
+
+/*Skanowanie*/
+.scan__header {
+    color: black;
+    font-size: 2rem;
+}
+
+.scan__input {
+    width: 100%;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 1.8rem;
+}
+
+.scan__btn__modal {
+    width: 100%;
+}
+
+.scan__modal-footer {
+    padding: 0.75rem 0.25rem 0.25rem 0.25rem;
+}
+
+.scan__countText {
+    width: 100%;
+    display: block;
+}
+
+.scan__counts-row {
+    font-size: 1.8rem;
+    color: black;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

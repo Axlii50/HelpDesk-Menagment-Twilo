@@ -7,14 +7,48 @@
         <div class="Menag__content">
             <div class="Menag__box">
                 <div class="Menag__addBtnBox">
-                    <a class="Menag__addBtn">Dodaj</a>
+                    <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Skanowanie">Skanowanie</a>
                 </div>
+
+                <div class="modal fade" id="Skanowanie" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title scan__header">Skanowanie</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <form class="scan__form">
+                                <div class="modal-body modal-body--scan">
+                                    <div class="ticket__row">
+                                        <input class="scan__input" placeholder="Wpisz numer przesyłki..." type="text"/>
+                                    </div>
+
+                                    <div class="ticket__row scan__counts-row">
+                                        <span class="scan__countText">Ilość zeskanowana: <span class="scan__number">4</span></span>
+                                    </div>
+
+                                    <div class="modal-footer scan__modal-footer">
+                                        <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close scan__btn__modal" data-bs-dismiss="modal">Zamknij</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
                 <div class="Menag__accountsBox">
                     <div class="Menag__accounts">
                         <div class="Menag__headers">
                             <div class="Menag__header Menag__header--accBox">
                                 <span class="Menag__header--acc">Nazwa konta</span>
+                            </div>
+
+                            <div class="Menag__header Menag__header--iloscBox">
+                                <span class="Menag__header--ilosc">Ilość aplikacji</span>
                             </div>
 
                             <div class="Menag__header Menag__header--iloscBox">
@@ -27,6 +61,9 @@
                             <div class="Menag__accountRow">
                                 <div class="Menag__detail Menag__detail--userName">
                                     <span class="Menag__userName">Jakub Stegienko</span>
+                                </div>
+                                <div class="Menag__detail Menag__detail--apli">
+                                    <span class="Menag__apli">2</span>
                                 </div>
                                 <div class="Menag__detail Menag__detail--apli">
                                     <span class="Menag__apli">2</span>
