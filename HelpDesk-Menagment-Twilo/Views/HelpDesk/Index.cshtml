@@ -1,6 +1,6 @@
 ﻿@model HelpDeskViewModel
 @{
-    Layout = "HelpDesk/_Layout";
+    Layout = "_Layout";
 }
 
 <section class="HelpDesk__section">
@@ -106,6 +106,8 @@
                             <!--Dodawnie komentarzy w modalu od ticketa-->
                             <form class="ticket__addTicketForm" asp-action="AddComment" asp-controller="HelpDesk" method="post">
                                 <div class="modal-body--addTicketMain">
+                                    @Html.Hidden("AccountID",Model.AccountID)
+                                    <input data-val="true" data-val-required="The TicketID field is required." id="TicketID2" name="TicketID" type="hidden" value="">
                                     <div class="ticket__row">
                                         <div class="ticket__titleBox">
                                             @Html.TextBox("CommentTitle", string.Empty, null, new  {@class = "ticket__input ticket__input--titleAddMain", @placeholder = "Wpisz tytuł komentarza...", @autocomplete="off"})
@@ -264,6 +266,7 @@
         let modalDate = document.querySelector('.ticketModal__dateText');
         let modalStatus = document.querySelector('.ticketModal__status');
         let modalTicketId = document.querySelector('#TicketID');
+        let modalTicketId2 = document.querySelector('#TicketID2');
         let modalTicketComments = document.querySelector('.comms__box');
 
         const modalDeleteBtn = document.querySelector('.ticket__btn--delete');
@@ -291,6 +294,7 @@
                 modalDate.textContent = date;
                 modalStatus.textContent = status;
                 modalTicketId.value = ticketID;
+                modalTicketId2.value = ticketID;
 
                 const ticketComments = ticketInfo.querySelector('#Comments').innerHTML
                 console.log(ticketComments);

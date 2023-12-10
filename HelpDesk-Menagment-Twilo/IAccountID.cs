@@ -1,10 +1,11 @@
 ﻿using HelpDesk_Menagment_Twilo.Models.DataBase;
 
-namespace HelpDesk_Menagment_Twilo.Models
+namespace HelpDesk_Menagment_Twilo
 {
-    public class MenagmentViewModel : IAccountID
+    public interface IAccountID
     {
         public string AccountID { get; set; }
+
         public PermissionsTypes Permissions { get; set; }
     }
 }

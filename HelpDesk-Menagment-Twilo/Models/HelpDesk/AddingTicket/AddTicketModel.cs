@@ -1,8 +1,9 @@
-﻿using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+﻿using HelpDesk_Menagment_Twilo.Models.DataBase;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
 
 namespace HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket
 {
-    public class AddTicketModel
+    public class AddTicketModel : IAccountID
     {
         public string AccountID { get; set; }
         public string TicketTitle { get; set; }
@@ -11,5 +12,6 @@ namespace HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket
         public TicketCategory TicketCategory { get; set; }
         public TicketStatus TicketStatus { get; set; }
         public TicketPriority TicketPriority { get; set; }
+        PermissionsTypes IAccountID.Permissions { get; set; }
     }
 }

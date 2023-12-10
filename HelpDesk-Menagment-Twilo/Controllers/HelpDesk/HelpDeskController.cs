@@ -34,6 +34,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             var viewModel = new HelpDeskViewModel()
             {
                 AccountID = AccountID,
+                Permissions = account.Permissions,
                 Tickets = new Dictionary<TicketCategory, List<Ticket>>()
             };
 

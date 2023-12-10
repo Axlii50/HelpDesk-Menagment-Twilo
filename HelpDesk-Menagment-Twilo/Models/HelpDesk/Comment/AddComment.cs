@@ -1,6 +1,8 @@
-﻿namespace HelpDesk_Menagment_Twilo.Models.HelpDesk.Comment
+﻿using HelpDesk_Menagment_Twilo.Models.DataBase;
+
+namespace HelpDesk_Menagment_Twilo.Models.HelpDesk.Comment
 {
-    public class AddComment
+    public class AddComment : IAccountID
     {
         //ids
         public string AccountID { get; set; }
@@ -8,5 +10,6 @@
 
         public string CommentTitle { get; set; }
         public string CommentDescription { get; set; }
+        PermissionsTypes IAccountID.Permissions { get; set; }
     }
 }

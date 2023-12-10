@@ -45,7 +45,7 @@ namespace HelpDesk_Menagment_Twilo
             app.Run();
         }
     }
-
+    //https://stackoverflow.com/questions/21460146/fire-javascript-function-2-sec-after-no-activity-in-input-tag
     public static class HtmlHelper
     {
         public static List<SelectListItem> TicketCategoryGetList()

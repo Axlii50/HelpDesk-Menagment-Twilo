@@ -1,4 +1,7 @@
-﻿@model HelpDeskViewModel
+﻿@model object
+@{
+    var Account = Model as IAccountID;
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +26,25 @@
         <div class="container-fluid container__header">
             <nav class="navigation">
                 <ul class="navigation__items">
-                    <li class="navigation__item">
-                        <a class="navigation__link" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Model.AccountID">HelpDesk</a>
-                    </li>
-                    <li class="navigation__item">
-                        <a class="navigation__link" asp-action="Index" asp-controller="Menagment" asp-route-AccountID="@Model.AccountID">Zarządzanie</a>
-                    </li>
-                </ul>
+                        @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.HelpDesk))
+                        {
+                            <li class="navigation__item">
+                                <a class="navigation__link" asp-action="Index" asp-controller="HelpDesk" asp-route-AccountID="@Account.AccountID">HelpDesk</a>
+                            </li>
+                        }
+                        @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Menagment))
+                        {
+                            <li class="navigation__item">
+                                <a class="navigation__link" asp-action="Index" asp-controller="Menagment" asp-route-AccountID="@Account.AccountID">Zarządzanie</a>
+                            </li>
+                        }
+                        @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Packages))
+                        {
+                            <li class="navigation__item">
+                                <a class="navigation__link" asp-action="Index" asp-controller="Packages" asp-route-AccountID="@Account.AccountID">Paczki</a>
+                            </li>
+                        }
+                    </ul>
             </nav>
         </div>
         </header>

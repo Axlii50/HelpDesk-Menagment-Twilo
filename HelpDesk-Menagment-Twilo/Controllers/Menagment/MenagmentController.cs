@@ -24,6 +24,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
             var viewModel = new MenagmentViewModel()
             {
                 AccountID = AccountID,
+                Permissions = account.Permissions
             };
            
 
