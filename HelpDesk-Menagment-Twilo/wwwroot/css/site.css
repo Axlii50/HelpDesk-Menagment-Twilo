@@ -958,6 +958,7 @@ loginPage__input:-webkit-autofill {
     width: 100%;
     min-width: 10rem;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 .Menag__detail--apli {
@@ -965,6 +966,7 @@ loginPage__input:-webkit-autofill {
     width: 100%;
     min-width: 10rem;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 .Menag__accountRow {
