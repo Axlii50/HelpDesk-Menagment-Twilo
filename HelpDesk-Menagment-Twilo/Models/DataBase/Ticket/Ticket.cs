@@ -1,13 +1,13 @@
-﻿using HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket;
+﻿using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Models.HelpDesk.AddingTicket;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 {
-    public class Ticket
+    public class Ticket: IIdentification
     {
-        [Key]
-        public string TicketID { get; set; }
+        public Guid ID { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }
@@ -18,16 +18,16 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 
 
         [ForeignKey("Account")]
-        public string AccountID { get; set; }
+        public Guid AccountID { get; set; }
         public Account Account { get; set; }
         
         public List<TicketComment> Comments { get; set; } = new List<TicketComment>();
 
         public string DateofCreation { get; set; }
+        
 
         public Ticket()
         {
-            this.TicketID = Guid.NewGuid().ToString();
             this.DateofCreation = DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd") + " " + DateTime.Now.ToString("H:mm");
         }
 
@@ -38,7 +38,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
             ticket.Status = addTicket.TicketStatus;
             ticket.Category = addTicket.TicketCategory;
             ticket.Priority = addTicket.TicketPriority;
-            ticket.AccountID = addTicket.AccountID;
+            ticket.AccountID = new Guid(addTicket.AccountID);
 
             return ticket;
         }

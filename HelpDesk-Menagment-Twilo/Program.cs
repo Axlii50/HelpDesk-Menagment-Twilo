@@ -5,6 +5,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Services;
 
 namespace HelpDesk_Menagment_Twilo
 {
@@ -20,6 +22,8 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddMemoryCache();
+
+            builder.Services.AddScoped<IPackageService, PackageService>();
 
             var app = builder.Build();
 

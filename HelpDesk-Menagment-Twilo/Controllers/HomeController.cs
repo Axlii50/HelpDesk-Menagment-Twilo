@@ -36,7 +36,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers
             if (account == null)
                 return View("~/Views/Home/LoginPage.cshtml");
             else
-                return RedirectToAction("Index", "HelpDesk", new { AccountID = account.AccountID });
+                return RedirectToAction("Index", "HelpDesk", new { AccountID = account.ID.ToString() });
         }
     }
 }

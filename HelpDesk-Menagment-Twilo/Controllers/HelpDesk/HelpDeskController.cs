@@ -27,7 +27,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
         public IActionResult Index(string AccountID)
         {
-            var account = _context.Account.Find(AccountID);
+            var account = _context.Account.Find(new Guid(AccountID));
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
@@ -61,12 +61,12 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             _context.Ticket.Add(ticketModel);
             await _context.SaveChangesAsync();
 
-            return Index(account.AccountID);
+            return Index(account.ID.ToString());
         }
 
         public async Task<IActionResult> DeleteTicket(string AccountID, string TicketID)
         {
-            var ticket = _context.Ticket.Include(tick => tick.Comments).Where(tick => tick.TicketID == TicketID).FirstOrDefault();
+            var ticket = _context.Ticket.Include(tick => tick.Comments).Where(tick => tick.ID.ToString() == TicketID).FirstOrDefault();
 
             if (ticket == null) return Index(AccountID);
 
@@ -89,8 +89,8 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
             EditModel editModel = new EditModel()
             {
-                AccountID = account.AccountID,
-                TicketID = ticket.TicketID,
+                AccountID = account.ID.ToString(),
+                TicketID = ticket.ID.ToString(),
                 Ticket = ticket
             };
 
@@ -117,7 +117,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
             _context.Update(ticketEntity);
             await _context.SaveChangesAsync();
 
-            return Index(account.AccountID);
+            return Index(account.ID.ToString());
         }
 
         //TODO make from this global model for sending AccountID and TicketID and maybe even interface for global function for checking if ids are valid

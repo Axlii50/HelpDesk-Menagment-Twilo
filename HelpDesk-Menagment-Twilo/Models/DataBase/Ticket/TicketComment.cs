@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HelpDesk_Menagment_Twilo.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 {
-    public class TicketComment
+    public class TicketComment: IIdentification
     {
-        [Key]
-        public string TicketCommentID { get; set; }
-
+        public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string DateofCreation { get; set; }
@@ -14,7 +13,6 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
 
         public TicketComment(string commentCreatorName)
         {
-            this.TicketCommentID = Guid.NewGuid().ToString();
             this.DateofCreation = DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd") + " " + DateTime.Now.ToString("H:mm");
             this.CommentCreatorName = commentCreatorName;
         }

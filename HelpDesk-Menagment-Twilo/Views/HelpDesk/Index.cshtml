@@ -206,7 +206,7 @@
                                                                         </div>
                                                                         <div class="table__bodyRow">
                                                                             <div class="table__dateBox">
-                                                                                <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.TicketID">
+                                                                                <input data-val="true" data-val-required="The TicketID field is required." id="TicketID" name="TicketID" type="hidden" value="@ticket.ID.ToString()">
                                                                                 <span class="table__date">@ticket.DateofCreation</span>
                                                                                 <span class="table__check">@ticket.Status.TranslatePL()</span>
                                                                             </div>

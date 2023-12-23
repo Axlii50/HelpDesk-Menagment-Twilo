@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HelpDesk_Menagment_Twilo.Interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.Security;
 
 namespace HelpDesk_Menagment_Twilo.Models.DataBase
 {
-    public class Account
+    public class Account: IIdentification
     {
-        [Key]
-        public string AccountID { get; set; }
+        public Guid ID { get; set; }
 
         public PermissionsTypes Permissions { get; set; } = PermissionsTypes.HelpDesk;
 
@@ -15,7 +15,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase
 
         public Account()
         {
-            this.AccountID = Guid.NewGuid().ToString();
+           
         }
     }
 
