@@ -4,7 +4,7 @@ namespace HelpDesk_Menagment_Twilo.Interfaces
 {
     public interface IPackageService
     {
-        void AddPackage();
+        void AddPackage(string UserID, string PackageID);
 
         IEnumerable<Package> GetPackages(string UserID);
 
