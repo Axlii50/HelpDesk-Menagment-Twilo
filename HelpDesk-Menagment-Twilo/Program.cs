@@ -24,6 +24,7 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddMemoryCache();
 
             builder.Services.AddScoped<IPackageService, PackageService>();
+            builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
 
             var app = builder.Build();
 

@@ -10,7 +10,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
 
         public string PackageShippingID { get; set; }
 
-        public string DateString { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime DateString { get; set; } = DateTime.Now;
 
         public DeliveryType DeliveryType { get; set; }
 

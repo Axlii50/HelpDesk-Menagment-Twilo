@@ -1036,3 +1036,14 @@ loginPage__input:-webkit-autofill {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.scan__progress-bar {
+    height: 5px;
+    background-color: #007bff; /* Kolor pocz¹tkowy paska postêpu */
+    width: 0; /* Szerokoœæ pocz¹tkowa paska (0%) */
+    transition: width 2.5s, background-color 0.5s; /* Czas trwania animacji dla szerokoœci i koloru */
+}
+
+    .scan__progress-bar.loaded {
+        background-color: #28a745; /* Kolor po zakoñczeniu ³adowania (zielony) */
+    }

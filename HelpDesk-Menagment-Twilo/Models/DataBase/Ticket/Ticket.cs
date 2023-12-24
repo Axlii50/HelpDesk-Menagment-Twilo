@@ -16,7 +16,6 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
         public TicketPriority Priority { get; set; }
         public TicketStatus Status { get; set; }
 
-
         [ForeignKey("Account")]
         public Guid AccountID { get; set; }
         public Account Account { get; set; }
@@ -24,7 +23,6 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
         public List<TicketComment> Comments { get; set; } = new List<TicketComment>();
 
         public string DateofCreation { get; set; }
-        
 
         public Ticket()
         {
