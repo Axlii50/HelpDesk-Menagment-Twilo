@@ -1,6 +1,13 @@
-﻿namespace HelpDesk_Menagment_Twilo.Services
+﻿using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
+
+namespace HelpDesk_Menagment_Twilo.Services
 {
-    public class DeliveryRecognitionService
+    public class DeliveryRecognitionService : IDeliveryRecognitionService
     {
+        public DeliveryType Recognize(string PackageID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

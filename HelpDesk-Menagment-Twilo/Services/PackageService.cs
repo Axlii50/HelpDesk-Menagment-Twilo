@@ -18,7 +18,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public IActionResult AddPackage(string UserID, string PackageID)
         {
-            var package = new Package
+            var package = new Package()
             {
                 PackageShippingID = PackageID,
                 AccountID = new Guid(UserID),
@@ -27,7 +27,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             //dodanie rozpoznawania typu dostawcy
             //package.DeliveryType = _recognition.Recognize(PackageID);
 
-            _context.Add(package);
+            _context.Packages.Add(package);
 
             _context.SaveChanges();
 

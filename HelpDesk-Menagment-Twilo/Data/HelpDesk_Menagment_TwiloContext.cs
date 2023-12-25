@@ -13,5 +13,6 @@ namespace HelpDesk_Menagment_Twilo.Data
 
         public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket> Ticket { get; set; } = default!;
         public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment> TicketComments { get; set; } = default!;
+        public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package> Packages { get; set; } = default!;
     }
 }
