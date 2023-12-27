@@ -947,16 +947,15 @@ loginPage__input:-webkit-autofill {
 }
 
 .Menag__header--accBox {
-    flex-grow: 1; /* Elastyczne dostosowanie do zawartoœci */
     max-width: 30rem;
     width: 100%;
     min-width: 10rem;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 .Menag__header--iloscBox {
-    flex-grow: 1; /* Elastyczne dostosowanie do zawartoœci */
-    max-width: 20rem;
+    max-width: 40rem;
     width: 100%;
     min-width: 10rem;
     font-size: 1.8rem;
@@ -964,13 +963,15 @@ loginPage__input:-webkit-autofill {
 }
 
 .Menag__detail--apli {
-    flex-grow: 1; /* Elastyczne dostosowanie do zawartoœci */
-    max-width: fit-content;
-    margin-right: 10px;
+    max-width: 40rem;
     width: 100%;
     min-width: 10rem;
     font-size: 1.8rem;
     text-align: center;
+}
+
+.Menag__apli--date {
+    margin-left: 2rem;
 }
 
 .Menag__accountRow {
@@ -995,6 +996,7 @@ loginPage__input:-webkit-autofill {
     max-width: 30rem;
     width: 100%;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 .Menag__detail--btns {
@@ -1004,13 +1006,6 @@ loginPage__input:-webkit-autofill {
 .Menag__rows {
     display: flex;
     flex-direction: column;
-}
-
-.Menag__flexibleColumn {
-    flex-grow: 1; /* Elastyczne dostosowanie do zawartoœci */
-    min-width: 10rem;
-    font-size: 1.8rem;
-    text-align: center;
 }
 
 /*Skanowanie*/
