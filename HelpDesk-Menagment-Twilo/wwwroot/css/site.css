@@ -940,6 +940,8 @@ loginPage__input:-webkit-autofill {
     font-size: 2rem;
     padding: 0.5rem 1rem;
     background-color: var(--color--primary-light);
+
+    display:flex;
 }
 
 .Menag__header {
@@ -968,10 +970,6 @@ loginPage__input:-webkit-autofill {
     min-width: 10rem;
     font-size: 1.8rem;
     text-align: center;
-}
-
-.Menag__apli--date {
-    margin-left: 2rem;
 }
 
 .Menag__accountRow {
