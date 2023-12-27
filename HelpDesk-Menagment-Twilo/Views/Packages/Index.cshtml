@@ -53,24 +53,32 @@
                             </div>
                         </div>
 
-                        <div class="Menag__rows">
-                            <div class="Menag__accountRow">
-                                <div class="Menag__detail Menag__detail--userName Menag__flexibleColumn">
-                                    <span class="Menag__userName">akru</span>
-                                </div>
-                                <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
-                                    <span class="Menag__apli">631983446310061117038495</span>
-                                </div>
-                                <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
-                                    <span class="Menag__apli Menag__apli--date">2024-02-02 16:15:15</span>
-                                </div>
-                               @* <div class="Menag__detail--btns">
-                                    <a class="Menag__addBtn">Aplikacje</a>
-                                    <a class="Menag__addBtn">Edytuj</a>
-                                    <a class="Menag__addBtn">Usuń</a>
-                                </div>*@
-                            </div>
-                        </div>
+                        @{
+
+                            foreach (var package in Model.packages)
+                            {
+                               <div class="Menag__rows">
+                                    <div class="Menag__accountRow">
+                                        <div class="Menag__detail Menag__detail--userName Menag__flexibleColumn">
+                                            <span class="Menag__userName">@package.Account.Login</span>
+                                        </div>
+                                        <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
+                                            <span class="Menag__apli">@package.PackageShippingID</span>
+                                        </div>
+                                        <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
+                                            <span class="Menag__apli Menag__apli--date">@package.DateString</span>
+                                        </div>
+                                        @* <div class="Menag__detail--btns">
+                                        <a class="Menag__addBtn">Aplikacje</a>
+                                        <a class="Menag__addBtn">Edytuj</a>
+                                        <a class="Menag__addBtn">Usuń</a>
+                                        </div>*@
+                                    </div>
+                               </div>
+                            }
+
+                        }
+                       
                     </div>
                 </div>
 

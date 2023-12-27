@@ -2,6 +2,7 @@
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpDesk_Menagment_Twilo.Services
 {
@@ -36,7 +37,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public IEnumerable<Package> GetPackages(string UserID)
         {
-            throw new NotImplementedException();
+            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID)/*.Select(pack => pack.Account.Login)*/.ToList());
         }
 
         public IEnumerable<Package> GetPackages(string UserID, int number)
