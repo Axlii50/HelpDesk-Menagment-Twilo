@@ -1,0 +1,145 @@
+﻿@model HelpDesk_Menagment_Twilo.Models.Package.PackageViewModel;
+
+<section class="Menag__section">
+    <div class="container-fluid container__menag">
+        <div class="Menag__content">
+            <div class="Menag__box">
+                <div class="Menag__addBtnBox">
+                    <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Skanowanie">Skanowanie</a>
+                </div>
+
+                <div class="modal fade" id="Skanowanie" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title scan__header">Skanowanie</h1>
+                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            @Html.Hidden("AccountID", Model.AccountID)
+                            <div class="scan__form">
+                                <div class="modal-body modal-body--scan">
+                                    <div class="ticket__row">
+                                        <input class="scan__input" id="PackageID" placeholder="Wpisz numer przesyłki..." type="text" />
+                                    </div>
+
+                                    <div class="ticket__row scan__counts-row">
+                                        <span class="scan__countText">Ilość zeskanowana: <span class="scan__number">0</span></span>
+                                        <div class="scan__progress-bar"></div> <!-- Nowy element dla paska postępu -->
+                                    </div>
+
+                                    <div class="modal-footer scan__modal-footer">
+                                        <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close scan__btn__modal" data-bs-dismiss="modal">Zamknij</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="Menag__accountsBox">
+                    <div class="Menag__accounts">
+                        <div class="Menag__headers">
+                            <div class="Menag__header Menag__header--accBox Menag__flexibleColumn">
+                                <span class="Menag__header--acc">Nazwa konta</span>
+                            </div>
+
+                            <div class="Menag__header Menag__header--iloscBox Menag__flexibleColumn">
+                                <span class="Menag__header--ilosc">NR paczki</span>
+                            </div>
+                            
+                            <div class="Menag__header Menag__header--iloscBox Menag__flexibleColumn">
+                                <span class="Menag__header--ilosc">Data zeskanowania</span>
+                            </div>
+                        </div>
+
+                        <div class="Menag__rows">
+                            <div class="Menag__accountRow">
+                                <div class="Menag__detail Menag__detail--userName Menag__flexibleColumn">
+                                    <span class="Menag__userName">akru</span>
+                                </div>
+                                <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
+                                    <span class="Menag__apli">631983446310061117038495</span>
+                                </div>
+                                <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
+                                    <span class="Menag__apli">2024-02-02 16:15:15</span>
+                                </div>
+                               @* <div class="Menag__detail--btns">
+                                    <a class="Menag__addBtn">Aplikacje</a>
+                                    <a class="Menag__addBtn">Edytuj</a>
+                                    <a class="Menag__addBtn">Usuń</a>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            var typingTimer;
+            var doneTypingInterval = 2500; // 2,5 seconds
+            var scanCount = 0;
+
+            $('#PackageID').on('input', function () {
+                clearTimeout(typingTimer);
+                $('.scan__progress-bar').show();
+                // Po rozpoczęciu wpisywania, ustaw szerokość paska na 0%
+                $('.scan__progress-bar').css('width', '0');
+                //rozpocniej ładowanie odrazu po tym
+                $('.scan__progress-bar').css('width', '100%');
+
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            function doneTyping() {
+                // Pobierz wartość z pola input
+                var packageIDValue = $('#PackageID').val();
+
+                // Pobierz wartość z pola ukrytego
+                var userIDValue = $('#AccountID').val();
+
+                // Animacja paska postępu (rozpoczęcie ładowania)
+                $('.scan__progress-bar').css('width', '100%');
+
+                // Wyślij dane za pomocą AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '/Packages/AddPackage', // Upewnij się, że ścieżka do kontrolera jest poprawna
+                    data: { UserID: userIDValue, PackageID: packageIDValue },
+                    success: function (response) {
+                        // Obsłuż odpowiedź z kontrolera
+                        console.log(response);
+
+                        // Zresetuj pole po wysłaniu
+                        $('#PackageID').val('');
+
+                        // Zaktualizuj ilość zeskanowanych
+                        scanCount++;
+                        $('.scan__number').text(scanCount);
+
+                        // Animacja paska postępu (zakończenie ładowania)
+                        $('.scan__progress-bar').addClass('loaded');
+
+                        // Zniknij po pewnym czasie
+                        setTimeout(function () {
+                            $('.scan__progress-bar').hide();
+                            $('.scan__progress-bar').css('width', '0'); // Zresetuj pasek do 0% szerokości
+                            $('.scan__progress-bar').removeClass('loaded'); // Usuń klasę 'loaded'
+                        }, 1000); // Oczekaj 500 ms (0.5 s) przed zresetowaniem
+                    },
+                    error: function (error) {
+                        // Obsłuż błąd
+                        console.error('Błąd AJAX:', error);
+                    }
+                });
+            }
+        });
+    </script>
+}
