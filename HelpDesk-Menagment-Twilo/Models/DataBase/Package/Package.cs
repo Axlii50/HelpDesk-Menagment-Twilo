@@ -11,9 +11,10 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         public string PackageShippingID { get; set; }
 
         [Column(TypeName = "datetime2")]
-        public DateTime DateString { get; set; } = DateTime.Now;
+		public DateTime DateString { get; set; } = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
 
-        public DeliveryType DeliveryType { get; set; }
+
+		public DeliveryType DeliveryType { get; set; }
 
         [ForeignKey("Account")]
         public Guid AccountID { get; set; }

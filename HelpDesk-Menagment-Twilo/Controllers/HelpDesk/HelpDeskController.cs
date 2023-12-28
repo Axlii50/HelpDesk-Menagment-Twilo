@@ -51,7 +51,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
         #region Tickets
         public async Task<IActionResult> AddTicket([Bind("TicketTitle,TicketDescription,TicketCategory,TicketStatus,TicketPriority,AccountID")] AddTicketModel ticket)
         {
-            var account = _context.Account.Find(ticket.AccountID);
+            var account = _context.Account.Find(Guid.Parse(ticket.AccountID));
 
             if (account == null) return BadRequest();
 
