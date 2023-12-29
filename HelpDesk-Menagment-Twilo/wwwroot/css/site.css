@@ -1051,3 +1051,121 @@ loginPage__input:-webkit-autofill {
     .scan__progress-bar.loaded {
         background-color: #28a745; /* Kolor po zakoñczeniu ³adowania (zielony) */
     }
+
+
+
+/*Paczki -> Skanowanie -> DataModal*/
+
+.modal-content-packages {
+    width: 40rem;
+}
+
+.modal-dialog-data {
+    max-width: 120rem;
+}
+
+.buyer {
+    border-right: 1px solid black;
+}
+
+.delivery {
+    border-right: 1px solid black;
+}
+
+
+.modal-data {
+    width: 80rem;
+    background-color: #fff;
+    color: #000;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    row-gap: 0;
+    padding: 1rem;
+
+    justify-content: center;
+    align-content: center;
+}
+
+.data__header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.data__text {
+    font-size: 1.6rem;
+    margin-bottom: 0.1rem;
+}
+
+.items {
+    grid-column: 1 / -1;
+    
+    max-height: 50rem;
+    min-height: 0;
+
+    overflow: scroll;
+    overflow-x: hidden;
+
+    border-top: 1px solid black;
+    padding-top: 1rem;
+}
+
+.item {
+    display: flex;
+    gap: 1.5rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.item:last-child {
+    margin-bottom: 0;
+}
+
+.item-img {
+    flex: 0 1 15rem;
+}
+
+.item__img {
+    max-width: 100%;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-count {
+    flex: 0 1 10rem;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;  
+}
+
+.item-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.item-number {
+    font-size: 1.8rem;
+}
+
+.item-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-ilosc {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.item-number {
+    margin-bottom: 0;
+}
