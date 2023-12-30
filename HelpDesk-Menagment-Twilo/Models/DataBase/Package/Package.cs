@@ -8,7 +8,9 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
     {
         public Guid ID { get; set; }
 
+        [ForeignKey("PackageInfo")]
         public string PackageShippingID { get; set; }
+        public PackageInfo PackageInfo { get; set; }
 
         [Column(TypeName = "datetime2")]
 		private DateTime DateString { get; set; } = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));

@@ -1,5 +1,6 @@
 ﻿using HelpDesk_Menagment_Twilo.Models.DataBase;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
+using System.ComponentModel.DataAnnotations;
 
 namespace HelpDesk_Menagment_Twilo.Models
 {
