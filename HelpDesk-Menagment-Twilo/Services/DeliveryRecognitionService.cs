@@ -18,7 +18,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         bool IsInpostTrackingNumber(string trackingNumber)
         {
-            return Regex.IsMatch(trackingNumber, @"^6319\d{20}$");
+            return Regex.IsMatch(trackingNumber, @"^.{20}$");
         }
 
         bool IsAllegroOneTrackingNumber(string trackingNumber)
