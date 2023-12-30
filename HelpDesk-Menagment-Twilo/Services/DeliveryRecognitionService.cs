@@ -1,5 +1,6 @@
 ﻿using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Text.RegularExpressions;
 
 namespace HelpDesk_Menagment_Twilo.Services
@@ -27,6 +28,17 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         bool IsOrlenTrackingNumber(string trackingNumber)
         {
+            return Regex.IsMatch(trackingNumber, @"^21\d{11}$");
+        }
+
+        bool IsUPSTrackingNumber(string trackingNumber)
+        {
+            throw new NotImplementedException();
+            return Regex.IsMatch(trackingNumber, @"^21\d{11}$");
+        }
+        bool IsDPDTrackingNumber(string trackingNumber)
+        {
+            throw new NotImplementedException();
             return Regex.IsMatch(trackingNumber, @"^21\d{11}$");
         }
     }

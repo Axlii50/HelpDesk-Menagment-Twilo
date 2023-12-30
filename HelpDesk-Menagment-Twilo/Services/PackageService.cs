@@ -37,12 +37,12 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public IEnumerable<Package> GetPackages(string UserID)
         {
-            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID)/*.Select(pack => pack.Account.Login)*/.ToList());
+            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID).ToList());
         }
 
         public IEnumerable<Package> GetPackages(string UserID, int number)
         {
-            throw new NotImplementedException();
+            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID).Take(number).ToList());
         }
     }
 }
