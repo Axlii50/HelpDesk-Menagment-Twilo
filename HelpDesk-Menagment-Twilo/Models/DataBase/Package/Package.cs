@@ -9,7 +9,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         public Guid ID { get; set; }
 
         [ForeignKey("PackageInfo")]
-        public string PackageShippingID { get; set; }
+        public string PackageInfoId { get; set; }
         public PackageInfo PackageInfo { get; set; }
 
         [Column(TypeName = "datetime2")]
@@ -21,7 +21,6 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         [ForeignKey("Account")]
         public Guid AccountID { get; set; }
         public Account Account { get; set; }
-
     }
 
     public enum DeliveryType

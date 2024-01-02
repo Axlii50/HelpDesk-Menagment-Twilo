@@ -19,14 +19,15 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public IActionResult AddPackage(string UserID, string PackageID)
         {
+            var packageinfo = GetPackageInfo(PackageID);
+            //jeżeli jakimś cudem null w takim wypadku pobrać etykiete dla danej paczki oraz wszelkie informacje odnośnie zamówienia
+
             var package = new Package()
             {
-                PackageShippingID = PackageID,
+                PackageInfo = packageinfo,
                 AccountID = new Guid(UserID),
+                //DeliveryType = _recognition.Recognize(PackageID)
             };
-
-            //dodanie rozpoznawania typu dostawcy
-            //package.DeliveryType = _recognition.Recognize(PackageID);
 
             _context.Packages.Add(package);
 
@@ -35,14 +36,19 @@ namespace HelpDesk_Menagment_Twilo.Services
             return new OkResult();
         }
 
+        public PackageInfo GetPackageInfo(string PackageShippingId)
+        {
+            return _context.PackageInfo.SingleOrDefault(info => info.PackageShippingId == PackageShippingId);
+        }
+
         public IEnumerable<Package> GetPackages(string UserID)
         {
-            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID).ToList());
+            return (_context.Packages.Include(pack => pack.Account).Include(pack => pack.PackageInfo).Where(pack => pack.AccountID.ToString() == UserID).ToList());
         }
 
         public IEnumerable<Package> GetPackages(string UserID, int number)
         {
-            return (_context.Packages.Include(pack => pack.Account).Where(pack => pack.AccountID.ToString() == UserID).Take(number).ToList());
+            return (_context.Packages.Include(pack => pack.Account).Include(pack => pack.PackageInfo).Where(pack => pack.AccountID.ToString() == UserID).Take(number).ToList());
         }
     }
 }
