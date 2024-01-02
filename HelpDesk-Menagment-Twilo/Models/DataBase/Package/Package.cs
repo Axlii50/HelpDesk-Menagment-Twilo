@@ -8,8 +8,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
     {
         public Guid ID { get; set; }
 
-        [ForeignKey("PackageInfo")]
-        public string PackageInfoId { get; set; }
+        //[ForeignKey("PackageInfo")]
+        //public Guid PackageInfoId { get; set; }
         public PackageInfo PackageInfo { get; set; }
 
         [Column(TypeName = "datetime2")]

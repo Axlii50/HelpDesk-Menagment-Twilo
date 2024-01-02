@@ -17,7 +17,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 
         public IActionResult Index(string AccountID)
         {
-            var account = _context.Account.Find(AccountID);
+            var account = _context.Account.Find(new Guid(AccountID));
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
@@ -26,7 +26,6 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
                 AccountID = AccountID,
                 Permissions = account.Permissions
             };
-           
 
             return View("~/Views/Menagment/Index.cshtml", viewModel);
         }
