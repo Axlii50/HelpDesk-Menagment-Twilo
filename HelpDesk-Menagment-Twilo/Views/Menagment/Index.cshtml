@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MenagmentViewModel
+
+@{
     Layout = "_Layout";
 }
 
@@ -27,39 +29,32 @@
                             </div>
                         </div>
 
-
-                        <div class="Menag__rows">
-                            <div class="Menag__accountRow">
-                                <div class="Menag__detail Menag__detail--userName">
-                                    <span class="Menag__userName">Jakub Stegienko</span>
+                       
+                       
+                        @{
+                            foreach (var account in Model.PlatformAccounts)
+                            {
+                                <div class="Menag__rows">
+                                    <div class="Menag__accountRow">
+                                        <div class="Menag__detail Menag__detail--userName">
+                                            <span class="Menag__userName">@account.AccountName</span>
+                                        </div>
+                                        <div class="Menag__detail Menag__detail--apli">
+                                            <span class="Menag__apli">0</span>
+                                        </div>
+                                        <div class="Menag__detail Menag__detail--apli">
+                                            <span class="Menag__apli">0</span>
+                                        </div>
+                                        <div class="Menag__detail--btns">
+                                            <a class="Menag__addBtn">Aplikacje</a>
+                                            <a class="Menag__addBtn">Edytuj</a>
+                                            <a class="Menag__addBtn">Usuń</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="Menag__detail Menag__detail--apli">
-                                    <span class="Menag__apli">2</span>
-                                </div>
-                                <div class="Menag__detail Menag__detail--apli">
-                                    <span class="Menag__apli">2</span>
-                                </div>
-                                <div class="Menag__detail--btns">
-                                    <a class="Menag__addBtn">Aplikacje</a>
-                                    <a class="Menag__addBtn">Edytuj</a>
-                                    <a class="Menag__addBtn">Usuń</a>
-                                </div>
-                            </div>
-
-                            <div class="Menag__accountRow">
-                                <div class="Menag__detail Menag__detail--userName">
-                                    <span class="Menag__userName">Jakub Stegienko</span>
-                                </div>
-                                <div class="Menag__detail Menag__detail--apli">
-                                    <span class="Menag__apli">2</span>
-                                </div>
-                                <div class="Menag__detail--btns">
-                                    <a class="Menag__addBtn">Aplikacje</a>
-                                    <a class="Menag__addBtn">Edytuj</a>
-                                    <a class="Menag__addBtn">Usuń</a>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
+                       
                     </div>
                 </div>
 

@@ -6,6 +6,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Menagment
     {
         public Guid ID { get; set; }
 
+        public string AccountName { get; set; }
+
         public string ClientSecret { get; set; }
 
         public string ClientID { get; set; }
