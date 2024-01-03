@@ -15,5 +15,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Allegro Api">
+      <HintPath>..\..\PIOTR-API\Allegro Api\bin\Debug\net6.0\Allegro Api.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
