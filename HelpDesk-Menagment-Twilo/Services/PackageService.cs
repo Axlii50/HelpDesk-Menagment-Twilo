@@ -36,6 +36,12 @@ namespace HelpDesk_Menagment_Twilo.Services
             return new OkResult();
         }
 
+        public void CreatePackage()
+        {
+            //Dodać osobny serwis pod Wysyłke paczek
+            throw new NotImplementedException();
+        }
+
         public PackageInfo GetPackageInfo(string PackageShippingId)
         {
             return _context.PackageInfo.SingleOrDefault(info => info.PackageShippingId == PackageShippingId);
