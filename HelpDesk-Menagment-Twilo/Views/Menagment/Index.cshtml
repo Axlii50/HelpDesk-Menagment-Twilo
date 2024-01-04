@@ -8,9 +8,7 @@
     <div class="container-fluid container__menag">
         <div class="Menag__content">
             <div class="Menag__box">
-               @* <div class="Menag__addBtnBox">
-                    <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Skanowanie">Skanowanie</a>
-                </div>*@
+                @Html.Hidden("AccountID", Model.AccountID)
                 <div class="modal fade" id="Autoryzuj" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -21,6 +19,10 @@
                             <div class="modal-body">
                                 <div class="autoryzuj__row">
                                     <p class="autoryzuj__link">https://allegro.pl/uzytkownik/bezpieczenstwo/skojarz-aplikacje?code=eodrfds7o</p>
+                                </div>
+
+                                <div class="autoryzuj__row">
+                                    <input type="hidden" id="accountNameInput" />
                                 </div>
 
                                 <div class="modal-footer autoryzuj__modal-footer">
@@ -73,7 +75,7 @@
                                                 <a class="Menag__addBtn">Aplikacje</a>
 
 
-                                                <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Autoryzuj">Autoryzuj</a>
+                                                <a class="Menag__addBtn" >Autoryzuj</a>
 
                                                
 
@@ -104,6 +106,62 @@
         copyBtn.addEventListener('click', function () {
             navigator.clipboard.writeText(copyText.innerHTML);
         })
+
+          
+        $(document).ready(function () {
+            // Dodaj obsługę zdarzenia po kliknięciu przycisku "Autoryzuj"
+            $('.Menag__addBtn').on('click', function () {
+                var accountName = $('.Menag__userName').text();
+                var accountID = $('#AccountID').val();
+
+                $('#accountNameInput').val(accountName);
+
+                $.ajax({
+                    url: '/Menagment/GetVerificationUrl',  // Podmień to na odpowiedni adres URL
+                    method: 'GET',
+                    data: {
+                        AccountID: accountID,
+                        PlatformaccountName: accountName
+                    },
+                    success: function (response) {
+                        $('.autoryzuj__link').text(response.url);
+                    },
+                    error: function (error) {
+                        console.error('Wystąpił błąd w trakcie żądania AJAX:', error);
+                    }
+                });
+
+                // Pobierz modal o ID "Autoryzuj" i pokaż go
+                $('#Autoryzuj').modal('show');
+            });
+
+            $('.autoryzuj__btn').on('click', function () {
+                // Pobierz potrzebne dane
+                var accountName = $('.Menag__userName').text();
+                var accountID = $('#AccountID').val();
+
+                // Wyślij żądanie AJAX do metody VerifyAccount
+                $.ajax({
+                    url: '/Menagment/VerifyAccount',
+                    method: 'GET',
+                    data: {
+                        AccountID: accountID,
+                        PlatformaccountName: accountName
+                    },
+                    success: function (response) {
+                        // Obsłuż odpowiedź
+                        console.log(response.isVerified);
+                        if (response.isVerified) {
+                            alert('Konto zweryfikowane!');
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Wystąpił błąd w trakcie żądania AJAX:', error);
+                    }
+                });
+            });
+        });
+   
 
     </script>
 }

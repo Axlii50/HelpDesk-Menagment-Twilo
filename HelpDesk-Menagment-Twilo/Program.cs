@@ -26,10 +26,8 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddScoped<IPackageService, PackageService>();
             builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
             builder.Services.AddScoped<IPlatformAccountService, PlatformAccountService>();
-            builder.Services.AddScoped<IAllegroService, AllegroService>();
+            builder.Services.AddSingleton<IAllegroService, AllegroService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-
-
 
             var app = builder.Build();
 

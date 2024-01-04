@@ -17,5 +17,7 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
            return _context.PlatformAccounts.ToList();
         }
+
+        
     }
 }
