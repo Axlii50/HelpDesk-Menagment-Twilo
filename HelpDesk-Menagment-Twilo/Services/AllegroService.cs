@@ -1,6 +1,7 @@
 ﻿using Allegro_Api;
 using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Migrations;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Menagment;
 
 namespace HelpDesk_Menagment_Twilo.Services
@@ -28,7 +29,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
                 allegroApi = new AllegroApi(account.ClientID, account.ClientSecret, HandleRefreshToken);
 
-                dictionary.Add(nameof(account.AccountName), allegroApi);
+                dictionary.Add(account.AccountName, allegroApi);
             }
 
             return dictionary;
@@ -39,7 +40,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         }
 
-        public async Task<bool> AuthorizeAllegroAccount(string accountName)
+        public async Task<bool> GetVerificationUri(string accountName)
         {
             var allegroApi = _accounts.FirstOrDefault(api => api.Key == accountName).Value;
 
@@ -51,13 +52,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             // open link in browser
             Console.WriteLine("Link do autoryzacji: " + verificationUrlModel.verification_uri_complete);
 
-            Allegro_Api.AllegroPermissionState Permissions =
-                        AllegroPermissionState.allegro_api_sale_offers_read |
-                        AllegroPermissionState.allegro_api_sale_offers_write |
-                        AllegroPermissionState.allegro_api_sale_settings_read |
-                        AllegroPermissionState.allegro_api_sale_settings_write;
-
-            bool access = await allegroApi.CheckForAccessToken(Permissions);
+            bool access = await CheckAccessToken(allegroApi);
 
             if (!access)
             {
@@ -67,6 +62,19 @@ namespace HelpDesk_Menagment_Twilo.Services
             allegroApi.RefreshAccesToken();
 
             return true;
+        }
+
+        public async Task<bool> CheckAccessToken(AllegroApi allegroApi)
+        {
+            Allegro_Api.AllegroPermissionState Permissions =
+                        AllegroPermissionState.allegro_api_sale_offers_read |
+                        AllegroPermissionState.allegro_api_sale_offers_write |
+                        AllegroPermissionState.allegro_api_sale_settings_read |
+                        AllegroPermissionState.allegro_api_sale_settings_write;
+
+            bool access = await allegroApi.CheckForAccessToken(Permissions);
+
+            return access;
         }
 
         //Dictionary<Order, Account name>
