@@ -7,7 +7,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class AllegroService : IAllegroService
     {
-        private readonly Dictionary<Guid, AllegroApi> _accounts;
+        private readonly Dictionary<string, AllegroApi> _accounts;
         private readonly HelpDesk_Menagment_TwiloContext _context;
 
         public AllegroService(HelpDesk_Menagment_TwiloContext context)
@@ -16,9 +16,9 @@ namespace HelpDesk_Menagment_Twilo.Services
             _accounts = InitializeAllegroApis();
         }
 
-        private Dictionary<Guid, AllegroApi> InitializeAllegroApis()
+        private Dictionary<string, AllegroApi> InitializeAllegroApis()
         {
-            Dictionary<Guid, AllegroApi> dictionary = new Dictionary<Guid, AllegroApi>();
+            Dictionary<string, AllegroApi> dictionary = new Dictionary<string, AllegroApi>();
 
             var platformAccounts = _context.PlatformAccounts.Where(account => account.PlatformType == PlatformType.Allegro).ToList();
 
@@ -26,16 +26,9 @@ namespace HelpDesk_Menagment_Twilo.Services
             {
                 AllegroApi allegroApi;
 
-                if (!string.IsNullOrEmpty(/*refresh token*/))
-                {
-                    allegroApi = new AllegroApi(account.ClientID, account.ClientSecret, /*refresh token*/, HandleRefreshToken);
-                }
-                else
-                {
-                    allegroApi = new AllegroApi(account.ClientID, account.ClientSecret, HandleRefreshToken);
-                }
+                allegroApi = new AllegroApi(account.ClientID, account.ClientSecret, HandleRefreshToken);
 
-                dictionary.Add(Guid.NewGuid(), allegroApi);
+                dictionary.Add(nameof(account.AccountName), allegroApi);
             }
 
             return dictionary;
@@ -46,9 +39,9 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         }
 
-        public async Task<bool> AuthorizeAllegroAccount(Guid accountId, AllegroPermissionState permissions)
+        public async Task<bool> AuthorizeAllegroAccount(string accountName)
         {
-            var allegroApi = _accounts.FirstOrDefault(api => api.Key == accountId).Value;
+            var allegroApi = _accounts.FirstOrDefault(api => api.Key == accountName).Value;
 
             if (allegroApi == null)
                 return false;
@@ -58,7 +51,13 @@ namespace HelpDesk_Menagment_Twilo.Services
             // open link in browser
             Console.WriteLine("Link do autoryzacji: " + verificationUrlModel.verification_uri_complete);
 
-            bool access = await allegroApi.CheckForAccessToken(permissions);
+            Allegro_Api.AllegroPermissionState Permissions =
+                        AllegroPermissionState.allegro_api_sale_offers_read |
+                        AllegroPermissionState.allegro_api_sale_offers_write |
+                        AllegroPermissionState.allegro_api_sale_settings_read |
+                        AllegroPermissionState.allegro_api_sale_settings_write;
+
+            bool access = await allegroApi.CheckForAccessToken(Permissions);
 
             if (!access)
             {
