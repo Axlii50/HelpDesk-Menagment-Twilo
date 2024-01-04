@@ -1169,3 +1169,46 @@ loginPage__input:-webkit-autofill {
 .item-number {
     margin-bottom: 0;
 }
+
+
+
+.autoryzuj__link {
+    margin-bottom: 0;
+
+    font-size: 1.7rem;
+    color: #000;
+
+    display: flex;
+}
+
+.autoryzuj__row {
+    margin-bottom: 1rem;
+}
+
+.autoryzuj__modal-footer {
+    justify-content: space-between;
+}
+
+.autoryzuj__box {
+    display: flex;
+    gap: 1rem;
+}
+
+.autoryzuj__btn {
+    color: #fff;
+    background-color: var(--color--primary-light);
+    font-size: 1.8rem;
+    border: none;
+    margin: 0;
+    outline: none;
+    transition: all 0.4s;
+
+}
+
+.autoryzuj__btn:hover {
+    background-color: var(--color--primary-dark);
+}
+
+    .autoryzuj__btn:focus-within {
+        background-color: var(--color--primary-dark);
+    }
