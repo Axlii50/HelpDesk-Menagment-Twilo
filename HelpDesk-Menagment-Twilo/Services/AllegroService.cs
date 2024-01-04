@@ -52,15 +52,6 @@ namespace HelpDesk_Menagment_Twilo.Services
             // open link in browser
             Console.WriteLine("Link do autoryzacji: " + verificationUrlModel.verification_uri_complete);
 
-            bool access = await CheckAccessToken(allegroApi);
-
-            if (!access)
-            {
-                return false;
-            }
-
-            allegroApi.RefreshAccesToken();
-
             return true;
         }
 
