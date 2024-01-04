@@ -34,31 +34,75 @@
                         @{
                             foreach (var account in Model.PlatformAccounts)
                             {
-                                <div class="Menag__rows">
-                                    <div class="Menag__accountRow">
-                                        <div class="Menag__detail Menag__detail--userName">
-                                            <span class="Menag__userName">@account.AccountName</span>
-                                        </div>
-                                        <div class="Menag__detail Menag__detail--apli">
-                                            <span class="Menag__apli">0</span>
-                                        </div>
-                                        <div class="Menag__detail Menag__detail--apli">
-                                            <span class="Menag__apli">0</span>
-                                        </div>
-                                        <div class="Menag__detail--btns">
-                                            <a class="Menag__addBtn">Aplikacje</a>
-                                            <a class="Menag__addBtn">Edytuj</a>
-                                            <a class="Menag__addBtn">Usuń</a>
+                                    <div class="Menag__rows">
+                                        <div class="Menag__accountRow">
+                                            <div class="Menag__detail Menag__detail--userName">
+                                                <span class="Menag__userName">@account.AccountName</span>
+                                            </div>
+                                            <div class="Menag__detail Menag__detail--apli">
+                                                <span class="Menag__apli">0</span>
+                                            </div>
+                                            <div class="Menag__detail Menag__detail--apli">
+                                                <span class="Menag__apli">0</span>
+                                            </div>
+                                            <div class="Menag__detail--btns">
+                                                <a class="Menag__addBtn">Aplikacje</a>
+
+
+                                                <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Autoryzuj">Autoryzuj</a>
+
+                                                <div class="modal fade" id="Autoryzuj" tabindex="-1" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title scan__header">Link</h1>
+                                                                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                                <div class="modal-body">
+                                                                    <div class="autoryzuj__row">
+                                                                    <p class="autoryzuj__link">https://allegro.pl/uzytkownik/bezpieczenstwo/skojarz-aplikacje?code=eodrfds7o</p>
+                                                                    </div>
+
+                                                                    <div class="modal-footer autoryzuj__modal-footer">
+                                                                        <div class="autoryzuj__box">
+                                                                        <button type="button" class="btn btn-primary autoryzuj__btn">Sprawdź</button>
+                                                                        <button type="button" class="btn btn-primary autoryzuj__btn copybtn">Kopiuj link</button>
+                                                                        </div>
+
+                                                                        <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <a class="Menag__addBtn">Usuń</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             }
                         }
                        
+                       
+
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        'use strict';
+
+        const copyBtn = document.querySelector('.copybtn');
+        const copyText = document.querySelector('.autoryzuj__link')
+
+        copyBtn.addEventListener('click', function () {
+            navigator.clipboard.writeText(copyText.innerHTML);
+        })
+
+    </script>
+}
