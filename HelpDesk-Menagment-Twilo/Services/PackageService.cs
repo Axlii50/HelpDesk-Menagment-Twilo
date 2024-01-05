@@ -1,5 +1,6 @@
 ﻿using Allegro_Api.Models.Order.checkoutform;
 using Allegro_Api.Shipment;
+using Allegro_Api.Shipment.Components;
 using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
@@ -59,7 +60,19 @@ namespace HelpDesk_Menagment_Twilo.Services
             var shipmentdata = new ShipmentCreateRequestDto()
             {
                 deliveryMethodId = detailedCheckOutForm.delivery.method.id,
+                sender = null,
+                receiver = null,
+                packages = null,
+                cachOnDelivery = null,
+            };
+        }
 
+        private CashOnDeliveryDto CreateCashOnDelivery(ref DetailedCheckOutForm detailedCheckOutForm)
+        {
+            return new CashOnDeliveryDto()
+            {
+                amount = detailedCheckOutForm.summary.totalToPay.amount,
+                currency = detailedCheckOutForm.summary.totalToPay.currency
             };
         }
         

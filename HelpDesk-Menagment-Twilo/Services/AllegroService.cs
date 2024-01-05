@@ -21,8 +21,6 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         }
 
-
-
         public async Task<string> GetVerificationUri(PlatformAccount platformAccount)
         {
             // Initialize the account for Allegro API authentication

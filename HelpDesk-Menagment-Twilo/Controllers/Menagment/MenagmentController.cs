@@ -32,11 +32,12 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
             {
                 AccountID = AccountID,
                 Permissions = account.Permissions,
-                PlatformAccounts = _platformAccountService.GetAll()
+                PlatformAccounts = _platformAccountService.GetAll() // 1v 2 3v
             };
 
             return View("~/Views/Menagment/Index.cshtml", viewModel);
         }
+
         [HttpGet]
         public async Task<IActionResult> GetVerificationUrl(string AccountID, string PlatformaccountName)
         {
