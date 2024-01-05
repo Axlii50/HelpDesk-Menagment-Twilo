@@ -1,4 +1,6 @@
-﻿using HelpDesk_Menagment_Twilo.Data;
+﻿using Allegro_Api.Models.Order.checkoutform;
+using Allegro_Api.Shipment;
+using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +12,13 @@ namespace HelpDesk_Menagment_Twilo.Services
     {
         private readonly HelpDesk_Menagment_TwiloContext _context;
         private readonly IDeliveryRecognitionService _recognition;
+        private readonly IAllegroService _allegroService;
 
-        public PackageService(HelpDesk_Menagment_TwiloContext context, IDeliveryRecognitionService recognition)
+        public PackageService(HelpDesk_Menagment_TwiloContext context, IDeliveryRecognitionService recognition, IAllegroService allegroService)
         {
             _context = context;
             _recognition = recognition;
+            _allegroService = allegroService;
         }
 
         public IActionResult AddPackage(string UserID, string PackageID)
@@ -36,11 +40,29 @@ namespace HelpDesk_Menagment_Twilo.Services
             return new OkResult();
         }
 
-        public void CreatePackage()
+        public async void CreatePackage(string AccountName, string OrderId)
         {
+            var allegroapi = _allegroService.GetAllegroApi(AccountName);
+
+            var Order = await allegroapi.GetOrderDetails(OrderId);
+
+            var Data = CreateShipmentData(Order);
+
+            allegroapi.CreatePackage(Data);
+
             //Dodać osobny serwis pod Wysyłke paczek
             throw new NotImplementedException();
         }
+
+        private ShipmentCreateRequestDto CreateShipmentData(DetailedCheckOutForm detailedCheckOutForm)
+        {
+            var shipmentdata = new ShipmentCreateRequestDto()
+            {
+                deliveryMethodId = detailedCheckOutForm.delivery.method.id,
+
+            };
+        }
+        
 
         public PackageInfo GetPackageInfo(string PackageShippingId)
         {

@@ -12,6 +12,8 @@ namespace HelpDesk_Menagment_Twilo.Services
             if (IsInpostTrackingNumber(PackageID)) return DeliveryType.Inpost;
             if (IsAllegroOneTrackingNumber(PackageID)) return DeliveryType.AllegroOne;
             if (IsOrlenTrackingNumber(PackageID)) return DeliveryType.Orlen;
+            if (IsOrlenTrackingNumber(PackageID)) return DeliveryType.UPS;
+            if (IsDPDTrackingNumber(PackageID)) return DeliveryType.DPD;
 
             return 0;
         }

@@ -53,5 +53,10 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             return access;
         }
+
+        public AllegroApi GetAllegroApi (string AccountName)
+        {
+            return _accounts[AccountName];
+        }
     }
 }
