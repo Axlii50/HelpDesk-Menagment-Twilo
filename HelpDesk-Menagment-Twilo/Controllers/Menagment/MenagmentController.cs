@@ -37,30 +37,46 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 
             return View("~/Views/Menagment/Index.cshtml", viewModel);
         }
-
         [HttpGet]
         public async Task<IActionResult> GetVerificationUrl(string AccountID, string PlatformaccountName)
         {
+            // Find the account based on the provided identifier
             var account = _context.Account.Find(new Guid(AccountID));
 
-            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
+            // If the account does not exist, redirect to the login page
+            if (account == null)
+            {
+                return View("~/Views/Home/LoginPage.cshtml");
+            }
 
-            var PlatformAccount = _context.PlatformAccounts.Where(acc => acc.AccountName == PlatformaccountName).FirstOrDefault();
+            // Find the platform account based on the provided account name
+            var PlatformAccount = _context.PlatformAccounts
+                .Where(acc => acc.AccountName == PlatformaccountName)
+                .FirstOrDefault();
 
+            // Get the verification URL from the Allegro service
             string Url = await _allegroService.GetVerificationUri(PlatformAccount);
 
+            // Return the response in JSON format with the URL
             return Json(new { Url = Url });
         }
 
         [HttpGet]
         public async Task<IActionResult> VerifyAccount(string AccountID, string PlatformaccountName)
         {
+            // Find the account based on the provided identifier
             var account = _context.Account.Find(new Guid(AccountID));
 
-            if (account == null) return View("~/Views/Home/LoginPage.cshtml");
+            // If the account does not exist, redirect to the login page
+            if (account == null)
+            {
+                return View("~/Views/Home/LoginPage.cshtml");
+            }
 
+            // Check if the access token for the platform account is valid
             bool IsVerified = await _allegroService.CheckAccessToken(PlatformaccountName);
 
+            // Return JSON response indicating whether the account is verified
             return Json(new { IsVerified = IsVerified });
         }
     }
