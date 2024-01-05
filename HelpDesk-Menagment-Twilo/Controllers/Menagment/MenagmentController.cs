@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using Microsoft.AspNetCore.Http.Metadata;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Menagment;
+using NuGet.Packaging;
 
 namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 {
@@ -28,11 +30,17 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
+            var platformAccounts = _platformAccountService.GetAll();
+            Dictionary<PlatformAccount, bool> AccountAuthorizationStatusPairs = platformAccounts.ToDictionary(
+                platformAccount => platformAccount,
+                platformAccount => _allegroService.IsAuthorized(platformAccount.AccountName)
+            );
+
             var viewModel = new MenagmentViewModel()
             {
                 AccountID = AccountID,
                 Permissions = account.Permissions,
-                PlatformAccounts = _platformAccountService.GetAll()
+                PlatformAccountsWithAuthorizationStatus = AccountAuthorizationStatusPairs,
             };
 
             return View("~/Views/Menagment/Index.cshtml", viewModel);

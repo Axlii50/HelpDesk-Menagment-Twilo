@@ -8,6 +8,7 @@ namespace HelpDesk_Menagment_Twilo.Models
         public string AccountID { get; set; }
         public PermissionsTypes Permissions { get; set; }
 
-        public List<PlatformAccount> PlatformAccounts { get; set; }
+        public Dictionary<PlatformAccount, bool> PlatformAccountsWithAuthorizationStatus { get; set; }
+        //public List<bool> IsCorrespondingAccVerified { get; set; }
     }
 }
