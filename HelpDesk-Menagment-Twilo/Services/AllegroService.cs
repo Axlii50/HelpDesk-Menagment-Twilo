@@ -21,6 +21,8 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         }
 
+
+
         public async Task<string> GetVerificationUri(PlatformAccount platformAccount)
         {
             // Initialize the account for Allegro API authentication
@@ -57,6 +59,11 @@ namespace HelpDesk_Menagment_Twilo.Services
         public AllegroApi GetAllegroApi (string AccountName)
         {
             return _accounts[AccountName];
+        }
+
+        public bool IsAuthorized(string AccountName)
+        {
+            return _accounts[AccountName].RefreshToken != string.Empty;
         }
     }
 }

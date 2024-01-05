@@ -8,5 +8,6 @@ namespace HelpDesk_Menagment_Twilo.Interfaces
         Task<string> GetVerificationUri(PlatformAccount platformAccount);
         Task<bool> CheckAccessToken(string AccountName);
         AllegroApi GetAllegroApi(string AccountName);
+        bool IsAuthorized(string AccountName);
     }
 }
