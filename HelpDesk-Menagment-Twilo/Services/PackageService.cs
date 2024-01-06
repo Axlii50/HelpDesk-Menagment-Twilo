@@ -40,43 +40,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             return new OkResult();
         }
-
-        public async void CreatePackage(string AccountName, string OrderId)
-        {
-            var allegroapi = _allegroService.GetAllegroApi(AccountName);
-
-            var Order = await allegroapi.GetOrderDetails(OrderId);
-
-            var Data = CreateShipmentData(Order);
-
-            allegroapi.CreatePackage(Data);
-
-            //Dodać osobny serwis pod Wysyłke paczek
-            throw new NotImplementedException();
-        }
-
-        private ShipmentCreateRequestDto CreateShipmentData(DetailedCheckOutForm detailedCheckOutForm)
-        {
-            var shipmentdata = new ShipmentCreateRequestDto()
-            {
-                deliveryMethodId = detailedCheckOutForm.delivery.method.id,
-                sender = null,
-                receiver = null,
-                packages = null,
-                cachOnDelivery = null,
-            };
-        }
-
-        private CashOnDeliveryDto CreateCashOnDelivery(ref DetailedCheckOutForm detailedCheckOutForm)
-        {
-            return new CashOnDeliveryDto()
-            {
-                amount = detailedCheckOutForm.summary.totalToPay.amount,
-                currency = detailedCheckOutForm.summary.totalToPay.currency
-            };
-        }
         
-
         public PackageInfo GetPackageInfo(string PackageShippingId)
         {
             return _context.PackageInfo.SingleOrDefault(info => info.PackageShippingId == PackageShippingId);
