@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Services;
+using Microsoft.Extensions.Hosting;
 
 namespace HelpDesk_Menagment_Twilo
 {
@@ -22,6 +23,9 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddMemoryCache();
+
+            builder.Services.AddHostedService<BackGroundService>();
+            builder.Services.AddScoped<IBackGroundService, PackageGeneratorService>();
 
             builder.Services.AddScoped<IPackageService, PackageService>();
             builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
