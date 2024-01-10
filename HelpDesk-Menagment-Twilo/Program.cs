@@ -25,15 +25,14 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddMemoryCache();
 
             builder.Services.AddHostedService<BackGroundService>();
-           
-
-            builder.Services.AddSingleton<IPackageService, PackageService>();
-            builder.Services.AddSingleton<IDeliveryRecognitionService, DeliveryRecognitionService>();
-            builder.Services.AddSingleton<IPlatformAccountService, PlatformAccountService>();
-            builder.Services.AddSingleton<IAllegroService, AllegroService>();
-            builder.Services.AddSingleton<IOrderService, OrderService>();
-            builder.Services.AddSingleton<IShippingService, ShippingService>();
             builder.Services.AddSingleton<IBackGroundService, PackageGeneratorService>();
+
+            builder.Services.AddScoped<IPackageService, PackageService>();
+            builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
+            builder.Services.AddScoped<IPlatformAccountService, PlatformAccountService>();
+            builder.Services.AddSingleton<IAllegroService, AllegroService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IShippingService, ShippingService>();
 
             var app = builder.Build();
 
