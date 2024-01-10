@@ -2,6 +2,8 @@
 using Allegro_Api.Shipment.Components;
 using Allegro_Api.Shipment;
 using HelpDesk_Menagment_Twilo.Interfaces;
+using Allegro_Api.Models.Shipment;
+using Allegro_Api;
 
 namespace HelpDesk_Menagment_Twilo.Services
 {
@@ -98,6 +100,13 @@ namespace HelpDesk_Menagment_Twilo.Services
                 email = detailedCheckOutForm.buyer.email,
                 phone = detailedCheckOutForm.buyer.phoneNumber,
             };
+        }
+
+        private async Task<ShipmentCreationStatus> GetShipmentCreationStatus(string accountName ,string ShipmentCreationId)
+        {
+            var allegroApi = _allegroService.GetAllegroApi(accountName);
+
+            return await allegroApi.CheckPackageCreationStatus(ShipmentCreationId);
         }
     }
 }
