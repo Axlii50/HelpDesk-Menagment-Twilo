@@ -87,7 +87,7 @@ namespace HelpDesk_Menagment_Twilo.Services
         }
         private ReceiverAddressDto CreateReceiver(ref DetailedCheckOutForm detailedCheckOutForm)
         {
-            return new SenderAddressDto()
+            return new ReceiverAddressDto()
             {
                 name = detailedCheckOutForm.buyer.login,
                 street = detailedCheckOutForm.delivery.address.streetAndNumber[0],

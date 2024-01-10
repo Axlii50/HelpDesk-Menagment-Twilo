@@ -59,9 +59,17 @@ namespace HelpDesk_Menagment_Twilo.Services
             return _accounts[AccountName];
         }
 
+
+        public string[] GetAuthorizedAccounts()
+        {
+            return _accounts.Keys.ToArray();
+        }
+
         public bool IsAuthorized(string AccountName)
         {
-            return _accounts[AccountName].RefreshToken != string.Empty;
+            if (_accounts.ContainsKey(AccountName))
+                return _accounts[AccountName].RefreshToken != string.Empty;
+            else return false;
         }
     }
 }

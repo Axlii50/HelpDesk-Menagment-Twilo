@@ -9,5 +9,7 @@ namespace HelpDesk_Menagment_Twilo.Interfaces
         Task<bool> CheckAccessToken(string AccountName);
         AllegroApi GetAllegroApi(string AccountName);
         bool IsAuthorized(string AccountName);
+
+        string[] GetAuthorizedAccounts();
     }
 }

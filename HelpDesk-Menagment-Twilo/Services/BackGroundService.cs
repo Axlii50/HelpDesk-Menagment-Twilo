@@ -25,7 +25,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 }
 
                 // Ustaw interwał czasowy
-                await Task.Delay(TimeSpan.FromHours(8), stoppingToken);
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
             }
         }
     }

@@ -55,5 +55,11 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
             return (_context.Packages.Include(pack => pack.Account).Include(pack => pack.PackageInfo).Where(pack => pack.AccountID.ToString() == UserID).Take(number).ToList());
         }
+
+        public async Task<bool> CheckIfPackageExist(Guid PackageID)
+        {
+            return await _context.PackageInfo.AnyAsync(pack => pack.PackageId == PackageID);
+        }
+
     }
 }

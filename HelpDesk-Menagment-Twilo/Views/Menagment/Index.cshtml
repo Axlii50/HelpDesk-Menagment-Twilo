@@ -58,13 +58,13 @@
 
 
                         @{
-                            foreach (var account in Model.PlatformAccountsWithVerification)
+                            foreach (var account in Model.PlatformAccountsWithAuthorizationStatus)
                             {
 
                                     <div class="Menag__rows">
                                         <div class="Menag__accountRow">
                                             <div class="Menag__detail Menag__detail--userName">
-                                                <span class="Menag__userName">@account.AccountName</span>
+                                                <span class="Menag__userName">@account.Key.AccountName</span>
                                             </div>
                                             <div class="Menag__detail Menag__detail--apli">
                                                 <span class="Menag__apli">0</span>

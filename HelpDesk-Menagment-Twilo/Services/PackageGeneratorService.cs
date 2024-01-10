@@ -1,28 +1,90 @@
-﻿using HelpDesk_Menagment_Twilo.Data;
+﻿using Allegro_Api;
+using Allegro_Api.Models.Order.checkoutform;
+using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Models.DataBase;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
+using Microsoft.Extensions.DependencyInjection;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace HelpDesk_Menagment_Twilo.Services
 {
     public class PackageGeneratorService : IBackGroundService
     {
-        private readonly IShippingService _shippingService;
-        private readonly IOrderService _orderService;
-        private readonly HelpDesk_Menagment_TwiloContext context;
+        private readonly IShippingService shippingService;
+        private readonly IOrderService orderService;
+        //private readonly HelpDesk_Menagment_TwiloContext context;
+        private readonly IAllegroService allegroService;
+        private readonly IPackageService packageService;
 
-        public PackageGeneratorService(IShippingService shippingService, IOrderService orderService, HelpDesk_Menagment_TwiloContext context)
+
+        //private readonly IServiceScopeFactory serviceScopeFactory;
+
+        public PackageGeneratorService(IShippingService shippingService,
+            IOrderService orderService,
+            IAllegroService allegroService,
+            IPackageService packageService)
         {
-            _shippingService = shippingService;
-            _orderService = orderService;
-            this.context = context;
+            this.shippingService = shippingService;
+            this.orderService = orderService;
+           
+            this.allegroService = allegroService;
+            this.packageService = packageService;
         }
+
+        //public PackageGeneratorService(IServiceScopeFactory serviceScopeFactory)
+        //{
+        //    this.serviceScopeFactory = serviceScopeFactory;
+        //}
 
         public async Task StartServiceTask()
         {
-            //Download all orders new/Realization
+            //using (var scope = serviceScopeFactory.CreateScope())
+            //{
+            //    var allegroService = scope.ServiceProvider.GetRequiredService<IAllegroService>();
+            //    var orderService = scope.ServiceProvider.GetRequiredService<IOrderService>();
+            //    var shippingService = scope.ServiceProvider.GetRequiredService<IShippingService>();
+            //    var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
 
-            //Sort out all that are already in database
+            //    string[] authorizedAccounts = allegroService.GetAuthorizedAccounts();
 
-            //Generate number for rest
+            //    foreach (var accounts in authorizedAccounts)
+            //    {
+            //        System.Diagnostics.Debug.WriteLine(accounts);
+            //    }
+
+            //    System.Diagnostics.Debug.WriteLine(" ");
+
+            //    List<CheckOutForm> Orders = null;
+            //    if (authorizedAccounts.Length > 0)
+            //    {
+            //        Orders = await orderService.GetAllUnSavedOrders(authorizedAccounts[0]);
+
+            //        foreach (var order in Orders)
+            //        {
+            //            System.Diagnostics.Debug.WriteLine(order.id);
+            //        }
+            //    }
+
+            //    if (Orders != null)
+            //    {
+            //        var order = Orders.FirstOrDefault();
+
+            //        shippingService.CreateShipment(authorizedAccounts[0], order.id);
+
+            //        var PackageInfo = new PackageInfo()
+            //        {
+            //            OrderId = new Guid(order.id),
+
+            //        }
+            //    }
+
+            //    //Download all orders new/Realization
+
+            //    //Sort out all that are already in database
+
+            //    //Generate number for rest
+            //}
         }
     }
 }

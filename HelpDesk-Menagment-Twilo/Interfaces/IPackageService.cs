@@ -13,6 +13,6 @@ namespace HelpDesk_Menagment_Twilo.Interfaces
 
         PackageInfo GetPackageInfo(string PackageShippingId);
 
-        void CreatePackage();
+        Task<bool> CheckIfPackageExist(Guid PackageID);
     }
 }

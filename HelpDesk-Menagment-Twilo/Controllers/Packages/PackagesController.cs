@@ -31,7 +31,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Packages
             {
                 AccountID = AccountID,
                 Permissions = account.Permissions,
-                packages = _packageService.GetPackages(AccountID)
+               // packages = _packageService.GetPackages(AccountID)
             };
 
             return View("~/Views/Packages/Index.cshtml", viewModel);
