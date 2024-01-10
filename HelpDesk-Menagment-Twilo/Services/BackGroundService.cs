@@ -2,11 +2,11 @@
 
 namespace HelpDesk_Menagment_Twilo.Services
 {
-    public class BackGroundService : BackgroundService
+    public sealed class BackGroundService : BackgroundService
     {
-        private readonly IEnumerable<IBackGroundService> _myServices;
+        private readonly IBackGroundService _myServices;
 
-        public BackGroundService(IEnumerable<IBackGroundService> myServices)
+        public BackGroundService(IBackGroundService myServices)
         {
             _myServices = myServices;
         }
@@ -19,10 +19,10 @@ namespace HelpDesk_Menagment_Twilo.Services
                 Console.WriteLine("Wykonuję zadanie...");
 
                 // Przykładowe zadanie (możesz go dostosować do swoich potrzeb)
-                foreach (var myService in _myServices)
-                {
-                    await myService.StartServiceTask();
-                }
+                //foreach (var myService in _myServices)
+                //{
+                    await _myServices.StartServiceTask();
+                //}
 
                 // Ustaw interwał czasowy
                 await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);

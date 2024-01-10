@@ -11,80 +11,80 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class PackageGeneratorService : IBackGroundService
     {
-        private readonly IShippingService shippingService;
-        private readonly IOrderService orderService;
+        //private readonly IShippingService shippingService;
+        //private readonly IOrderService orderService;
         //private readonly HelpDesk_Menagment_TwiloContext context;
-        private readonly IAllegroService allegroService;
-        private readonly IPackageService packageService;
+        //private readonly IAllegroService allegroService;
+        //private readonly IPackageService packageService;
 
 
-        //private readonly IServiceScopeFactory serviceScopeFactory;
+        private readonly IServiceScopeFactory serviceScopeFactory;
 
-        public PackageGeneratorService(IShippingService shippingService,
-            IOrderService orderService,
-            IAllegroService allegroService,
-            IPackageService packageService)
-        {
-            this.shippingService = shippingService;
-            this.orderService = orderService;
-           
-            this.allegroService = allegroService;
-            this.packageService = packageService;
-        }
-
-        //public PackageGeneratorService(IServiceScopeFactory serviceScopeFactory)
+        //public PackageGeneratorService(IShippingService shippingService,
+        //    IOrderService orderService,
+        //    IAllegroService allegroService,
+        //    IPackageService packageService)
         //{
-        //    this.serviceScopeFactory = serviceScopeFactory;
+        //    this.shippingService = shippingService;
+        //    this.orderService = orderService;
+
+        //    this.allegroService = allegroService;
+        //    this.packageService = packageService;
         //}
+
+        public PackageGeneratorService(IServiceScopeFactory serviceScopeFactory)
+        {
+            this.serviceScopeFactory = serviceScopeFactory;
+        }
 
         public async Task StartServiceTask()
         {
-            //using (var scope = serviceScopeFactory.CreateScope())
-            //{
-            //    var allegroService = scope.ServiceProvider.GetRequiredService<IAllegroService>();
-            //    var orderService = scope.ServiceProvider.GetRequiredService<IOrderService>();
-            //    var shippingService = scope.ServiceProvider.GetRequiredService<IShippingService>();
-            //    var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
+            using (var scope = serviceScopeFactory.CreateScope())
+            {
+                var allegroService = scope.ServiceProvider.GetRequiredService<IAllegroService>();
+                var orderService = scope.ServiceProvider.GetRequiredService<IOrderService>();
+                var shippingService = scope.ServiceProvider.GetRequiredService<IShippingService>();
+                var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
 
-            //    string[] authorizedAccounts = allegroService.GetAuthorizedAccounts();
+                string[] authorizedAccounts = allegroService.GetAuthorizedAccounts();
 
-            //    foreach (var accounts in authorizedAccounts)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine(accounts);
-            //    }
+                foreach (var accounts in authorizedAccounts)
+                {
+                    System.Diagnostics.Debug.WriteLine(accounts);
+                }
 
-            //    System.Diagnostics.Debug.WriteLine(" ");
+                System.Diagnostics.Debug.WriteLine(" ");
 
-            //    List<CheckOutForm> Orders = null;
-            //    if (authorizedAccounts.Length > 0)
-            //    {
-            //        Orders = await orderService.GetAllUnSavedOrders(authorizedAccounts[0]);
+                List<CheckOutForm> Orders = null;
+                if (authorizedAccounts.Length > 0)
+                {
+                    Orders = await orderService.GetAllUnSavedOrders(authorizedAccounts[0]);
 
-            //        foreach (var order in Orders)
-            //        {
-            //            System.Diagnostics.Debug.WriteLine(order.id);
-            //        }
-            //    }
+                    foreach (var order in Orders)
+                    {
+                        System.Diagnostics.Debug.WriteLine(order.id);
+                    }
+                }
 
-            //    if (Orders != null)
-            //    {
-            //        var order = Orders.FirstOrDefault();
+                if (Orders != null)
+                {
+                    var order = Orders.FirstOrDefault();
 
-            //        shippingService.CreateShipment(authorizedAccounts[0], order.id);
+                    shippingService.CreateShipment(authorizedAccounts[0], order.id);
 
-            //        var PackageInfo = new PackageInfo()
-            //        {
-            //            OrderId = new Guid(order.id),
+                    var PackageInfo = new PackageInfo()
+                    {
+                        OrderId = new Guid(order.id),
+                        
+                    };
+                }
 
-            //        }
-            //    }
+                //Download all orders new/Realization
 
-            //    //Download all orders new/Realization
+                //Sort out all that are already in database
 
-            //    //Sort out all that are already in database
-
-            //    //Generate number for rest
-            //}
+                //Generate number for rest
+            }
         }
     }
 }
