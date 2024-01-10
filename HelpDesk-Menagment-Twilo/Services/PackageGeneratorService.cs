@@ -11,26 +11,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class PackageGeneratorService : IBackGroundService
     {
-        //private readonly IShippingService shippingService;
-        //private readonly IOrderService orderService;
-        //private readonly HelpDesk_Menagment_TwiloContext context;
-        //private readonly IAllegroService allegroService;
-        //private readonly IPackageService packageService;
-
-
         private readonly IServiceScopeFactory serviceScopeFactory;
-
-        //public PackageGeneratorService(IShippingService shippingService,
-        //    IOrderService orderService,
-        //    IAllegroService allegroService,
-        //    IPackageService packageService)
-        //{
-        //    this.shippingService = shippingService;
-        //    this.orderService = orderService;
-
-        //    this.allegroService = allegroService;
-        //    this.packageService = packageService;
-        //}
 
         public PackageGeneratorService(IServiceScopeFactory serviceScopeFactory)
         {
