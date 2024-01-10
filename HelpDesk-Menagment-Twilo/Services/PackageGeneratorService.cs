@@ -51,12 +51,12 @@ namespace HelpDesk_Menagment_Twilo.Services
                 {
                     var order = Orders.FirstOrDefault();
 
-                    shippingService.CreateShipment(authorizedAccounts[0], order.id);
+                    var commandId = shippingService.CreateShipment(authorizedAccounts[0], order.id);
 
                     var PackageInfo = new PackageInfo()
                     {
                         OrderId = new Guid(order.id),
-                        
+                        CreationCommandID = commandId
                     };
                 }
 

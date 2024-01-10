@@ -2,6 +2,6 @@
 {
     public interface IShippingService
     {
-        void CreateShipment(string AccountName, string OrderId);
+        string CreateShipment(string AccountName, string OrderId);
     }
 }

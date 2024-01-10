@@ -16,7 +16,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public async void CreateShipment(string AccountName, string OrderId)
+        public async string CreateShipment(string AccountName, string OrderId)
         {
             var allegroapi = _allegroService.GetAllegroApi(AccountName);
 
@@ -28,7 +28,9 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             //Dodawanie do bazy danych obiektu przypisanego do zamówienia zawierający Id odpowiedzialne za stworzenie paczki oraz co jakis czas wysyłanie zapytanie w celu prawdzenia status
             //Dodać osobny serwis pod Wysyłke paczek
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+
+            return Data.ShipmnetOject.commandId;
         }
 
         private ShipmentObject CreateShipmentData(DetailedCheckOutForm detailedCheckOutForm)
