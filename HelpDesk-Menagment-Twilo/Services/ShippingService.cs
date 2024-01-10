@@ -50,7 +50,6 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             return ShipmnetOject;
         }
-
         private CashOnDeliveryDto CreateCashOnDelivery(ref DetailedCheckOutForm detailedCheckOutForm)
         {
             return new CashOnDeliveryDto()

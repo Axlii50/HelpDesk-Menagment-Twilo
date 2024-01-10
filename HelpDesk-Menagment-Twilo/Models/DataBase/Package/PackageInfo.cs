@@ -7,7 +7,11 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
     {
         public Guid ID { get; set; }
 
+        /// <summary>
+        /// jeżeli package id 
+        /// </summary>
         public string PackageShippingId { get; set; }
+        public string CreationCommandID { get; set; }
 
         public Guid OrderId { get; set; }
 
