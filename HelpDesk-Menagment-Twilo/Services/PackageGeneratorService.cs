@@ -51,7 +51,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 {
                     var order = Orders.FirstOrDefault();
 
-                    var commandId = shippingService.CreateShipment(authorizedAccounts[0], order.id);
+                    var commandId = await shippingService.CreateShipment(authorizedAccounts[0], order.id);
 
                     var PackageInfo = new PackageInfo()
                     {

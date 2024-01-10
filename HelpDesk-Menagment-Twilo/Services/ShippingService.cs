@@ -2,7 +2,7 @@
 using Allegro_Api.Shipment.Components;
 using Allegro_Api.Shipment;
 using HelpDesk_Menagment_Twilo.Interfaces;
-using Allegro_Api.Models.Shipment;
+
 using Allegro_Api;
 
 namespace HelpDesk_Menagment_Twilo.Services
@@ -16,7 +16,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public async string CreateShipment(string AccountName, string OrderId)
+        public async Task<string> CreateShipment(string AccountName, string OrderId)
         {
             var allegroapi = _allegroService.GetAllegroApi(AccountName);
 
@@ -30,7 +30,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             //Dodać osobny serwis pod Wysyłke paczek
             //throw new NotImplementedException();
 
-            return Data.ShipmnetOject.commandId;
+            return Data.commandId;
         }
 
         private ShipmentObject CreateShipmentData(DetailedCheckOutForm detailedCheckOutForm)
