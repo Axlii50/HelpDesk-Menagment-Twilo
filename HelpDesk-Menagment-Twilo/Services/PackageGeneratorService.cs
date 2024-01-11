@@ -60,7 +60,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                         CreationCommandID = commandId
                     };
 
-                    //packageService.AddPackageInfo();
+                    packageService.AddPackageInfo(PackageInfo);
                 }
 
                 //Download all orders new/Realization
