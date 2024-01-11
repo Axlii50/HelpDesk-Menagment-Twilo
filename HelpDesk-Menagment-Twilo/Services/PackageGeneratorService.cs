@@ -26,6 +26,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 var orderService = scope.ServiceProvider.GetRequiredService<IOrderService>();
                 var shippingService = scope.ServiceProvider.GetRequiredService<IShippingService>();
                 var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
+                var packageService = scope.ServiceProvider.GetRequiredService<IPackageService>();
 
                 string[] authorizedAccounts = allegroService.GetAuthorizedAccounts();
 
@@ -58,6 +59,8 @@ namespace HelpDesk_Menagment_Twilo.Services
                         OrderId = new Guid(order.id),
                         CreationCommandID = commandId
                     };
+
+                    //packageService.AddPackageInfo();
                 }
 
                 //Download all orders new/Realization

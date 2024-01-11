@@ -61,5 +61,10 @@ namespace HelpDesk_Menagment_Twilo.Services
             return await _context.PackageInfo.AnyAsync(pack => pack.PackageId == PackageID);
         }
 
+        public void AddPackageInfo(PackageInfo packageInfo)
+        {
+            _context.PackageInfo.Add(packageInfo);
+            _context.SaveChanges();
+        }
     }
 }

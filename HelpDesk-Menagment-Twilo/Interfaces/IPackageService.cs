@@ -12,6 +12,9 @@ namespace HelpDesk_Menagment_Twilo.Interfaces
         IEnumerable<Package> GetPackages(string UserID, int number);
 
         PackageInfo GetPackageInfo(string PackageShippingId);
+        void AddPackageInfo(PackageInfo packageInfo);
+
+
 
         Task<bool> CheckIfPackageExist(Guid PackageID);
     }

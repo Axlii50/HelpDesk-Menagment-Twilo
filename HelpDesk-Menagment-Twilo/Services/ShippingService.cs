@@ -4,6 +4,7 @@ using Allegro_Api.Shipment;
 using HelpDesk_Menagment_Twilo.Interfaces;
 
 using Allegro_Api;
+using Allegro_Api.Models.Shipment;
 
 namespace HelpDesk_Menagment_Twilo.Services
 {
