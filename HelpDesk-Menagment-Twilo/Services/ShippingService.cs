@@ -39,6 +39,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             var shipmentdata = new ShipmentCreateRequestDto()
             {
                 deliveryMethodId = detailedCheckOutForm.delivery.method.id,
+                credentialsId = string.Empty,
                 sender = CreateSender(),
                 receiver = CreateReceiver(ref detailedCheckOutForm),
                 packages = CreatePackages(),
@@ -101,6 +102,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 countryCode = detailedCheckOutForm.delivery.address.countryCode,
                 email = detailedCheckOutForm.buyer.email,
                 phone = detailedCheckOutForm.buyer.phoneNumber,
+                point = detailedCheckOutForm.delivery.pickupPoint.id
             };
         }
 
