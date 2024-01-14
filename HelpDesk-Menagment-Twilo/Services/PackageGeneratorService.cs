@@ -58,8 +58,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 {
                     var platformAccount = platformAccountService.GetIdByName(authorizedAccounts[0]);
                     var aviableServices = await deliveryServices.GetDeliveryServices(authorizedAccounts[0]);
-                    var order = Orders.Where(or => or.id == "87463250-b226-11ee-af72-37bed499d892").FirstOrDefault();
-
+                    var order = Orders.FirstOrDefault();
 
                     var ServiceId = aviableServices.FirstOrDefault(ser => ser.id.deliveryMethodId == order.delivery.method.id).id.credentialsId;
 
@@ -75,12 +74,6 @@ namespace HelpDesk_Menagment_Twilo.Services
 
                     packageService.AddPackageInfo(PackageInfo);
                 }
-
-                //Download all orders new/Realization
-
-                //Sort out all that are already in database
-
-                //Generate number for rest
             }
         }
     }
