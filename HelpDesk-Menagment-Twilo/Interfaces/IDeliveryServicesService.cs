@@ -1,6 +1,9 @@
-﻿namespace HelpDesk_Menagment_Twilo.Interfaces
+﻿using Allegro_Api.Shipment;
+
+namespace HelpDesk_Menagment_Twilo.Interfaces
 {
-    public interface IDeliveryServicesServices
+    public interface IDeliveryServicesService
     {
+        Task<List<DeliveryServiceDto>> GetDeliveryServices(string accountName);
     }
 }

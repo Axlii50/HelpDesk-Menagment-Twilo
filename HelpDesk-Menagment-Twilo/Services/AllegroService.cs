@@ -9,6 +9,9 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class AllegroService : IAllegroService
     {
+        /// <summary>
+        /// Key to jest nazwa konta
+        /// </summary>
         private readonly Dictionary<string, AllegroApi> _accounts;
        
         public AllegroService()
@@ -31,6 +34,8 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             // Return the complete verification URL
             return verificationUrlModel.verification_uri_complete;
+
+           
         }
 
         // Initializes an Allegro account for authentication
@@ -62,7 +67,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public string[] GetAuthorizedAccounts()
         {
-            return _accounts.Keys.ToArray();
+            return _accounts.Where(acc => acc.Value.RefreshToken != string.Empty).Select(acc => acc.Key).ToArray();
         }
 
         public bool IsAuthorized(string AccountName)

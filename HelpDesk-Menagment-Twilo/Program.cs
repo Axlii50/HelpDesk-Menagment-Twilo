@@ -24,13 +24,14 @@ namespace HelpDesk_Menagment_Twilo
 
             builder.Services.AddHostedService<BackGroundService>();
             builder.Services.AddSingleton<IBackGroundService, PackageGeneratorService>();
+            builder.Services.AddSingleton<IAllegroService, AllegroService>();
 
             builder.Services.AddScoped<IPackageService, PackageService>();
             builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
             builder.Services.AddScoped<IPlatformAccountService, PlatformAccountService>();
-            builder.Services.AddSingleton<IAllegroService, AllegroService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IShippingService, ShippingService>();
+            builder.Services.AddScoped<IDeliveryServicesService, DeliveryServicesService>();
 
             var app = builder.Build();
             // Configure the HTTP request pipeline.

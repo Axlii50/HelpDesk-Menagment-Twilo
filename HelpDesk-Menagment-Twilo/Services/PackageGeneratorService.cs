@@ -22,13 +22,19 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
             using (var scope = serviceScopeFactory.CreateScope())
             {
+                //Services
                 var allegroService = scope.ServiceProvider.GetRequiredService<IAllegroService>();
                 var orderService = scope.ServiceProvider.GetRequiredService<IOrderService>();
                 var shippingService = scope.ServiceProvider.GetRequiredService<IShippingService>();
                 var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
                 var packageService = scope.ServiceProvider.GetRequiredService<IPackageService>();
+                var deliveryServices = scope.ServiceProvider.GetRequiredService<IDeliveryServicesService>();
+                var platformAccountService = scope.ServiceProvider.GetRequiredService<IPlatformAccountService>();
 
+                //temp variables
                 string[] authorizedAccounts = allegroService.GetAuthorizedAccounts();
+
+                
 
                 foreach (var accounts in authorizedAccounts)
                 {
@@ -48,16 +54,23 @@ namespace HelpDesk_Menagment_Twilo.Services
                     }
                 }
 
-                if (Orders != null)
+                if (Orders != null && false)
                 {
-                    var order = Orders.FirstOrDefault();
+                    var platformAccount = platformAccountService.GetIdByName(authorizedAccounts[0]);
+                    var aviableServices = await deliveryServices.GetDeliveryServices(authorizedAccounts[0]);
+                    var order = Orders.Where(or => or.id == "87463250-b226-11ee-af72-37bed499d892").FirstOrDefault();
 
-                    var commandId = await shippingService.CreateShipment(authorizedAccounts[0], order.id);
+
+                    var ServiceId = aviableServices.FirstOrDefault(ser => ser.id.deliveryMethodId == order.delivery.method.id).id.credentialsId;
+
+                    var commandId = await shippingService.CreateShipment(authorizedAccounts[0], order.id, ServiceId);
+                    System.Diagnostics.Debug.WriteLine($"{commandId}");
 
                     var PackageInfo = new PackageInfo()
                     {
                         OrderId = new Guid(order.id),
-                        CreationCommandID = commandId
+                        CreationCommandID = commandId,
+                        PlatformAccountId = platformAccount
                     };
 
                     packageService.AddPackageInfo(PackageInfo);

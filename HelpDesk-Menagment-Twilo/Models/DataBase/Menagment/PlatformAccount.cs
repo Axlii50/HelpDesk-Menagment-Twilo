@@ -15,7 +15,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Menagment
 
         public PlatformType PlatformType { get; set; }
 
-        public List<PackageInfo> PackageIndos { get; set; }
+        public List<PackageInfo> PackageInfos { get; set; }
     }
 
     public enum PlatformType

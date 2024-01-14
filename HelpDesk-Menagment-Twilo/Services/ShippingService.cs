@@ -17,13 +17,14 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public async Task<string> CreateShipment(string AccountName, string OrderId)
+        public async Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId)
         {
             var allegroapi = _allegroService.GetAllegroApi(AccountName);
 
             var Order = await allegroapi.GetOrderDetails(OrderId);
 
             var Data = CreateShipmentData(Order);
+            Data.input.credentialsId = credentialsId;
 
             allegroapi.CreatePackage(Data);
 
@@ -94,7 +95,7 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
             return new ReceiverAddressDto()
             {
-                name = detailedCheckOutForm.buyer.login,
+                name = detailedCheckOutForm.buyer.firstName + ' ' + detailedCheckOutForm.buyer.lastName,
                 street = detailedCheckOutForm.delivery.address.streetAndNumber[0],
                 streetNumber = detailedCheckOutForm.delivery.address.streetAndNumber[1],//do ogarniecia jest złożony ticket na allegro github
                 postalCode = detailedCheckOutForm.delivery.address.zipCode,

@@ -28,10 +28,13 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
             var UnSavedOrders = new List<CheckOutForm>();
             var Orders = await GetAllOrders(AccountName, OrderStatusType.NEW);
+             Orders.AddRange( await GetAllOrders(AccountName, OrderStatusType.PROCESSING));
 
             foreach(var order in Orders)
             {
-                if (!await packageService.CheckIfPackageExist(new Guid(order.id)))
+                if (order.id == "53033100-b22b-11ee-aec8-b5646d1484ba")
+                    System.Diagnostics.Debug.WriteLine("tt");
+                if (!await packageService.CheckIfPackageInfoExist(new Guid(order.id)))
                     UnSavedOrders.Add(order);
             }
 
