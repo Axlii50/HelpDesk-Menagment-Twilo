@@ -31,16 +31,16 @@ namespace HelpDesk_Menagment_Twilo.Services
 
                     if (account == null) continue;
 
-                    var te = await account?.CheckPackageCreationStatus(package.CreationCommandID);
+                    var responseStatus = await account?.CheckPackageCreationStatus(package.CreationCommandID);
 
-                    if (te.Status == "ERROR")
+                    if (responseStatus.Status == "ERROR")
                     {
                         package.CreationCommandType = Models.DataBase.Package.CreationCommandType.Error;
                         context.Update(package);
                     }
-                    else if (te.Status == "SUCCESS")
+                    else if (responseStatus.Status == "SUCCESS")
                     {
-                        package.PackageShippingId = te.ShipmentId;
+                        package.PackageShippingId = responseStatus.ShipmentId;
                         package.PackageWayBill = (await account.GetParcelNumbers(package.OrderId.ToString())).shipments[0].waybill;
                         package.CreationCommandType = Models.DataBase.Package.CreationCommandType.Success;
                         package.CreationCommandID = string.Empty;
