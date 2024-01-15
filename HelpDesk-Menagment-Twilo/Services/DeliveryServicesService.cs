@@ -5,17 +5,17 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class DeliveryServicesService : IDeliveryServicesService
     {
-        private readonly IAllegroService allegroService;
+        private readonly IAllegroService _allegroService;
 
         public DeliveryServicesService(IAllegroService allegroService)
         {
             allegroService = allegroService;
-            this.allegroService = allegroService;
+            this._allegroService = allegroService;
         }
 
         public async Task<List<DeliveryServiceDto>> GetDeliveryServices(string accountName)
         {
-            return (await allegroService.GetAllegroApi(accountName).GetDeliveryServices()).services.ToList();
+            return (await _allegroService.GetAllegroApi(accountName).GetDeliveryServices()).services.ToList();
         }
     }
 }

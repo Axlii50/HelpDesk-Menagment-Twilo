@@ -4,6 +4,7 @@ using HelpDesk_Menagment_Twilo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk_Menagment_Twilo.Migrations
 {
     [DbContext(typeof(HelpDesk_Menagment_TwiloContext))]
-    partial class HelpDesk_Menagment_TwiloContextModelSnapshot : ModelSnapshot
+    [Migration("20240114215526_CommandType")]
+    partial class CommandType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Account", (string)null);
+                    b.ToTable("Account");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Menagment.PlatformAccount", b =>
@@ -67,7 +69,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PlatformAccounts", (string)null);
+                    b.ToTable("PlatformAccounts");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package", b =>
@@ -86,7 +88,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("AccountID");
 
-                    b.ToTable("Packages", (string)null);
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Package.PackageInfo", b =>
@@ -110,9 +112,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.Property<string>("PackageShippingId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PackageWayBill")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("PlatformAccountId")
                         .HasColumnType("uniqueidentifier");
 
@@ -124,7 +123,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("PlatformAccountId");
 
-                    b.ToTable("PackageInfo", (string)null);
+                    b.ToTable("PackageInfo");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
@@ -161,7 +160,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("AccountID");
 
-                    b.ToTable("Ticket", (string)null);
+                    b.ToTable("Ticket");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment", b =>
@@ -193,7 +192,7 @@ namespace HelpDesk_Menagment_Twilo.Migrations
 
                     b.HasIndex("TicketID");
 
-                    b.ToTable("TicketComments", (string)null);
+                    b.ToTable("TicketComments");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package", b =>

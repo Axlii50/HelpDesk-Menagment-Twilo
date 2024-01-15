@@ -10,12 +10,14 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Packages
 {
     public class PackagesController : Controller
     {
-        readonly HelpDesk_Menagment_TwiloContext _context;
-        readonly IPackageService _packageService;
+        private readonly HelpDesk_Menagment_TwiloContext _context;
+        private readonly IPackageService _packageService;
+        private readonly IOrderService orderService;
 
-        public PackagesController(HelpDesk_Menagment_TwiloContext context, IPackageService packageService)
+        public PackagesController(HelpDesk_Menagment_TwiloContext context, IPackageService packageService, IOrderService orderService)
         {
             _packageService = packageService;
+            this.orderService = orderService;
             _context = context;
         }
 
@@ -38,9 +40,13 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Packages
         }
 
         [HttpPost]
-        public IActionResult AddPackage([Bind("UserID,PackageID")]string UserID, string PackageID)
+        public async Task<IActionResult> AddPackage([Bind("UserID,WayBillId")]string UserID, string WayBillId)
         {
-            return _packageService.AddPackage(UserID, PackageID);
+            var packageinfo = _packageService.AddPackage(UserID, WayBillId);
+
+            var detailedOrder = (await orderService.GetDetailedOrderById(packageinfo.PlatformAccount.AccountName, packageinfo.OrderId.ToString()));
+
+            return Json(new { buyer = detailedOrder.buyer, lineItems = detailedOrder.lineItems, delivery = detailedOrder.delivery, invoice = detailedOrder.invoice });
         }
     }
 }

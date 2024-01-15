@@ -60,7 +60,9 @@ namespace HelpDesk_Menagment_Twilo.Services
             return new CashOnDeliveryDto()
             {
                 amount = detailedCheckOutForm.summary.totalToPay.amount,
-                currency = detailedCheckOutForm.summary.totalToPay.currency
+                currency = detailedCheckOutForm.summary.totalToPay.currency,
+                iban = "35 1870 1045 2078 1077 6763 0001",//przerzucic to do bazy danych
+                ownerName = "TWILO SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ"
             };
         }
         private SenderAddressDto CreateSender()
@@ -84,10 +86,10 @@ namespace HelpDesk_Menagment_Twilo.Services
                 new Allegro_Api.Shipment.Components.Packages()
                 {
                     type = "PACKAGE",
-                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 25},
+                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 10},
                     width = new Allegro_Api.Shipment.Components.DimensionValue(){value = 38},
                     height = new Allegro_Api.Shipment.Components.DimensionValue(){value = 8},
-                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 64}
+                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 60}
                 }
             };
         }
@@ -97,13 +99,13 @@ namespace HelpDesk_Menagment_Twilo.Services
             {
                 name = detailedCheckOutForm.buyer.firstName + ' ' + detailedCheckOutForm.buyer.lastName,
                 street = detailedCheckOutForm.delivery.address.streetAndNumber[0],
-                streetNumber = detailedCheckOutForm.delivery.address.streetAndNumber[1],//do ogarniecia jest złożony ticket na allegro github
+                streetNumber = detailedCheckOutForm.delivery.address.streetAndNumber?[1],//do ogarniecia jest złożony ticket na allegro github
                 postalCode = detailedCheckOutForm.delivery.address.zipCode,
                 city = detailedCheckOutForm.delivery.address.city,
                 countryCode = detailedCheckOutForm.delivery.address.countryCode,
                 email = detailedCheckOutForm.buyer.email,
                 phone = detailedCheckOutForm.buyer.phoneNumber,
-                point = detailedCheckOutForm.delivery.pickupPoint.id
+                point = detailedCheckOutForm.delivery.pickupPoint?.id
             };
         }
 

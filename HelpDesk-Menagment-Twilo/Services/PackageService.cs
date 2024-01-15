@@ -22,9 +22,9 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public IActionResult AddPackage(string UserID, string PackageID)
+        public PackageInfo AddPackage(string UserID, string WayBillId)
         {
-            var packageinfo = GetPackageInfo(PackageID);
+            var packageinfo = GetPackageInfo(WayBillId);
             //jeżeli jakimś cudem null w takim wypadku pobrać etykiete dla danej paczki oraz wszelkie informacje odnośnie zamówienia
 
             var package = new Package()
@@ -38,12 +38,12 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             _context.SaveChanges();
 
-            return new OkResult();
+            return packageinfo;
         }
         
-        public PackageInfo GetPackageInfo(string PackageShippingId)
+        public PackageInfo GetPackageInfo(string WayBillId)
         {
-            return _context.PackageInfo.SingleOrDefault(info => info.PackageShippingId == PackageShippingId);
+            return _context.PackageInfo.Include(pack => pack.PlatformAccount).SingleOrDefault(info => info.PackageWayBill == WayBillId);
         }
 
         public IEnumerable<Package> GetPackages(string UserID)

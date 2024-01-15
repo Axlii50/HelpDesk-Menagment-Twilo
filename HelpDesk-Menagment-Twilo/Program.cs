@@ -23,7 +23,9 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddMemoryCache();
 
             builder.Services.AddHostedService<BackGroundService>();
-            builder.Services.AddSingleton<IBackGroundService, PackageGeneratorService>();
+            //builder.Services.AddSingleton<IBackGroundService, PackageGeneratorService>();
+            builder.Services.AddSingleton<IBackGroundService, PackageCheckerService>();
+
             builder.Services.AddSingleton<IAllegroService, AllegroService>();
 
             builder.Services.AddScoped<IPackageService, PackageService>();

@@ -61,6 +61,8 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public AllegroApi GetAllegroApi (string AccountName)
         {
+            if (!_accounts.ContainsKey(AccountName)) return null;
+
             return _accounts[AccountName];
         }
 

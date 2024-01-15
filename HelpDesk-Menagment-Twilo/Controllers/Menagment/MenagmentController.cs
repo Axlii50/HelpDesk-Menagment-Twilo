@@ -15,9 +15,10 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
         readonly HelpDesk_Menagment_TwiloContext _context;
         readonly IPlatformAccountService _platformAccountService;
         readonly IAllegroService _allegroService;
-
-
-        public MenagmentController(HelpDesk_Menagment_TwiloContext context, IPlatformAccountService platformAccountService, IAllegroService allegroService)
+       
+        public MenagmentController(HelpDesk_Menagment_TwiloContext context,
+            IPlatformAccountService platformAccountService,
+            IAllegroService allegroService)
         {
             _context = context;
             _platformAccountService = platformAccountService;

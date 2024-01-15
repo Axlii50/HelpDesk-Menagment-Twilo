@@ -9,11 +9,15 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         public Guid ID { get; set; }
 
         /// <summary>
-        /// jeżeli package id 
+        /// Generated shipment ID
         /// </summary>
         public string? PackageShippingId { get; set; }
+        /// <summary>
+        /// numer przesyłki
+        /// </summary>
+        public string? PackageWayBill { get; set; }
         public string? CreationCommandID { get; set; }
-
+        public CreationCommandType CreationCommandType { get; set; } = CreationCommandType.In_Progres;
 
         public Guid PlatformAccountId { get; set; }
         public PlatformAccount PlatformAccount { get; set; }
@@ -22,5 +26,12 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
 
         public Guid? PackageId { get; set; }
         public Package? Package { get; set; }
+    }
+
+    public enum CreationCommandType
+    {
+        In_Progres,
+        Success,
+        Error
     }
 }

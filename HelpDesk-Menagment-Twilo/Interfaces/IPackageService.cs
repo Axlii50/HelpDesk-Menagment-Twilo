@@ -1,11 +1,12 @@
-﻿using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
+﻿using Allegro_Api.Models.Order.checkoutform;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HelpDesk_Menagment_Twilo.Interfaces
 {
     public interface IPackageService
     {
-        IActionResult AddPackage(string UserID, string PackageID);
+        PackageInfo AddPackage(string UserID, string PackageID);
 
         IEnumerable<Package> GetPackages(string UserID);
 
