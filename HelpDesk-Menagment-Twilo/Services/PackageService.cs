@@ -4,6 +4,7 @@ using Allegro_Api.Shipment.Components;
 using HelpDesk_Menagment_Twilo.Data;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,7 +32,8 @@ namespace HelpDesk_Menagment_Twilo.Services
             {
                 PackageInfo = packageinfo,
                 AccountID = new Guid(UserID),
-                //DeliveryType = _recognition.Recognize(PackageID)
+                DateString = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"))
+            //DeliveryType = _recognition.Recognize(PackageID)
             };
 
             _context.Packages.Add(package);

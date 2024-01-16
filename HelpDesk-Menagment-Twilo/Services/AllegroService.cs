@@ -34,8 +34,6 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             // Return the complete verification URL
             return verificationUrlModel.verification_uri_complete;
-
-           
         }
 
         // Initializes an Allegro account for authentication
@@ -44,7 +42,16 @@ namespace HelpDesk_Menagment_Twilo.Services
             // Create a new instance of AllegroApi and add it to the accounts dictionary
             var allegroApi = new AllegroApi(platformAccount.ClientID, platformAccount.ClientSecret, HandleRefreshToken);
 
-            _accounts.Add(platformAccount.AccountName, allegroApi);
+            //przy ponownej autoryzacji usunie stary obiekt który nie został zautoryzowany by móc poprawnie przejsc autoryzacjie bez resetowania poola
+            if(_accounts.ContainsKey(platformAccount.AccountName))
+            {
+                _accounts.Add(platformAccount.AccountName, allegroApi);
+            }
+            else
+            {
+                _accounts.Remove(platformAccount.AccountName);
+                _accounts.Add(platformAccount.AccountName, allegroApi);
+            }
         }
 
         // Checks if the access token for the specified account is valid
