@@ -88,7 +88,7 @@
                                             <span class="Menag__userName">@package.Account.Login</span>
                                         </div>
                                         <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
-                                            <span class="Menag__apli">@package.PackageInfo?.PackageShippingId</span>
+                                            <span class="Menag__apli">@package.PackageInfo?.PackageWayBill</span>
                                         </div>
                                         <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
                                             <span class="Menag__apli Menag__apli--date">@package.FormattedDateString</span>
@@ -212,7 +212,6 @@
                     '</div>' +
                     '<div class="item-info">' +
                     '<p class="item-title">' + itemData.offer.name + '</p>' +
-                    '<p class="item-number">Nr: ' + itemData.id + '</p>' +
                     '</div>' +
                     '<div class="item-count">' +
                     '<p class="item-ilosc">Ilość: ' + itemData.quantity + '</p>' +
