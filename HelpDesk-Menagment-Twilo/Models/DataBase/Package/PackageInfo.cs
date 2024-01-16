@@ -12,10 +12,15 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         /// Generated shipment ID
         /// </summary>
         public string? PackageShippingId { get; set; }
+
         /// <summary>
         /// numer przesyłki
         /// </summary>
         public string? PackageWayBill { get; set; }
+
+        /// <summary>
+        /// shipping creation command
+        /// </summary>
         public string? CreationCommandID { get; set; }
         public CreationCommandType CreationCommandType { get; set; } = CreationCommandType.In_Progres;
 
