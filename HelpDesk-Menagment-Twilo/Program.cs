@@ -2,11 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using HelpDesk_Menagment_Twilo.Data;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using HelpDesk_Menagment_Twilo.Models.DataBase.Ticket;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Services;
+using Microsoft.Extensions.Hosting;
 
 namespace HelpDesk_Menagment_Twilo
 {
@@ -23,16 +22,21 @@ namespace HelpDesk_Menagment_Twilo
 
             builder.Services.AddMemoryCache();
 
+            builder.Services.AddHostedService<BackGroundService>();
+            builder.Services.AddSingleton<IBackGroundService, PackageGeneratorService>();
+            builder.Services.AddSingleton<IBackGroundService, PackageCheckerService>();
+
+            builder.Services.AddSingleton<IAllegroService, AllegroService>();
+
             builder.Services.AddScoped<IPackageService, PackageService>();
             builder.Services.AddScoped<IDeliveryRecognitionService, DeliveryRecognitionService>();
             builder.Services.AddScoped<IPlatformAccountService, PlatformAccountService>();
-            builder.Services.AddScoped<IAllegroService, AllegroService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-
-
+            builder.Services.AddScoped<IShippingService, ShippingService>();
+            builder.Services.AddScoped<IDeliveryServicesService, DeliveryServicesService>();
+            builder.Services.AddScoped<IOfferService, OfferService>();
 
             var app = builder.Build();
-
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -53,80 +57,6 @@ namespace HelpDesk_Menagment_Twilo
                 pattern: "{controller=Home}/{action=LoginPage}/{id?}");
 
             app.Run();
-        }
-    }
-    //https://stackoverflow.com/questions/21460146/fire-javascript-function-2-sec-after-no-activity-in-input-tag
-    public static class HtmlHelper
-    {
-        public static List<SelectListItem> TicketCategoryGetList()
-        {
-            var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString()
-            }).ToList();
-            return list;
-        }
-        public static List<SelectListItem> TicketStatusGetList()
-        {
-            var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString(),
-            }).ToList();
-            return list;
-        }
-        public static List<SelectListItem> TicketPriorityGetList()
-        {
-            var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString()
-            }).ToList();
-            return list;
-        }
-
-        public static List<SelectListItem> TicketCategoryGetList(TicketCategory category)
-        {
-            var list = Enum.GetValues(typeof(TicketCategory)).Cast<TicketCategory>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString()
-            }).ToList();
-
-            foreach (var item in list)
-                if(item.Value == ((int)category).ToString())
-                    item.Selected = true;
-
-            return list;
-        }
-        public static List<SelectListItem> TicketStatusGetList(TicketStatus ticketStatus)
-        {
-            var list = Enum.GetValues(typeof(TicketStatus)).Cast<TicketStatus>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString(),
-            }).ToList();
-
-            foreach (var item in list)
-                if (item.Value == ((int)ticketStatus).ToString())
-                    item.Selected = true;
-
-            return list;
-        }
-        public static List<SelectListItem> TicketPriorityGetList(TicketPriority ticketPriority)
-        {
-            var list = Enum.GetValues(typeof(TicketPriority)).Cast<TicketPriority>().Select(v => new SelectListItem
-            {
-                Text = v.TranslatePL(),
-                Value = ((int)v).ToString()
-            }).ToList();
-
-            foreach (var item in list)
-                if (item.Value == ((int)ticketPriority).ToString())
-                    item.Selected = true;
-
-            return list;
         }
     }
 }

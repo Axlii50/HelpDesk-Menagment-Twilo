@@ -37,68 +37,25 @@
                         <div class="modal-content modal-data">
                             <div class="buyer">
                                 <p class="data__header">Kupujący</p>
-                                <p class="data__text data__text--uppercase">IGOR KOTOWSKI</p>
-                                <p class="data__text">Igor Kotowski</p>
-                                <p class="data__text">SmartZabawki24</p>
-                                <p class="data__text">+48 787 081 675</p>
+                                <p class="data__text" id="buyerFullName"></p>
+                                <p class="data__text" id="buyerLogin"></p>
+                                <p class="data__text" id="buyerPhoneNumber"></p>
                             </div>
                             <div class="delivery">
                                 <p class="data__header">Dostawa</p>
-                                <p class="data__text">czas na dostawe</p>
-                                <p class="data__text">do pon., 8 sty 2024, 23:59</p>
-                                <p class="data__text">przewidywany czas dostawy</p>
-                                <p class="data__text">wt, 9 sty 2024</p>
+                                <p class="data__text" id="deliveryTimeLabel">czas na dostawe</p>
+                                <p class="data__text" id="deliveryTime"></p>
+                                <p class="data__text" id="expectedDeliveryTimeLabel">przewidywany czas dostawy</p>
+                                <p class="data__text" id="expectedDeliveryTime"></p>
                             </div>
                             <div class="invoice">
                                 <p class="data__header">Faktura</p>
-                                <p class="data__text">Igor Kotowski</p>
-                                <p class="data__text">Parsowo 15/4</p>
-                                <p class="data__text">76-039 Parsowo PL</p>
-                                <p class="data__text">NIP: 4990678676</p>
+                                <p class="data__text" id="invoiceName"></p>
+                                <p class="data__text" id="invoiceAddress"></p>
+                                <p class="data__text" id="invoiceCity"></p>
+                                <p class="data__text" id="invoiceNIP"></p>
                             </div>
-
                             <div class="items">
-                                <div class="item">
-                                    <div class="item-img">
-                                        <img class="item__img" src="https://marketplace.canva.com/EAD8Cc9CKj0/1/0/1003w/canva-mi%C4%99towe-kawa-zdj%C4%99cie-minimalistyczne-jedzenie-czasopismo-ok%C5%82adka-ksi%C4%85%C5%BCki-iiiPIrGDAd8.jpg" />
-                                    </div>
-                                    <div class="item-info">
-                                        <p class="item-title">Co się stało w 1070 roku? 0 Urbańczyk przemysław</p>
-                                        <p class="item-number">Nr: 14617732819</p>
-                                    </div>
-                                    <div class="item-count">
-                                        <p class="item-ilosc">Ilość: 4</p>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="item-img">
-                                        <img class="item__img" src="https://i0.wp.com/www.ardenno.pl/wp-content/uploads/2018/02/Projekt-ok%C5%82adki-do-ksi%C4%85%C5%BCki-497-b%C5%82%C4%99d%C3%B3w-nr-3.jpg" />
-                                    </div>
-                                    <div class="item-info">
-                                        <p class="item-title">Co się stało w 1070 roku? 0 Urbańczyk przemysław</p>
-                                        <p class="item-number">Nr: 14617732819</p>
-                                    </div>
-                                    <div class="item-count">
-                                        <p class="item-ilosc">Ilość: 24</p>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="item">
-                                    <div class="item-img">
-                                        <img class="item__img" src="https://i0.wp.com/www.ardenno.pl/wp-content/uploads/2018/02/Projekt-ok%C5%82adki-do-ksi%C4%85%C5%BCki-497-b%C5%82%C4%99d%C3%B3w-nr-3.jpg" />
-                                    </div>
-                                    <div class="item-info">
-                                        <p class="item-title">Co się stało w 1070 roku? 0 Urbańczyk przemysław</p>
-                                        <p class="item-number">Nr: 14617732819</p>
-                                    </div>
-                                    <div class="item-count">
-                                        <p class="item-ilosc">Ilość: 24</p>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -131,7 +88,7 @@
                                             <span class="Menag__userName">@package.Account.Login</span>
                                         </div>
                                         <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
-                                            <span class="Menag__apli">@package.PackageInfo.PackageShippingId</span>
+                                            <span class="Menag__apli">@package.PackageInfo?.PackageWayBill</span>
                                         </div>
                                         <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
                                             <span class="Menag__apli Menag__apli--date">@package.FormattedDateString</span>
@@ -160,7 +117,7 @@
     <script>
         $(document).ready(function () {
             var typingTimer;
-            var doneTypingInterval = 2500; // 2,5 seconds
+            var doneTypingInterval = 1500; // 2,5 seconds
             var scanCount = 0;
 
             $('#PackageID').on('input', function () {
@@ -188,10 +145,10 @@
                 $.ajax({
                     type: 'POST',
                     url: '/Packages/AddPackage', // Upewnij się, że ścieżka do kontrolera jest poprawna
-                    data: { UserID: userIDValue, PackageID: packageIDValue },
+                    data: { UserID: userIDValue, WayBillId: packageIDValue },
                     success: function (response) {
                         // Obsłuż odpowiedź z kontrolera
-                        console.log(response);
+                        //console.log(response);
 
                         // Zresetuj pole po wysłaniu
                         $('#PackageID').val('');
@@ -202,6 +159,9 @@
 
                         // Animacja paska postępu (zakończenie ładowania)
                         $('.scan__progress-bar').addClass('loaded');
+
+                        fillUserData(response);
+                        addItemsToContainer(response.lineItems, response.images);
 
                         // Zniknij po pewnym czasie
                         setTimeout(function () {
@@ -217,5 +177,49 @@
                 });
             }
         });
+
+        function fillUserData(userData) {
+            //kupujący
+            $("#buyerFullName").text(userData.buyer.firstName + " " + userData.buyer.lastName);
+            $("#buyerLogin").text(userData.buyer.login);
+            $("#buyerPhoneNumber").text(userData.buyer.phoneNumber);
+
+            // Dodaj dane do pól Dostawa
+            $("#deliveryTimeLabel").text("czas na dostawe");
+            $("#deliveryTime").text(userData.delivery.time.from);
+            $("#expectedDeliveryTimeLabel").text("przewidywany czas dostawy");
+            $("#expectedDeliveryTime").text(userData.delivery.time.to);
+
+            // Dodaj dane do pól Faktura
+            $("#invoiceName").text(userData.invoiceName);
+            $("#invoiceAddress").text(userData.invoiceAddress);
+            $("#invoiceCity").text(userData.invoiceCity);
+            $("#invoiceNIP").text("NIP: " + userData.invoiceNIP);
+        }
+
+        function addItemsToContainer(lineItems,images) {
+            var itemsContainer = $(".items");
+
+            itemsContainer.empty();
+
+            // Iteruj przez dane i dodawaj elementy do kontenera
+            for (var i = 0; i < lineItems.length; i++) {
+                var itemData = lineItems[i];
+
+                var itemHtml = '<div class="item">' +
+                    '<div class="item-img">' +
+                    '<img class="item__img" src="' + images[i] + '" />' +
+                    '</div>' +
+                    '<div class="item-info">' +
+                    '<p class="item-title">' + itemData.offer.name + '</p>' +
+                    '</div>' +
+                    '<div class="item-count">' +
+                    '<p class="item-ilosc">Ilość: ' + itemData.quantity + '</p>' +
+                    '</div>' +
+                    '</div>';
+
+                itemsContainer.append(itemHtml);
+            }
+        }
     </script>
 }

@@ -4,6 +4,7 @@ using HelpDesk_Menagment_Twilo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk_Menagment_Twilo.Migrations
 {
     [DbContext(typeof(HelpDesk_Menagment_TwiloContext))]
-    partial class HelpDesk_Menagment_TwiloContextModelSnapshot : ModelSnapshot
+    [Migration("20240110214043_PackageInfoCommandId")]
+    partial class PackageInfoCommandId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.Property<Guid>("AccountID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateString")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("DeliveryType")
                         .HasColumnType("int");
 
@@ -99,33 +98,23 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreationCommandID")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CreationCommandType")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PackageId")
+                    b.Property<Guid>("PackageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PackageShippingId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PackageWayBill")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PlatformAccountId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
 
                     b.HasIndex("PackageId")
-                        .IsUnique()
-                        .HasFilter("[PackageId] IS NOT NULL");
-
-                    b.HasIndex("PlatformAccountId");
+                        .IsUnique();
 
                     b.ToTable("PackageInfo");
                 });
@@ -214,17 +203,11 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                 {
                     b.HasOne("HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package", "Package")
                         .WithOne("PackageInfo")
-                        .HasForeignKey("HelpDesk_Menagment_Twilo.Models.DataBase.Package.PackageInfo", "PackageId");
-
-                    b.HasOne("HelpDesk_Menagment_Twilo.Models.DataBase.Menagment.PlatformAccount", "PlatformAccount")
-                        .WithMany("PackageInfos")
-                        .HasForeignKey("PlatformAccountId")
+                        .HasForeignKey("HelpDesk_Menagment_Twilo.Models.DataBase.Package.PackageInfo", "PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Package");
-
-                    b.Navigation("PlatformAccount");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", b =>
@@ -243,11 +226,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.HasOne("HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.Ticket", null)
                         .WithMany("Comments")
                         .HasForeignKey("TicketID");
-                });
-
-            modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Menagment.PlatformAccount", b =>
-                {
-                    b.Navigation("PackageInfos");
                 });
 
             modelBuilder.Entity("HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package", b =>
