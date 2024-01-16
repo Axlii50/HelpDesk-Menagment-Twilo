@@ -34,6 +34,7 @@ namespace HelpDesk_Menagment_Twilo
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IShippingService, ShippingService>();
             builder.Services.AddScoped<IDeliveryServicesService, DeliveryServicesService>();
+            builder.Services.AddScoped<IOfferService, OfferService>();
 
             var app = builder.Build();
             // Configure the HTTP request pipeline.

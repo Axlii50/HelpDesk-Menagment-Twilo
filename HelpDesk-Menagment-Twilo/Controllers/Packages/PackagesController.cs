@@ -13,11 +13,13 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Packages
         private readonly HelpDesk_Menagment_TwiloContext _context;
         private readonly IPackageService _packageService;
         private readonly IOrderService orderService;
+        private readonly IOfferService offerService;
 
-        public PackagesController(HelpDesk_Menagment_TwiloContext context, IPackageService packageService, IOrderService orderService)
+        public PackagesController(HelpDesk_Menagment_TwiloContext context, IPackageService packageService, IOrderService orderService, IOfferService offerService)
         {
             _packageService = packageService;
             this.orderService = orderService;
+            this.offerService = offerService;
             _context = context;
         }
 
@@ -46,7 +48,9 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Packages
 
             var detailedOrder = (await orderService.GetDetailedOrderById(packageinfo.PlatformAccount.AccountName, packageinfo.OrderId.ToString()));
 
-            return Json(new { buyer = detailedOrder.buyer, lineItems = detailedOrder.lineItems, delivery = detailedOrder.delivery, invoice = detailedOrder.invoice });
+            var ImageUrls = (await offerService.GetImagesOfOffers(packageinfo.PlatformAccount.AccountName, detailedOrder.lineItems.Select(item => item.offer.id).ToArray())).ToList();
+
+            return Json(new { buyer = detailedOrder.buyer, lineItems = detailedOrder.lineItems, delivery = detailedOrder.delivery, invoice = detailedOrder.invoice, images = ImageUrls });
         }
     }
 }

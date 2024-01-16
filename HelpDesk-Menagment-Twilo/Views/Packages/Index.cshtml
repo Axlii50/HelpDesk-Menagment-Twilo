@@ -148,7 +148,7 @@
                     data: { UserID: userIDValue, WayBillId: packageIDValue },
                     success: function (response) {
                         // Obsłuż odpowiedź z kontrolera
-                        console.log(response);
+                        //console.log(response);
 
                         // Zresetuj pole po wysłaniu
                         $('#PackageID').val('');
@@ -161,7 +161,7 @@
                         $('.scan__progress-bar').addClass('loaded');
 
                         fillUserData(response);
-                        addItemsToContainer(response.lineItems);
+                        addItemsToContainer(response.lineItems, response.images);
 
                         // Zniknij po pewnym czasie
                         setTimeout(function () {
@@ -197,7 +197,7 @@
             $("#invoiceNIP").text("NIP: " + userData.invoiceNIP);
         }
 
-        function addItemsToContainer(lineItems) {
+        function addItemsToContainer(lineItems,images) {
             var itemsContainer = $(".items");
 
             itemsContainer.empty();
@@ -208,7 +208,7 @@
 
                 var itemHtml = '<div class="item">' +
                     '<div class="item-img">' +
-                    '<img class="item__img" src="' + "TTTT" + '" />' +
+                    '<img class="item__img" src="' + images[i] + '" />' +
                     '</div>' +
                     '<div class="item-info">' +
                     '<p class="item-title">' + itemData.offer.name + '</p>' +
