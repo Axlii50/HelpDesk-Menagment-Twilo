@@ -6,9 +6,6 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Ticket
     {
         Order = 5,
         Discussion = 10,
-        //Return = 15,
-        //Invoice = 20,
-        //WholeSeller = 25,
         Complaint = 15
     }
 }
@@ -21,10 +18,6 @@ public static class TicketCategoryExstention
             case TicketCategory.Order: return "Zamówienie";
             case TicketCategory.Discussion: return "Dyskusja";
             case TicketCategory.Complaint: return "Reklamacje";
-
-            //case TicketCategory.Return: return "Zwrot";
-            //case TicketCategory.Invoice: return "Faktura";
-            //case TicketCategory.WholeSeller: return "Hurtownia";
             default: return string.Empty;
         }
     }
