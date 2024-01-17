@@ -1,11 +1,11 @@
 ﻿@model HelpDesk_Menagment_Twilo.Models.Package.PackageViewModel;
 
-<section class="Menag__section">
-    <div class="container-fluid container__menag">
-        <div class="Menag__content">
-            <div class="Menag__box">
-                <div class="Menag__addBtnBox">
-                    <a class="Menag__addBtn" data-bs-toggle="modal" data-bs-target="#Skanowanie">Skanowanie</a>
+<section class="packages__section">
+    <div class="container-fluid container__packages">
+        <div class="packages__content">
+            <div class="packages__box">
+                <div class="packages__addBtnBox">
+                    <a class="packages__addBtn" data-bs-toggle="modal" data-bs-target="#Skanowanie">Skanowanie</a>
                 </div>
 
                 <div class="modal fade" id="Skanowanie" tabindex="-1" aria-hidden="true">
@@ -105,19 +105,19 @@
                 </div>
 
 
-                <div class="Menag__accountsBox">
-                    <div class="Menag__accounts">
-                        <div class="Menag__headers">
-                            <div class="Menag__header Menag__header--accBox Menag__flexibleColumn">
+                <div class="packages__accountsBox">
+                    <div class="packages__accounts">
+                        <div class="packages__headers">
+                            <div class="packages__header packages__header--accBox packages__flexibleColumn">
                                 <span class="Menag__header--acc">Nazwa konta</span>
                             </div>
 
-                            <div class="Menag__header Menag__header--iloscBox Menag__flexibleColumn">
-                                <span class="Menag__header--ilosc">NR paczki</span>
+                            <div class="packages__header packages__header--iloscBox packages__flexibleColumn">
+                                <span class="packages__header--ilosc">NR paczki</span>
                             </div>
 
-                            <div class="Menag__header Menag__header--iloscBox Menag__flexibleColumn">
-                                <span class="Menag__header--ilosc">Data zeskanowania</span>
+                            <div class="packages__header packages__header--iloscBox packages__flexibleColumn">
+                                <span class="packages__header--ilosc">Data zeskanowania</span>
                             </div>
                         </div>
 
@@ -125,16 +125,16 @@
 
                             foreach (var package in Model.packages)
                             {
-                               <div class="Menag__rows">
-                                    <div class="Menag__accountRow">
-                                        <div class="Menag__detail Menag__detail--userName Menag__flexibleColumn">
+                                <div class="packages__rows">
+                                    <div class="packages__accountRow">
+                                        <div class="packages__detail packages__detail--userName packages__flexibleColumn">
                                             <span class="Menag__userName">@package.Account.Login</span>
                                         </div>
-                                        <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
+                                        <div class="packages__detail packages__detail--apli packages__flexibleColumn">
                                             <span class="Menag__apli">@package.PackageInfo.PackageShippingId</span>
                                         </div>
-                                        <div class="Menag__detail Menag__detail--apli Menag__flexibleColumn">
-                                            <span class="Menag__apli Menag__apli--date">@package.FormattedDateString</span>
+                                        <div class="packages__detail packages__detail--apli packages__flexibleColumn">
+                                            <span class="packages__apli packages__apli--date">@package.FormattedDateString</span>
                                         </div>
                                         @* <div class="Menag__detail--btns">
                                         <a class="Menag__addBtn">Aplikacje</a>
