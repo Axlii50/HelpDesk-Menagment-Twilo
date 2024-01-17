@@ -950,7 +950,7 @@ loginPage__input:-webkit-autofill {
 }
 
 .Menag__header {
-    flex: 0 0 22rem;
+    flex: 0 0 20rem;
 }
 
 
@@ -960,7 +960,7 @@ loginPage__input:-webkit-autofill {
 }
 
 .Menag__detail {
-    flex: 0 0 22rem;
+    flex: 0 0 20rem;
 }
 
 .Menag__header--iloscBox {
