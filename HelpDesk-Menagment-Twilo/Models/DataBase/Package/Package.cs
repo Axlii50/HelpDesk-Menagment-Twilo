@@ -13,7 +13,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Package
         public PackageInfo PackageInfo { get; set; }
 
         [Column(TypeName = "datetime2")]
-		private DateTime DateString { get; set; } = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
+		public DateTime DateString { get; set; }
         public string FormattedDateString => DateString.ToString("yyyy-MM-dd HH:mm:ss");
 
 		public DeliveryType DeliveryType { get; set; }

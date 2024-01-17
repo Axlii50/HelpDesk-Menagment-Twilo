@@ -4,6 +4,7 @@ using HelpDesk_Menagment_Twilo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk_Menagment_Twilo.Migrations
 {
     [DbContext(typeof(HelpDesk_Menagment_TwiloContext))]
-    partial class HelpDesk_Menagment_TwiloContextModelSnapshot : ModelSnapshot
+    [Migration("20240114003823_PackageRefactor2")]
+    partial class PackageRefactor2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.Property<Guid>("AccountID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateString")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("DeliveryType")
                         .HasColumnType("int");
 
@@ -101,9 +100,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                     b.Property<string>("CreationCommandID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CreationCommandType")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
@@ -111,9 +107,6 @@ namespace HelpDesk_Menagment_Twilo.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PackageShippingId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PackageWayBill")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PlatformAccountId")

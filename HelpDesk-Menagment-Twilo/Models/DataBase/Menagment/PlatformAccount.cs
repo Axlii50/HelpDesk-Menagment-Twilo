@@ -1,4 +1,5 @@
 ﻿using HelpDesk_Menagment_Twilo.Interfaces;
+using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
 
 namespace HelpDesk_Menagment_Twilo.Models.DataBase.Menagment
 {
@@ -13,6 +14,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Menagment
         public string ClientID { get; set; }
 
         public PlatformType PlatformType { get; set; }
+
+        public List<PackageInfo> PackageInfos { get; set; }
     }
 
     public enum PlatformType
