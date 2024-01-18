@@ -79,7 +79,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
         public IActionResult EditTicket(string AccountID, string TicketID)
         {
-            var account = _context.Account.Find(AccountID);
+            var account = _context.Account.Find(new Guid(AccountID));
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
@@ -100,11 +100,11 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
         [HttpPost]
         public async Task<IActionResult> EditTicket([Bind("TicketTitle,TicketDescription,TicketCategory,TicketStatus,TicketPriority,AccountID,TicketID")] Models.HelpDesk.Editing.EditTicketModel ticket)
         {
-            var account = _context.Account.Find(ticket.AccountID);
+            var account = _context.Account.Find(new Guid(ticket.AccountID));
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
-            var ticketEntity = _context.Ticket.Find(ticket.TicketID);
+            var ticketEntity = _context.Ticket.Find(new Guid(ticket.TicketID));
 
             if (ticketEntity == null) return Index(ticket.AccountID);
 
@@ -129,11 +129,11 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
         [HttpPost]
         public async Task<IActionResult> AddComment([Bind("AccountID,TicketID,CommentTitle,CommentDescription")] AddComment addComment)
         {
-            var account = _context.Account.Find(addComment.AccountID);
+            var account = _context.Account.Find(new Guid(addComment.AccountID));
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
-            var ticketEntity = _context.Ticket.Find(addComment.TicketID);
+            var ticketEntity = _context.Ticket.Find(new Guid(addComment.TicketID));
 
             if (ticketEntity == null) return Index(addComment.AccountID);
 

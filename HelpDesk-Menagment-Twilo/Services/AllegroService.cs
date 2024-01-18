@@ -9,6 +9,9 @@ namespace HelpDesk_Menagment_Twilo.Services
 {
     public class AllegroService : IAllegroService
     {
+        /// <summary>
+        /// Key to jest nazwa konta
+        /// </summary>
         private readonly Dictionary<string, AllegroApi> _accounts;
         private readonly ILogger<AllegroService> _logger;
 
@@ -40,7 +43,16 @@ namespace HelpDesk_Menagment_Twilo.Services
             // Create a new instance of AllegroApi and add it to the accounts dictionary
             var allegroApi = new AllegroApi(platformAccount.ClientID, platformAccount.ClientSecret, HandleRefreshToken);
 
-            _accounts.Add(platformAccount.AccountName, allegroApi);
+            //przy ponownej autoryzacji usunie stary obiekt który nie został zautoryzowany by móc poprawnie przejsc autoryzacjie bez resetowania poola
+            if(_accounts.ContainsKey(platformAccount.AccountName))
+            {
+                _accounts.Add(platformAccount.AccountName, allegroApi);
+            }
+            else
+            {
+                _accounts.Remove(platformAccount.AccountName);
+                _accounts.Add(platformAccount.AccountName, allegroApi);
+            }
         }
 
         // Checks if the access token for the specified account is valid
@@ -57,13 +69,15 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public AllegroApi GetAllegroApi (string AccountName)
         {
+            if (!_accounts.ContainsKey(AccountName)) return null;
+
             return _accounts[AccountName];
         }
 
 
         public string[] GetAuthorizedAccounts()
         {
-            return _accounts.Keys.ToArray();
+            return _accounts.Where(acc => acc.Value.RefreshToken != string.Empty).Select(acc => acc.Key).ToArray();
         }
 
         public bool IsAuthorized(string AccountName)
