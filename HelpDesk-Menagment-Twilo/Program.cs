@@ -6,6 +6,7 @@ using System;
 using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Services;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace HelpDesk_Menagment_Twilo
 {
@@ -14,6 +15,16 @@ namespace HelpDesk_Menagment_Twilo
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Configuration)
+                .CreateLogger();
+
+            builder.Services.AddHttpContextAccessor();
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddSerilog(logger);
+
             builder.Services.AddDbContext<HelpDesk_Menagment_TwiloContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("HelpDesk_Menagment_TwiloContext") ?? throw new InvalidOperationException("Connection string 'HelpDesk_Menagment_TwiloContext' not found.")));
 

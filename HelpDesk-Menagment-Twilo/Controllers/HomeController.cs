@@ -15,6 +15,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers
         public HomeController(ILogger<HomeController> logger, HelpDesk_Menagment_TwiloContext helpDesk_Menagment_TwiloContext)
         {
             _logger = logger;
+            _logger.LogWarning("test");
             helpDeskContext = helpDesk_Menagment_TwiloContext;
         }
 

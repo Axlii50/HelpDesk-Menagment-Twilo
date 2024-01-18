@@ -10,10 +10,12 @@ namespace HelpDesk_Menagment_Twilo.Services
     public class AllegroService : IAllegroService
     {
         private readonly Dictionary<string, AllegroApi> _accounts;
-       
-        public AllegroService()
+        private readonly ILogger<AllegroService> _logger;
+
+        public AllegroService(ILogger<AllegroService> logger)
         {
             _accounts = new Dictionary<string, AllegroApi>();
+            _logger = logger;
         }
 
         private void HandleRefreshToken()
@@ -25,7 +27,6 @@ namespace HelpDesk_Menagment_Twilo.Services
         {
             // Initialize the account for Allegro API authentication
             initializeAccount(platformAccount);
-
             // Authenticate the account and retrieve the verification URL
             var verificationUrlModel = await (_accounts[platformAccount.AccountName].Authenticate());
 
