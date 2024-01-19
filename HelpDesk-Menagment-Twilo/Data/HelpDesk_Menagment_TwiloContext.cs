@@ -19,6 +19,8 @@ namespace HelpDesk_Menagment_Twilo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
             //modelBuilder.Entity<Package>()
             //    .HasOne(p => p.PackageInfo)
             //    .WithMany()
