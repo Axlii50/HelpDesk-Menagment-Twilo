@@ -13,7 +13,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
+            //await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -24,10 +24,12 @@ namespace HelpDesk_Menagment_Twilo.Services
                 foreach (var myService in _myServices)
                 {
                     await myService.StartServiceTask();
-                }
+               }
 
                 // Ustaw interwał czasowy
-                await Task.Delay(TimeSpan.FromHours(2), stoppingToken);
+                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+
+               // await Task.Delay(TimeSpan.FromHours(2), stoppingToken);
             }
         }
     }
