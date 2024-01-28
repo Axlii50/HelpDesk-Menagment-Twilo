@@ -37,7 +37,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 {
                     AssignRefreshToken(account.Key);
                     _logger.LogInformation("Aktualizuje token dla konta: " + account.Key);
-                    System.Diagnostics.Debug.WriteLine($"Konto {account.Key} zostało zaktualizowane");
+                   //System.Diagnostics.Debug.WriteLine($"Konto {account.Key} zostało zaktualizowane");
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             
             AssignRefreshToken(AccountName);
 
-            System.Diagnostics.Debug.WriteLine($"Konto {AccountName} zostało stworzone");
+            //System.Diagnostics.Debug.WriteLine($"Konto {AccountName} zostało stworzone");
         }
 
         // Checks if the access token for the specified account is valid
