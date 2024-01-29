@@ -45,8 +45,6 @@ namespace HelpDesk_Menagment_Twilo.Services
                     //Get all aviable delivery services for specific account
                     var aviableServices = await deliveryServices.GetDeliveryServices(authorizedAccount);
 
-                    return;
-
                     //iterate throug each order and generate package for it
                     foreach (var order in Orders)
                     {
