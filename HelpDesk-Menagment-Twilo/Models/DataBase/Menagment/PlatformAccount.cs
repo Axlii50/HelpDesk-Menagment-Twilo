@@ -15,6 +15,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Menagment
 
         public PlatformType PlatformType { get; set; }
 
+        public string RefreshToken { get; set; }
+
         public List<PackageInfo> PackageInfos { get; set; }
     }
 

@@ -23,6 +23,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 var allegroService = scope.ServiceProvider.GetRequiredService<IAllegroService>();
                 var context = scope.ServiceProvider.GetRequiredService<HelpDesk_Menagment_TwiloContext>();
 
+                //get all packages that have command id 
                 var packages = context.PackageInfo.Include(pac => pac.PlatformAccount).Where(pac => pac.CreationCommandID != string.Empty);
 
                 foreach (var package in packages)
