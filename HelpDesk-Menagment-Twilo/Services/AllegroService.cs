@@ -157,7 +157,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             if (_accounts.ContainsKey(AccountName))
             {
-                System.Diagnostics.Debug.WriteLine(AccountName + "   " + _accounts[AccountName].IsAuthorized());
+                //System.Diagnostics.Debug.WriteLine(AccountName + "   " + _accounts[AccountName].IsAuthorized());
                 return _accounts[AccountName];
             }
 

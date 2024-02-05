@@ -7,6 +7,7 @@ using HelpDesk_Menagment_Twilo.Interfaces;
 using Microsoft.AspNetCore.Http.Metadata;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Menagment;
 using NuGet.Packaging;
+using HelpDesk_Menagment_Twilo.Services;
 
 namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 {
@@ -15,7 +16,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
         readonly HelpDesk_Menagment_TwiloContext _context;
         readonly IPlatformAccountService _platformAccountService;
         readonly IAllegroService _allegroService;
-       
+
         public MenagmentController(HelpDesk_Menagment_TwiloContext context,
             IPlatformAccountService platformAccountService,
             IAllegroService allegroService)
@@ -88,6 +89,16 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Menagment
 
             // Return JSON response indicating whether the account is verified
             return Json(new { IsVerified = IsVerified });
+        }
+
+        public async Task<IActionResult> ProcessPackages([FromServices] IEnumerable<IBackGroundService> myServices)
+        {
+            foreach (var myService in myServices)
+            {
+                await myService.StartServiceTask();
+            }
+
+            return Ok();
         }
     }
 }
