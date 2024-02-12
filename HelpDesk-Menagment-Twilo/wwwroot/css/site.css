@@ -872,8 +872,13 @@ loginPage__input:-webkit-autofill {
 
 
 
+
 /*Zarz¹dzanie*/
-/*Zarz¹dzanie*/
+
+.Menag__accounts--zarzadzanie {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 
 .HelpDesk__section {
 }
@@ -945,29 +950,30 @@ loginPage__input:-webkit-autofill {
 }
 
 .Menag__header {
-    display: inline-block;
+    flex: 0 0 20rem;
 }
 
+
 .Menag__header--accBox {
-    max-width: 30rem;
-    width: 100%;
-    min-width: 10rem;
     font-size: 1.8rem;
     text-align: center;
+}
+
+.Menag__detail {
+    flex: 0 0 20rem;
 }
 
 .Menag__header--iloscBox {
-    max-width: 40rem;
-    width: 100%;
-    min-width: 10rem;
+
     font-size: 1.8rem;
     text-align: center;
 }
 
+.Menag__header--space {
+    flex: 1;
+}
+
 .Menag__detail--apli {
-    max-width: 40rem;
-    width: 100%;
-    min-width: 10rem;
     font-size: 1.8rem;
     text-align: center;
 }
@@ -981,29 +987,32 @@ loginPage__input:-webkit-autofill {
         border-bottom: 2px solid var(--color--primary-light);
     }
 
-.Menag__detail {
-    display: inline-block;
-}
-
 .Menag__details--infoText {
     display: inline-block;
 }
 
 .Menag__detail--userName {
-    min-width: 10rem;
-    max-width: 30rem;
-    width: 100%;
     font-size: 1.8rem;
     text-align: center;
 }
 
 .Menag__detail--btns {
-    margin-left: auto;
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end
 }
 
 .Menag__rows {
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 71em) {
+    .Menag__detail--btns {
+        flex: 1;
+        display: inline;
+    }
 }
 
 /*Skanowanie*/
@@ -1124,10 +1133,13 @@ loginPage__input:-webkit-autofill {
 
 .item-img {
     flex: 0 1 15rem;
+    
+    display: flex;
+    justify-content: center;
 }
 
 .item__img {
-    max-width: 100%;
+    max-width: 55%;
 }
 
 .item-info {
@@ -1211,4 +1223,146 @@ loginPage__input:-webkit-autofill {
 
     .autoryzuj__btn:focus-within {
         background-color: var(--color--primary-dark);
+    }
+
+
+/*Paczki*/
+.container__packages {
+    padding: 0;
+}
+
+.packages__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.packages__box {
+    width: 100%;
+    padding: 2rem 0;
+    color: var(--color-white);
+}
+
+.packages__addBtnBox {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+.packages__addBtn {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    padding: 0.75rem 1rem;
+    width: 15rem;
+    background-color: var(--color--primary-light);
+    transition: all 0.4s;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.packages__addBtn:hover {
+    color: white;
+    background-color: var(--color--primary-dark);
+}
+
+.packages__accountsBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-height: 73rem;
+    min-height: 73rem;
+}
+
+.packages__accounts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.packages__headers {
+    width: 100%;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color--primary-light);
+    display: flex;
+}
+
+.packages__header {
+    display: inline-block;
+}
+
+.packages__header--accBox {
+    max-width: 30rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.packages__header--iloscBox {
+    max-width: 40rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.packages__detail--apli {
+    max-width: 40rem;
+    width: 100%;
+    min-width: 10rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.packages__accountRow {
+    display: flex;
+    padding: 0.75rem 1rem;
+}
+
+.packages__accountRow:not(:last-child) {
+    border-bottom: 2px solid var(--color--primary-light);
+}
+
+.packages__detail {
+    display: inline-block;
+}
+
+.packages__details--infoText {
+    display: inline-block;
+}
+
+.packages__detail--userName {
+    min-width: 10rem;
+    max-width: 30rem;
+    width: 100%;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.packages__detail--btns {
+    margin-left: auto;
+}
+
+.packages__rows {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-procesing {
+    background-color: var(--color--primary-light);
+    padding: 0.5rem 1rem;
+    color: white;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.15);
+    transition: all 0.4s;
+}
+
+    .btn-procesing:hover, .btn-procesing:active, .btn-procesing:focus {
+        background-color: var(--color--primary-dark);
+        box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
     }

@@ -13,7 +13,12 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
+            foreach (var myService in _myServices)
+            {
+                await myService.StartServiceTask();
+            }
+
+            await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
 
             while (!stoppingToken.IsCancellationRequested)
             {

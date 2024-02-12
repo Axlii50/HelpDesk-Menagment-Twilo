@@ -1,7 +1,7 @@
 ﻿using HelpDesk_Menagment_Twilo.Models.DataBase;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Menagment;
 
-namespace HelpDesk_Menagment_Twilo.Models
+namespace HelpDesk_Menagment_Twilo.Models.Menagment
 {
     public class MenagmentViewModel : IAccountID
     {

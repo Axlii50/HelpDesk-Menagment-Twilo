@@ -26,7 +26,13 @@ namespace HelpDesk_Menagment_Twilo
             builder.Logging.AddSerilog(logger);
 
             builder.Services.AddDbContext<HelpDesk_Menagment_TwiloContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("HelpDesk_Menagment_TwiloContext") ?? throw new InvalidOperationException("Connection string 'HelpDesk_Menagment_TwiloContext' not found.")));
+            {
+#if DEBUG
+                options.EnableSensitiveDataLogging();
+                options.EnableDetailedErrors();
+#endif
+                options.UseSqlServer(builder.Configuration.GetConnectionString("HelpDesk_Menagment_TwiloContext") ?? throw new InvalidOperationException("Connection string 'HelpDesk_Menagment_TwiloContext' not found."));
+            });
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
