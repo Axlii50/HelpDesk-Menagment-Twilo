@@ -17,5 +17,9 @@
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
     <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Twilo-API\Allegro Api\Allegro Api.csproj" />
+  </ItemGroup>
 
 </Project>
