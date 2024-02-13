@@ -15,7 +15,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
         public async Task<List<DeliveryServiceDto>> GetDeliveryServices(string accountName)
         {
-            return (await _allegroService.GetAllegroApi(accountName).GetDeliveryServices()).services.ToList();
+            return (await _allegroService.GetAllegroApi(accountName).GetDeliveryServices()).services?.ToList();
         }
     }
 }

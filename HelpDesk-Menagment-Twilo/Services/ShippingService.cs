@@ -70,13 +70,13 @@ namespace HelpDesk_Menagment_Twilo.Services
             return new SenderAddressDto()
             {
                 company = "TWILO SP. Z O.O.",
-                street = "ul. Igołomska",
-                streetNumber = "1/30",
-                postalCode = "31-980",
+                street = "ul. Gdyńska",
+                streetNumber = "31",
+                postalCode = "31-323",
                 city = "Kraków",
                 countryCode = "PL",
                 email = "arkadiusz.kruszyna@twilo.pl",
-                phone = "+48 572 353 814",
+                phone = "+48 577 940 100",
             };
         }
         private Packages[] CreatePackages()

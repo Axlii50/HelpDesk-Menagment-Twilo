@@ -1,4 +1,4 @@
-﻿@model MenagmentViewModel
+﻿@model HelpDesk_Menagment_Twilo.Models.Menagment.MenagmentViewModel
 
 @{
     Layout = "_Layout";
@@ -21,22 +21,22 @@
                                     <p class="autoryzuj__link"></p>
                                 </div>
 
-                                <div class="autoryzuj__row">
-                                    <input type="hidden" id="accountNameInput" />
-                                </div>
+                                <!-- Ukryte pole przechowujące nazwę konta -->
+                                <input type="hidden" id="accountNameInput" />
 
                                 <div class="modal-footer autoryzuj__modal-footer">
                                     <div class="autoryzuj__box">
                                         <button type="button" class="btn btn-primary autoryzuj__btn">Sprawdź</button>
                                         <button type="button" class="btn btn-primary autoryzuj__btn copybtn">Kopiuj link</button>
                                     </div>
-
                                     <button type="button" class="btn btn-secondary ticket__btn ticket__btn--close" data-bs-dismiss="modal">Zamknij</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <a class="btn btn-procesing" asp-action="ProcessPackages" asp-controller="Menagment">Procesuj</a>
 
                 <div class="Menag__accountsBox">
                     <div class="Menag__accounts">
@@ -77,7 +77,8 @@
                                             {
                                                 <a class="Menag__addBtn" >Autoryzuj</a>
                                             }
-                                                <a class="Menag__addBtn">Usuń</a>
+                                            
+                                            <a class="Menag__addBtn">Usuń</a>
                                             </div>
                                         </div>
                                     </div>
@@ -103,13 +104,13 @@
 
         $(document).ready(function () {
             $('.Menag__addBtn').on('click', function () {
-                var accountName = $('.Menag__userName').text();
+                var accountName = $(this).closest('.Menag__accountRow').find('.Menag__userName').text();
                 var accountID = $('#AccountID').val();
 
                 $('#accountNameInput').val(accountName);
 
                 $.ajax({
-                    url: '/Menagment/GetVerificationUrl',  // Podmień to na odpowiedni adres URL
+                    url: '/Menagment/GetVerificationUrl',
                     method: 'GET',
                     data: {
                         AccountID: accountID,
@@ -129,7 +130,7 @@
 
             $('.autoryzuj__btn').on('click', function () {
                 // Pobierz potrzebne dane
-                var accountName = $('.Menag__userName').text();
+                var accountName = $('#accountNameInput').val();
                 var accountID = $('#AccountID').val();
 
                 // Wyślij żądanie AJAX do metody VerifyAccount
