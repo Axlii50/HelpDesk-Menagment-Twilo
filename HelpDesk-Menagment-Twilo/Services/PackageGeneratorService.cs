@@ -57,7 +57,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                         var ServiceId = aviableServices.FirstOrDefault(ser => ser.id.deliveryMethodId == order.delivery.method.id).id.credentialsId;
 
                         //create shipping package and return command id for later usage
-                        var commandId = await shippingService.CreateShipment(authorizedAccount, order.id, ServiceId);
+                        var commandId = await shippingService.CreateShipment(authorizedAccount, order.id, ServiceId, order.buyer.login);
 
                         //create object of package info 
                         var PackageInfo = new PackageInfo()

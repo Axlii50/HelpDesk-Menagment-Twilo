@@ -17,7 +17,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public async Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId)
+        public async Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId, string ClientName)
         {
             var allegroapi = _allegroService.GetAllegroApi(AccountName);
 
@@ -25,6 +25,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             var Data = CreateShipmentData(Order);
             Data.input.credentialsId = credentialsId;
+            Data.input.referenceNumber = ClientName;
 
             allegroapi.CreatePackage(Data);
 
