@@ -105,7 +105,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 city = detailedCheckOutForm.delivery.address.city,
                 countryCode = detailedCheckOutForm.delivery.address.countryCode,
                 email = detailedCheckOutForm.buyer.email,
-                phone = detailedCheckOutForm.buyer.phoneNumber,
+                phone = detailedCheckOutForm.delivery.address.phoneNumber,
                 point = detailedCheckOutForm.delivery.pickupPoint?.id
             };
         }
