@@ -4,7 +4,7 @@ using HelpDesk_Menagment_Twilo.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HelpDesk_Menagment_Twilo.Services
+namespace HelpDesk_Menagment_Twilo.Services.BackGroundWorkers
 {
     public class PackageCheckerService : IBackGroundService
     {

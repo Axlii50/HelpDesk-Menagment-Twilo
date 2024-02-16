@@ -7,7 +7,7 @@ using HelpDesk_Menagment_Twilo.Models.DataBase.Package;
 using Microsoft.Extensions.DependencyInjection;
 using static NuGet.Packaging.PackagingConstants;
 
-namespace HelpDesk_Menagment_Twilo.Services
+namespace HelpDesk_Menagment_Twilo.Services.BackGroundWorkers
 {
     public class PackageGeneratorService : IBackGroundService
     {

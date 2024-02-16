@@ -1,6 +1,6 @@
 ﻿using HelpDesk_Menagment_Twilo.Interfaces;
 
-namespace HelpDesk_Menagment_Twilo.Services
+namespace HelpDesk_Menagment_Twilo.Services.BackGroundWorkers
 {
     public sealed class BackGroundService : BackgroundService
     {

@@ -16,19 +16,11 @@ namespace HelpDesk_Menagment_Twilo.Data
         public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Ticket.TicketComment> TicketComments { get; set; } = default!;
         public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Package.Package> Packages { get; set; } = default!;
         public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Package.PackageInfo> PackageInfo { get; set; } = default!;
+        public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Products.Product> Products { get; set; } = default!;
+        public DbSet<HelpDesk_Menagment_Twilo.Models.DataBase.Magazine.MagazineProduct> MagazineProducts { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-
-            //modelBuilder.Entity<Package>()
-            //    .HasOne(p => p.PackageInfo)
-            //    .WithMany()
-            //    .HasForeignKey(p => p.PackageInfoId)
-            //    .OnDelete(DeleteBehavior.NoAction); // Set the desired OnDelete behavior
-
-            // Additional configurations for other entities and relationships
-
             base.OnModelCreating(modelBuilder);
         }
     }
