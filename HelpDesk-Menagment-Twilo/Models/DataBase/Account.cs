@@ -26,6 +26,8 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase
         Menagment = 4,
         MenagmentAdmin = 8,
         Packages = 16,
-        PackagesAdmin = 32
+        PackagesAdmin = 32,
+        Magazine = 64,
+        Products = 256
     }
 }
