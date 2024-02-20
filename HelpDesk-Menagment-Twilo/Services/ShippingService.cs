@@ -87,10 +87,10 @@ namespace HelpDesk_Menagment_Twilo.Services
                 new Allegro_Api.Shipment.Components.Packages()
                 {
                     type = "PACKAGE",
-                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 10},
+                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 25},
                     width = new Allegro_Api.Shipment.Components.DimensionValue(){value = 38},
-                    height = new Allegro_Api.Shipment.Components.DimensionValue(){value = 8},
-                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 60}
+                    height = new Allegro_Api.Shipment.Components.DimensionValue(){value = 19},
+                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 64}
                 }
             };
         }
