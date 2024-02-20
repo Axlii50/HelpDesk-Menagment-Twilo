@@ -15,7 +15,7 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase.Products
         public string Publisher { get; set; }
         public string Title { get; set; }
 
-        Guid IIdentification.ID { get; set; }
+        public Guid ID { get; set; }
     }
 
     public enum WholeSellerType
