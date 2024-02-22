@@ -1,8 +1,8 @@
 ﻿using HelpDesk_Menagment_Twilo.Interfaces;
 
-namespace HelpDesk_Menagment_Twilo.Models.DataBase.Magazine
+namespace HelpDesk_Menagment_Twilo.Models.DataBase.WareHouse
 {
-    public class MagazineProduct : IIdentification
+    public class WareHouseProduct : IIdentification
     { 
         public Guid ID { get; set; }
         public string Ean { get; set; }
