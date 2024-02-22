@@ -47,7 +47,7 @@
                         @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Magazine))
                         {
                             <li class="navigation__item">
-                                <a class="navigation__link" asp-action="Index" asp-controller="Magazine" asp-route-AccountID="@Account.AccountID">Magazyn</a>
+                                <a class="navigation__link" asp-action="Index" asp-controller="Magazin" asp-route-AccountID="@Account.AccountID">Magazyn</a>
                             </li>
                         }
                         @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Products))

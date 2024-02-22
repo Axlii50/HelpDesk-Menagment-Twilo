@@ -6,7 +6,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.Products
     {
         public IActionResult Index()
         {
-            return View();
+            return View("~/Views/Products/index.cshtml");
         }
     }
 }
