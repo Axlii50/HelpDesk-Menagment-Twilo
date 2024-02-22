@@ -3,7 +3,6 @@ using HelpDesk_Menagment_Twilo.Interfaces;
 using HelpDesk_Menagment_Twilo.Models.DataBase.Menagment;
 using HelpDesk_Menagment_Twilo.Models.WareHouse;
 using HelpDesk_Menagment_Twilo.Models.Menagment;
-using HelpDesk_Menagment_Twilo.Models.WareHouse;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
