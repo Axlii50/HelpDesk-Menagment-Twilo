@@ -1390,7 +1390,24 @@ loginPage__input:-webkit-autofill {
     font-size: 1.7rem;
     padding: 1rem 2rem;
     font-weight: 500;
+    cursor: pointer;
 }
+
+.magazine__button:link, .magazine__button:visited {
+    color: #fff;
+    background-color: var(--color--primary-light);
+    text-decoration: none;
+    font-size: 1.7rem;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.magazine__button:hover, .magazine__button:active {
+    color: #fff;
+    background-color: var(--color--primary-dark);
+}
+
 .magazine__button:first-child {
     margin-left: 1rem;
 }
@@ -1468,4 +1485,74 @@ loginPage__input:-webkit-autofill {
 .magazine__howmany {
     font-size: 1.8rem;
     color: #fff;
+}
+
+.modal-content-magazine {
+    width: 40rem;
+}
+
+.magazine__row {
+    display: block;
+}
+
+.magazine__counts-row {
+    font-size: 1.8rem;
+    color: #000;
+    margin: 1rem 0;
+}
+
+.magazine__btn--close {
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.magazine__input {
+    width: 100%;
+    border: 1px solid #000;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 1.8rem;
+}
+
+
+.modal-dialog-magazine {
+    max-width: 100rem;
+    justify-content: center;
+}
+
+.magazine__progress-bar {
+    height: 5px;
+    background-color: #007bff; /* Kolor pocz¹tkowy paska postêpu */
+    width: 0; /* Szerokoœæ pocz¹tkowa paska (0%) */
+    transition: width 2.5s, background-color 0.5s; /* Czas trwania animacji dla szerokoœci i koloru */
+}
+
+    .magazine__progress-bar.loaded {
+        background-color: #28a745; /* Kolor po zakoñczeniu ³adowania (zielony) */
+    }
+
+.modal-magazine {
+    width: 40rem;
+}
+
+.magazine__modal-content {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.magazine-modal__img {
+    width: 40%;
+}
+
+.magazine-modal__text {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.modal-title__magazine {
+    font-size: 2.1rem;
+    line-height: 1.3;
 }
