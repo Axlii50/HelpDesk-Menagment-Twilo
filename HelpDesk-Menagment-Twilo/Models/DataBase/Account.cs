@@ -20,12 +20,14 @@ namespace HelpDesk_Menagment_Twilo.Models.DataBase
     }
 
     public enum PermissionsTypes
-    {
+    {   
         HelpDesk = 1,
         HelpDeskAdmin = 2,
         Menagment = 4,
         MenagmentAdmin = 8,
         Packages = 16,
-        PackagesAdmin = 32
+        PackagesAdmin = 32,
+        Magazine = 64,
+        Products = 256
     }
 }

@@ -83,7 +83,7 @@ namespace HelpDesk_Menagment_Twilo.Controllers.HelpDesk
 
             if (account == null) return View("~/Views/Home/LoginPage.cshtml");
 
-            var ticket = _context.Ticket.Find(TicketID);
+            var ticket = _context.Ticket.Find(new Guid(TicketID));
 
             if (ticket == null) return Index(AccountID);
 

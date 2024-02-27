@@ -44,6 +44,18 @@
                                 <a class="navigation__link" asp-action="Index" asp-controller="Packages" asp-route-AccountID="@Account.AccountID">Paczki</a>
                             </li>
                         }
+                        @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Magazine))
+                        {
+                            <li class="navigation__item">
+                                <a class="navigation__link" asp-action="Index" asp-controller="WareHouse" asp-route-AccountID="@Account.AccountID">Magazyn</a>
+                            </li>
+                        }
+                        @if (Account.Permissions.HasFlag(HelpDesk_Menagment_Twilo.Models.DataBase.PermissionsTypes.Products))
+                        {
+                            <li class="navigation__item">
+                                <a class="navigation__link" asp-action="Index" asp-controller="Products" asp-route-AccountID="@Account.AccountID">Produkty</a>
+                            </li>
+                        }
                     </ul>
             </nav>
         </div>

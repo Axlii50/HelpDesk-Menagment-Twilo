@@ -17,7 +17,7 @@ namespace HelpDesk_Menagment_Twilo.Services
             _allegroService = allegroService;
         }
 
-        public async Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId)
+        public async Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId, string ClientName)
         {
             var allegroapi = _allegroService.GetAllegroApi(AccountName);
 
@@ -25,6 +25,7 @@ namespace HelpDesk_Menagment_Twilo.Services
 
             var Data = CreateShipmentData(Order);
             Data.input.credentialsId = credentialsId;
+            Data.input.referenceNumber = ClientName;
 
             allegroapi.CreatePackage(Data);
 
@@ -86,10 +87,10 @@ namespace HelpDesk_Menagment_Twilo.Services
                 new Allegro_Api.Shipment.Components.Packages()
                 {
                     type = "PACKAGE",
-                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 10},
+                    weight = new Allegro_Api.Shipment.Components.WeightValue(){value = 25},
                     width = new Allegro_Api.Shipment.Components.DimensionValue(){value = 38},
-                    height = new Allegro_Api.Shipment.Components.DimensionValue(){value = 8},
-                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 60}
+                    height = new Allegro_Api.Shipment.Components.DimensionValue(){value = 19},
+                    length = new Allegro_Api.Shipment.Components.DimensionValue(){value = 64}
                 }
             };
         }
@@ -104,7 +105,7 @@ namespace HelpDesk_Menagment_Twilo.Services
                 city = detailedCheckOutForm.delivery.address.city,
                 countryCode = detailedCheckOutForm.delivery.address.countryCode,
                 email = detailedCheckOutForm.buyer.email,
-                phone = detailedCheckOutForm.buyer.phoneNumber,
+                phone = detailedCheckOutForm.delivery.address.phoneNumber,
                 point = detailedCheckOutForm.delivery.pickupPoint?.id
             };
         }

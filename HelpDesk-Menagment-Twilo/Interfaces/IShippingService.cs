@@ -2,6 +2,6 @@
 {
     public interface IShippingService
     {
-        Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId);
+        Task<string> CreateShipment(string AccountName, string OrderId, string credentialsId, string ClientName);
     }
 }

@@ -1,0 +1,200 @@
+﻿@model HelpDesk_Menagment_Twilo.Models.WareHouse.WareHouseViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="magazine__btns">
+<a class="magazine__button" data-bs-toggle="modal" data-bs-target="#dodajdomagazynu">Dodaj do magazynu</a>
+<a class="magazine__button" data-bs-toggle="modal" data-bs-target="#usunzmagazynu">Usuń z magazynu</a>
+</div>
+
+<div class="magazine__head">
+    <h1 class="magazine__heading">Dostępne artykuły</h1>
+</div>
+
+<div class="magazine__container">
+
+    <div class="magazine__product">
+        <img class="magazine__image" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+        <div class="magazine__content">
+            <p class="magazine__title">Nic mnie nie złamie. Zapanuj nad swoim umysłem..</p>
+            <p class="magazine__howmany">Ilość: <span class="magazine__count">4</span></p>
+        </div>
+    </div>
+
+    <div class="magazine__product">
+        <img class="magazine__image" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+        <div class="magazine__content">
+            <p class="magazine__title">Nic mnie nie złamie. Zapanuj nad swoim umysłem..</p>
+            <p class="magazine__howmany">Ilość: <span class="magazine__count">4</span></p>
+        </div>
+    </div>
+
+    <div class="magazine__product">
+        <img class="magazine__image" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+        <div class="magazine__content">
+            <p class="magazine__title">Nic mnie nie złamie. Zapanuj nad swoim umysłem..</p>
+            <p class="magazine__howmany">Ilość: <span class="magazine__count">4</span></p>
+        </div>
+    </div>
+
+    <div class="magazine__product">
+        <img class="magazine__image" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+        <div class="magazine__content">
+            <p class="magazine__title">Nic mnie nie złamie. Zapanuj nad swoim umysłem..</p>
+            <p class="magazine__howmany">Ilość: <span class="magazine__count">4</span></p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="dodajdomagazynu" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-magazine modal-dialog-centered">
+        <div class="modal-content modal-content-magazine">
+            <div class="modal-header">
+                <h1 class="modal-title">Dodaj do magazynu</h1>
+                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="magazine__form">
+                <div class="modal-body">
+                    <div class="magazine__row">
+                        <input class="magazine__input" id="ArcticID" placeholder="Wpisz numer artykułu..." type="text" />
+                    </div>
+
+                    <div class="magazine__row magazine__counts-row">
+                        <span class="magazine__countText">Ilość zeskanowana: <span class="magazine__number">0</span></span>
+                        <div class="magazine__progress-bar"></div> <!-- Nowy element dla paska postępu -->
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary magazine__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content modal-magazine">
+            <div class="modal-header">
+                <h1 class="modal-title modal-title__magazine">Przykładowy tytuł ksiazkii oj tak wlasnie tak oj jajaaj</h1>
+            </div>
+
+            <div class="magazine__modal-content">
+                <img class="magazine-modal__img" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+                <p class="magazine-modal__text">EAN: <span class="magazine__ean">432423432432423</span></p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="usunzmagazynu" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-magazine modal-dialog-centered">
+        <div class="modal-content modal-content-magazine">
+            <div class="modal-header">
+                <h1 class="modal-title">Usuń z magazynu</h1>
+                <button type="button" class="btn-close ticket__close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="magazine__form">
+                <div class="modal-body">
+                    <div class="magazine__row">
+                        <input class="magazine__input" id="ArcticUsunID" placeholder="Wpisz numer artykułu..." type="text" />
+                    </div>
+
+                    <div class="magazine__row magazine__counts-row">
+                        <span class="magazine__countText">Ilość zeskanowana: <span class="magazine__number">0</span></span>
+                        <div class="magazine__progress-bar"></div> <!-- Nowy element dla paska postępu -->
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary magazine__btn--close" data-bs-dismiss="modal">Zamknij</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content modal-magazine">
+            <div class="modal-header">
+                <h1 class="modal-title modal-title__magazine">Przykładowy tytuł ksiazkii oj tak wlasnie tak oj jajaaj</h1>
+            </div>
+
+            <div class="magazine__modal-content">
+                <img class="magazine-modal__img" src="https://cdn.discordapp.com/attachments/910627332618866709/1210213947383488602/32ee246047e9b5935d2a3c672e75.jfif?ex=65e9be91&is=65d74991&hm=fbc635b8dbae9dabf3fd0a169b5905e7846c92288ee68f050809c3853af2ba9b&" />
+                <p class="magazine-modal__text">EAN: <span class="magazine__ean">432423432432423</span></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            var typingTimer;
+            var doneTypingInterval = 1500; // 2,5 seconds
+            var scanCount = 0;
+
+            $('#PackageID').on('input', function () {
+                clearTimeout(typingTimer);
+                $('.scan__progress-bar').show();
+                // Po rozpoczęciu wpisywania, ustaw szerokość paska na 0%
+                $('.scan__progress-bar').css('width', '0');
+                //rozpocniej ładowanie odrazu po tym
+                $('.scan__progress-bar').css('width', '100%');
+
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            function doneTyping() {
+                // Pobierz wartość z pola input
+                var packageIDValue = $('#PackageID').val();
+
+                // Pobierz wartość z pola ukrytego
+                var userIDValue = $('#AccountID').val();
+
+                // Animacja paska postępu (rozpoczęcie ładowania)
+                $('.scan__progress-bar').css('width', '100%');
+
+                // Wyślij dane za pomocą AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '/Packages/AddPackage', // Upewnij się, że ścieżka do kontrolera jest poprawna
+                    data: { UserID: userIDValue, WayBillId: packageIDValue },
+                    success: function (response) {
+                        // Obsłuż odpowiedź z kontrolera
+                        //console.log(response);
+
+                        // Zresetuj pole po wysłaniu
+                        $('#PackageID').val('');
+
+                        // Zaktualizuj ilość zeskanowanych
+                        scanCount++;
+                        $('.scan__number').text(scanCount);
+
+                        // Animacja paska postępu (zakończenie ładowania)
+                        $('.scan__progress-bar').addClass('loaded');
+
+                        fillUserData(response);
+                        addItemsToContainer(response.lineItems, response.images);
+
+                        // Zniknij po pewnym czasie
+                        setTimeout(function () {
+                            $('.scan__progress-bar').hide();
+                            $('.scan__progress-bar').css('width', '0'); // Zresetuj pasek do 0% szerokości
+                            $('.scan__progress-bar').removeClass('loaded'); // Usuń klasę 'loaded'
+                        }, 1000); // Oczekaj 500 ms (0.5 s) przed zresetowaniem
+                    },
+                    error: function (error) {
+                        // Obsłuż błąd
+                        console.error('Błąd AJAX:', error);
+                    }
+                });
+            }
+        });
+    </script>
+}
