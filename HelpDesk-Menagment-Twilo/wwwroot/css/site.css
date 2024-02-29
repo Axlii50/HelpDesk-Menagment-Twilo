@@ -1356,7 +1356,10 @@ loginPage__input:-webkit-autofill {
 
 .btn-procesing {
     background-color: var(--color--primary-light);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1.8rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
     color: white;
     box-shadow: 0 1rem 2rem rgba(0,0,0,0.15);
     transition: all 0.4s;
@@ -1364,6 +1367,7 @@ loginPage__input:-webkit-autofill {
 
     .btn-procesing:hover, .btn-procesing:active, .btn-procesing:focus {
         background-color: var(--color--primary-dark);
+        color: #fff;
         box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
     }
 
